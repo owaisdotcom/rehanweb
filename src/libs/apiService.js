@@ -1,7 +1,7 @@
 
 export const getFeaturedProducts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/products/products/featured", {
+      const response = await fetch("https://mathsflix-backend.vercel.app/api/products/products/featured", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

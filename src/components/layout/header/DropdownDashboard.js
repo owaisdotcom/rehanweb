@@ -36,7 +36,7 @@ const DropdownDashboard = () => {
   const items = categories.map((category) => ({
     name: category.name, // Map category name
     status: null,
-    path: `/category/${category._id}`, // Use `_id` for category path
+    path: `/subcategories/${category._id}`, // Use `_id` for category path
   }));
 
   return <DropdownPrimary items={items} />;

@@ -2,11 +2,11 @@ import CoursesPrimary from "@/components/sections/courses/CoursesPrimary";
 import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import React from "react";
 
-const CoursesMain = () => {
+const CoursesMain = ({products, categoryData}) => {
   return (
     <>
-      <HeroPrimary path={"Featured Courses"} title={"Featured Course"} />
-      <CoursesPrimary card={true} />
+   
+      <CoursesPrimary card={true} products={products} categoryData={categoryData}  />
     </>
   );
 };

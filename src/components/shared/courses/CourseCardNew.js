@@ -2,15 +2,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const CourseCard = ({ course }) => {
-  const { id, title, image } = course;
+const CourseCardNew = ({ course }) => {
+  const { id, title, image , categoryId} = course;
 console.log(course)
   return (
     <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
       <div className="p-4 bg-white shadow-lg rounded-lg dark:bg-darkdeep3 dark:shadow-md">
         {/* Card Image */}
         <div className="relative mb-4">
-          <Link href={`/category/${id}`} className="w-full overflow-hidden rounded">
+          <Link href={`/category/${categoryId}/subcategory/${id}`} className="w-full overflow-hidden rounded">
             <Image
               src={image || "/default-category.jpg"}
               alt={title}
@@ -30,4 +30,4 @@ console.log(course)
   );
 };
 
-export default CourseCard;
+export default CourseCardNew;

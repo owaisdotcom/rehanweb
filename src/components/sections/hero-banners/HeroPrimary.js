@@ -11,10 +11,7 @@ const HeroPrimary = ({ title, path }) => {
       <div className="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-50px md:py-20 lg:py-100px 2xl:pb-150px 2xl:pt-40.5">
         {/* animated icons  */}
         <div>
-          <BookImage type={"secondary"} />
-          <GlobImage type={"secondary"} />
-          <BalbImage type={"secondary"} />
-          <TriangleImage type={"secondary"} />
+          
         </div>
         <div className="container">
           <div className="text-center">

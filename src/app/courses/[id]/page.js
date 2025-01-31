@@ -4,8 +4,8 @@ import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 import courses from "@/../public/fakedata/courses.json";
 import { notFound } from "next/navigation";
 export const metadata = {
-  title: "Course Details | M. Azam & Sons",
-  description: "Course Details | M. Azam & Sons",
+  title: "Course Details | Edurock - Education LMS Template",
+  description: "Course Details | Edurock - Education LMS Template",
 };
 
 const Course_Details = async ({ params }) => {

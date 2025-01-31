@@ -128,7 +128,9 @@ const getSortedCourses = (courses, sortInput) => {
       return courses?.sort((a, b) => b?.price - a?.price);
   }
 };
-const CoursesPrimary = ({ isNotSidebar, isList, card }) => {
+const CoursesPrimary = ({ isNotSidebar, isList, card, products, categoryData }) => {
+  console.log(products,"in course primary")
+  console.log(categoryData,"in course primary")
   const category = useSearchParams().get("category");
   const [currentCategories, setCurrentCategories] = useState([]);
   const [currentTags, setCurrentTags] = useState([]);
@@ -271,31 +273,10 @@ const CoursesPrimary = ({ isNotSidebar, isList, card }) => {
           className="courses-header flex justify-between items-center flex-wrap px-13px py-5px border border-borderColor dark:border-borderColor-dark mb-30px gap-y-5"
           data-aos="fade-up"
         >
-          <div>
-            {currentCourses ? (
-              <p className="text-blackColor dark:text-blackColor-dark">
-                Showing {skip ? skip : skip + 1} -{" "}
-                {skip + limit >= totalCourses ? totalCourses : skip + limit} of{" "}
-                {totalCourses} Results
-              </p>
-            ) : (
-              ""
-            )}
-          </div>
+    
           <div className="flex items-center">
-            <div className="tab-links transition-all duraton-300 text-contentColor dark:text-contentColor-dark flex gap-11px">
-              {tapButtons?.map(({ name, content }, idx) => (
-                <TabButtonSecondary
-                  key={idx}
-                  name={name}
-                  button={"icon"}
-                  currentIdx={currentIdx}
-                  handleTabClick={handleTabClick}
-                  idx={idx}
-                />
-              ))}
-            </div>
-            <div className="pl-50px sm:pl-20 pr-10px">
+            
+            {/* <div className="pl-50px sm:pl-20 pr-10px">
               <select
                 className="text-blackColor bg-whiteColor py-2 pr-2 pl-3 rounded-md outline-none border-4 border-transparent focus:border-blue-light box-border"
                 onChange={(e) => setSortInput(e.target.value)}
@@ -306,7 +287,7 @@ const CoursesPrimary = ({ isNotSidebar, isList, card }) => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
         <div
@@ -401,93 +382,47 @@ const CoursesPrimary = ({ isNotSidebar, isList, card }) => {
                 </div>
                 {/* categories  */}
                 {filterIputs?.map(({ name, inputs }, idx) => (
-                  <div
-                    key={idx}
-                    className="pt-30px pr-15px pl-10px pb-23px 2xl:pt-10 2xl:pr-25px 2xl:pl-5 2xl:pb-33px mb-30px border border-borderColor dark:border-borderColor-dark"
-                    data-aos="fade-up"
-                  >
-                    <h4 className="text-size-22 text-blackColor dark:text-blackColor-dark font-bold leading-30px mb-15px">
-                      {name}
-                    </h4>
-                    <ul
-                      className={`flex flex-col  ${
-                        name === "Categories"
-                          ? "gap-y-4"
-                          : name === "Tag"
-                          ? "gap-y-23px"
-                          : "gap-y-10px"
-                      }`}
-                    >
-                      {name === "Categories"
-                        ? inputs?.map(({ name: name2, totalCount }, idx1) => (
-                            <li key={idx1}>
-                              {" "}
-                              <button
-                                onClick={() => handleFilters(name, name2)}
-                                className={`${
-                                  currentCategories.includes(name2)
-                                    ? "bg-primaryColor text-contentColor-dark "
-                                    : "text-contentColor  dark:text-contentColor-dark hover:text-contentColor-dark hover:bg-primaryColor "
-                                } text-sm font-medium px-13px py-2 border border-borderColor dark:border-borderColor-dark flex justify-between leading-7 transition-all duration-300 w-full`}
-                              >
-                                <span>
-                                  {name2?.length > 18
-                                    ? name2.slice(0, 12) + "."
-                                    : name2}
-                                </span>{" "}
-                                <span>
-                                  {totalCount < 10
-                                    ? `0${totalCount}`
-                                    : totalCount}
-                                </span>
-                              </button>
-                            </li>
-                          ))
-                        : name === "Tag"
-                        ? inputs?.map((input, idx1) => (
-                            <li
-                              key={idx + input}
-                              className={`${
-                                currentTags.includes(input)
-                                  ? "text-primaryColor"
-                                  : "text-contentColor hover:text-primaryColor dark:hover:text-primaryColor  dark:text-contentColor-dark"
-                              }  text-size-15 font-medium  flex justify-between leading-26px group`}
-                            >
-                              <button
-                                onClick={() => handleFilters(name, input)}
-                                className="w-full flex items-center gap-11px"
-                              >
-                                <span
-                                  className={`w-14px h-15px border  ${
-                                    currentTags.includes(input)
-                                      ? "bg-primaryColor border-primaryColor"
-                                      : "border-darkdeep6  group-hover:bg-primaryColor group-hover:border-primaryColor"
-                                  }  `}
-                                ></span>
-                                <span>{input}</span>
-                              </button>
-                            </li>
-                          ))
-                        : inputs?.map((input, idx1) => (
-                            <li
-                              key={idx1 + input}
-                              className={`${
-                                currentSkillLevel.includes(input)
-                                  ? "text-primaryColor "
-                                  : "text-contentColor dark:text-contentColor-dark  hover:text-primaryColor dark:hover:text-primaryColor "
-                              } text-size-15 font-medium leading-26px`}
-                            >
-                              <button
-                                onClick={() => handleFilters(name, input)}
-                                className="w-full text-start "
-                              >
-                                {input}
-                              </button>
-                            </li>
-                          ))}
-                    </ul>
-                  </div>
-                ))}
+  <div
+    key={idx}
+    className="pt-30px pr-15px pl-10px pb-23px 2xl:pt-10 2xl:pr-25px 2xl:pl-5 2xl:pb-33px mb-30px border border-borderColor dark:border-borderColor-dark"
+    data-aos="fade-up"
+  >
+    <h4 className="text-size-22 text-blackColor dark:text-blackColor-dark font-bold leading-30px mb-15px">
+      {name}
+    </h4>
+    <ul
+      className={`flex flex-col  ${
+        name === "Categories"
+          ? "gap-y-4"
+          : name === "Tag"
+          ? "gap-y-23px"
+          : "gap-y-10px"
+      }`}
+    >
+      {name === "Categories" &&
+        inputs?.map(({ name: name2, totalCount }, idx1) => (
+          <li key={idx1}>
+            <button
+              onClick={() => handleFilters(name, name2)}
+              className={`${
+                currentCategories.includes(name2)
+                  ? "bg-primaryColor text-contentColor-dark "
+                  : "text-contentColor  dark:text-contentColor-dark hover:text-contentColor-dark hover:bg-primaryColor "
+              } text-sm font-medium px-13px py-2 border border-borderColor dark:border-borderColor-dark flex justify-between leading-7 transition-all duration-300 w-full`}
+            >
+              <span>
+                {name2?.length > 18 ? name2.slice(0, 12) + "." : name2}
+              </span>{" "}
+              <span>
+                {totalCount < 10 ? `0${totalCount}` : totalCount}
+              </span>
+            </button>
+          </li>
+        ))}
+    </ul>
+  </div>
+))}
+
               </div>
             </div>
           ) : (
@@ -503,16 +438,7 @@ const CoursesPrimary = ({ isNotSidebar, isList, card }) => {
           >
             {currentCourses ? (
               <>
-                <div className="tab-contents">
-                  {tapButtons?.map(({ content }, idx) => (
-                    <TabContentWrapper
-                      key={idx}
-                      isShow={idx === currentIdx ? true : false}
-                    >
-                      {content}
-                    </TabContentWrapper>
-                  ))}
-                </div>
+                <CoursesGrid/>
 
                 {/* pagination  */}
                 {totalCourses > 11 ? (

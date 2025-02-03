@@ -17,11 +17,10 @@
 
 // export default ThreeColumnContent;
 
-
 import React from "react";
 import ProductCard from "../products/ProductCard";
 
-const ThreeColumnContent = ({ products, handleCurrentProduct }) => {
+const ThreeColumnContent = ({ products, handleCurrentProduct, categoryId, subcategoryId }) => {
   if (!products || products.length === 0) return <p>No products available.</p>;
 
   return (
@@ -30,7 +29,9 @@ const ThreeColumnContent = ({ products, handleCurrentProduct }) => {
         <ProductCard
           key={product._id}
           product={product}
-          handleCurrentProduct={handleCurrentProduct}
+          categoryId={categoryId}         
+          subcategoryId={subcategoryId}   
+          handleCurrentProduct={handleCurrentProduct}  
         />
       ))}
     </div>

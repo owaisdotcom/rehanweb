@@ -392,13 +392,12 @@
 
 // export default ShopPrimary;
 
-
 "use client";
 import { useEffect, useState, useRef } from "react";
 import ShopSidebar from "@/components/shared/ecommerce/ShopSidebar";
 import { useSearchParams } from "next/navigation";
 import TabContentWrapper from "@/components/shared/wrappers/TabContentWrapper";
-import TwoColumnContent from "@/components/shared/ecommerce/TwoColumnContent";
+import ThreeColumnContent from "@/components/shared/ecommerce/ThreeColumnContent";
 import Pagination from "@/components/shared/others/Pagination";
 import ProductModal from "@/components/shared/products/ProductModal";
 
@@ -414,22 +413,23 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [currentProducts, setCurrentProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState(null);
+  const [sortedProducts, setSortedProducts] = useState(products); 
   const shopRef = useRef(null);
   const limit = 12;
-  const totalProducts = products?.length || 0;
+  const totalProducts = sortedProducts?.length || 0; 
   const totalPages = Math.ceil(totalProducts / limit);
   const paginationItems = [...Array(totalPages)];
 
   useEffect(() => {
-    if (Array.isArray(products) && products.length > 0) {
-      const productsToShow = products.slice(skip, skip + limit);
-      setCurrentProduct(products[0] || null);
+    if (Array.isArray(sortedProducts) && sortedProducts.length > 0) {
+      const productsToShow = sortedProducts.slice(skip, skip + limit);
+      setCurrentProduct(sortedProducts[0] || null);
       setCurrentProducts(productsToShow);
     } else {
       setCurrentProduct(null);
       setCurrentProducts([]);
     }
-  }, [skip, limit, products]);
+  }, [skip, limit, sortedProducts]);
 
   const handlePagination = (id) => {
     shopRef.current.scrollIntoView({ behavior: "smooth" });
@@ -458,11 +458,13 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
             handleReset={() => setReset(true)}
             category={categoryId}
             subcategory={subcategoryId}
+            products={products} 
+            setSortedProducts={setSortedProducts} 
           />
           <div className="modal-container xl:col-start-4 xl:col-span-9">
             <div>
               <TabContentWrapper isShow>
-                <TwoColumnContent
+                <ThreeColumnContent
                   products={currentProducts}
                   categoryId={categoryId}
                   subcategoryId={subcategoryId}

@@ -10,11 +10,11 @@ const AboutContent = () => {
   const isAboutDark = useIsTrue("/about-dark");
   return (
     <div>
-      <p className="text-black dark:text-contentColor-dark mb-25px">
+      <p className="text-black dark:text-contentColor-dark mb-10px">
       At MAS Safety Leather, we pride ourselves on over 25 years of unwavering dedication to crafting premium leather safety products that prioritize protection, comfort, and style. Our journey began with a commitment to quality and innovation, propelling us from a local operation to a globally recognized brand. Today, we offer an extensive range of products, including safety gloves, jackets, belts, wallets, and custom leather solutions, all designed with precision and care. Built on the foundation of trust and strong relationships with our customers, MAS Safety Leather remains committed to exceeding expectations by delivering durable, reliable, and stylish leather gear. Whether on the job or in everyday life, our products are created to empower individuals and industries worldwide, ensuring safety and performance at every step.
       </p>
       
-    <h3 className="text-4xl font-semibold">Our Services</h3>
+
     </div>
   );
 };

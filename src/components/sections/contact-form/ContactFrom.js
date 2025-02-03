@@ -1,90 +1,163 @@
+'use client'
+import { useState } from "react";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 
 const ContactFrom = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    country: "",
+    city: "",
+    companyName: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+  };
+
+  const validateFields = () => {
+    const newErrors = {};
+    if (!formData.fullName) newErrors.fullName = "Full Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.phoneNumber) newErrors.phoneNumber = "Phone Number is required";
+    if (!formData.country) newErrors.country = "Country is required";
+    if (!formData.message) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validateFields();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setLoading(true);
+    setResponseMessage("");
+
+    try {
+      const response = await fetch("http://localhost:4000/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setResponseMessage("Your inquiry has been submitted successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          country: "",
+          city: "",
+          company: "",
+          message: "",
+        });
+      } else {
+        setResponseMessage(result.message || "Submission failed. Please try again.");
+      }
+    } catch (error) {
+      setResponseMessage("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section>
-      <div className="container pb-100px">
+      <div className="container pb-10">
         <form
-          className="p-5 md:p-70px md:pt-90px border border-borderColor2 dark:border-transparent dark:shadow-container"
-          data-aos="fade-up"
+          className="p-5 border dark:border-transparent dark:shadow-container"
+          onSubmit={handleSubmit}
         >
-          {/* heading  */}
-          <div className="mb-10">
-            <h4
-              className="text-size-23 md:text-size-44 font-bold leading-10 md:leading-70px text-blackColor dark:text-blackColor-dark"
-              data-aos="fade-up"
-            >
-              Drop Us a Line
-            </h4>
-            <p
-              data-aos="fade-up"
-              className="text-size-13 md:text-base leading-5 md:leading-30px text-contentColor dark:text-contentColor-dark"
-            >
-              Your email address will not be published. Required fields are
-              marked *
-            </p>
-          </div>
-          <div className="grid grid-cols-1 xl:grid-cols-2 mb-30px gap-30px">
-            <div data-aos="fade-up" className="relative">
-              <input
-                type="text"
-                placeholder="Enter your name*"
-                className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
-              />
+          <h4 className="text-xl font-bold mb-4">Drop Your Inquiry</h4>
+          <p className="text-sm text-gray-500 mb-6">
+            Your email address will not be published. Required fields are marked *
+          </p>
 
-              <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
-                <i className="icofont-businessman"></i>
-              </div>
-            </div>
-            <div data-aos="fade-up" className="relative">
-              <input
-                type="email"
-                placeholder="Enter Email Address*"
-                className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
-              />
+          {responseMessage && (
+            <div className="mb-4 text-green-600">{responseMessage}</div>
+          )}
 
-              <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
-                <i className="icofont-envelope"></i>
-              </div>
-            </div>
-            <div data-aos="fade-up" className="relative">
-              <input
-                type="text"
-                placeholder="Write Service Type"
-                className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
-              />
-
-              <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
-                <i className="icofont-edit"></i>
-              </div>
-            </div>
-            <div data-aos="fade-up" className="relative">
-              <input
-                type="text"
-                placeholder="Enter Your Phone"
-                className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
-              />
-
-              <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
-                <i className="icofont-ui-call"></i>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative" data-aos="fade-up">
-            <textarea
-              placeholder="Enter your Massage here"
-              className="w-full pl-26px bg-transparent text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 rounded"
-              cols="30"
-              rows="10"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              name="fullName"
+              placeholder="Full Name *"
+              value={formData.fullName}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
             />
-            <div className="text-xl leading-23px text-primaryColor absolute right-6 top-[17px]">
-              <i className="icofont-pen-alt-2"></i>
-            </div>
+            {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Address *"
+              value={formData.email}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
+            />
+            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+
+            <input
+              name="phoneNumber"
+              type="tel"
+              placeholder="Phone Number *"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
+            />
+            {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
+
+            <input
+              name="country"
+              placeholder="Country *"
+              value={formData.country}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
+            />
+            {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
+
+            <input
+              name="city"
+              placeholder="City"
+              value={formData.city}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
+            />
+
+            <input
+              name="companyName"
+              placeholder="Company Name (optional)"
+              value={formData.companyName}
+              onChange={handleChange}
+              className="border p-2 rounded w-full"
+            />
           </div>
 
-          <div className="mt-30px" data-aos="fade-up">
-            <ButtonPrimary type={"submit"}>Post a Comment</ButtonPrimary>
+          <textarea
+            name="message"
+            placeholder="Message *"
+            value={formData.message}
+            onChange={handleChange}
+            className="border p-2 rounded w-full mt-4"
+            rows="4"
+          ></textarea>
+          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+
+          <div className="mt-4">
+            <ButtonPrimary type="submit" disabled={loading}>
+              {loading ? "Submitting..." : "Submit"}
+            </ButtonPrimary>
           </div>
         </form>
       </div>

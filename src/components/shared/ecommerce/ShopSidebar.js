@@ -130,17 +130,16 @@
 
 // export default ShopSidebar;
 
-
 "use client";
-
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ButtonPrimary from "../buttons/ButtonPrimary";
+import Link from "next/link";
 
 const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
-  const [sortOrder, setSortOrder] = useState("A-Z");
   const [subcategories, setSubcategories] = useState([]);
   const pathname = usePathname();
+  const router = useRouter();
 
   const pathSegments = pathname.split("/");
   const categoryId = pathSegments[2] ?? null;
@@ -156,7 +155,7 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
         const data = await response.json();
         const selectedCategory = data.find(category => category._id === categoryId);
         if (selectedCategory) {
-          setSubcategories(selectedCategory.subcategories.map(sub => sub.name));
+          setSubcategories(selectedCategory.subcategories);
         } else {
           setSubcategories([]);
         }
@@ -168,17 +167,23 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
     fetchSubcategories();
   }, [categoryId]);
 
+  const handleSubcategoryClick = (subcategoryId) => {
+    router.push(`/category/${categoryId}/subcategory/${subcategoryId}`);
+  };
+
   return (
-    <div
-      className="modal-container xl:col-start-1 xl:col-span-3 bg-white p-6 rounded-lg shadow-lg max-w-[300px] w-full"
-    >
+    <div className="modal-container xl:col-start-1 xl:col-span-3 bg-white p-6 rounded-lg shadow-lg max-w-[300px] w-full">
       {subcategories.length > 0 && (
         <div className="mb-5" data-aos="fade-up">
           <h4 className="text-lg font-semibold text-primaryColor mb-3">Subcategories</h4>
           <ul className="text-gray-700">
-            {subcategories.map((subcategory, index) => (
-              <li key={index} className="py-1 border-b last:border-none">
-                {subcategory}
+            {subcategories.map((subcategory) => (
+              <li
+                key={subcategory._id}
+                className="py-1 border-b last:border-none cursor-pointer hover:text-primaryColor"
+                onClick={() => handleSubcategoryClick(subcategory._id)}
+              >
+                {subcategory.name}
               </li>
             ))}
           </ul>
@@ -201,24 +206,8 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
             type={"button"}
             className="w-full py-3 px-4 text-left border rounded-md bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:ring-2 focus:ring-primaryColor focus:outline-none"
           >
-            Sort By: {sortOrder}
+            Sort By: A-Z
           </ButtonPrimary>
-          <div className="absolute top-full left-0 w-full bg-white border rounded-md shadow-lg mt-2">
-            <ul className="flex flex-col">
-              <li
-                onClick={() => handleSortChange("A-Z")}
-                className="cursor-pointer px-4 py-2 hover:bg-gray-200"
-              >
-                A-Z
-              </li>
-              <li
-                onClick={() => handleSortChange("Z-A")}
-                className="cursor-pointer px-4 py-2 hover:bg-gray-200"
-              >
-                Z-A
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

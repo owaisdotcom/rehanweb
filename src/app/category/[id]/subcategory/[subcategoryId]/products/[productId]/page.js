@@ -132,7 +132,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
@@ -142,6 +142,7 @@ const ProductDetailPage = () => {
   const { id, subcategoryId, productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -166,6 +167,14 @@ const ProductDetailPage = () => {
     }
   }, [id, subcategoryId, productId]);
 
+  const handlePreviousImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? product.images.length - 1 : prevIndex - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex === product.images.length - 1 ? 0 : prevIndex + 1));
+  };
+
   if (loading) return <p>Loading product...</p>;
   if (!product) return <p>Product not found</p>;
 
@@ -177,17 +186,35 @@ const ProductDetailPage = () => {
         <HeroPrimary path={`Shop page > Product Page`} title={product.name} />
 
         <div className="container-fluid-2 shop py-100px">
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md">
-
-            <div className="p-4 flex justify-center">
+            {/* Image Carousel */}
+            <div className="relative flex justify-center items-center">
               <img
-                src={product.images?.[0]}
+                src={product.images?.[currentImageIndex]}
                 alt={product.name}
                 className="w-full md:w-4/5 h-auto rounded-lg"
               />
+              {/* Left Arrow */}
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
+                <button
+                  onClick={handlePreviousImage}
+                  className="bg-black text-white p-3 rounded-full opacity-70 hover:opacity-100"
+                >
+                  &#8592;
+                </button>
+              </div>
+              {/* Right Arrow */}
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
+                <button
+                  onClick={handleNextImage}
+                  className="bg-black text-white p-3 rounded-full opacity-70 hover:opacity-100"
+                >
+                  &#8594;
+                </button>
+              </div>
             </div>
 
+            {/* Product Details */}
             <div className="p-4 flex flex-col justify-start space-y-4">
               <h1 className="text-3xl font-semibold text-gray-800">{product.name}</h1>
 

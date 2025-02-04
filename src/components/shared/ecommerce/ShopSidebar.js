@@ -134,26 +134,26 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import ButtonPrimary from "../buttons/ButtonPrimary";
-import Link from "next/link";
 
-const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
+const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcategoryId, products, setSortedProducts }) => {
   const [subcategories, setSubcategories] = useState([]);
+  const [sortOrder, setSortOrder] = useState("A-Z");
   const pathname = usePathname();
   const router = useRouter();
 
   const pathSegments = pathname.split("/");
-  const categoryId = pathSegments[2] ?? null;
+  const categoryIdFromURL = pathSegments[2] ?? null;
 
   useEffect(() => {
     const fetchSubcategories = async () => {
-      if (!categoryId) return;
+      if (!categoryIdFromURL) return;
 
       try {
         const response = await fetch("https://mathsflix-backend.vercel.app/api/products/categories");
         if (!response.ok) throw new Error("Failed to fetch categories");
 
         const data = await response.json();
-        const selectedCategory = data.find(category => category._id === categoryId);
+        const selectedCategory = data.find(category => category._id === categoryIdFromURL);
         if (selectedCategory) {
           setSubcategories(selectedCategory.subcategories);
         } else {
@@ -165,7 +165,20 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
     };
 
     fetchSubcategories();
-  }, [categoryId]);
+  }, [categoryIdFromURL]);
+
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+    let sortedData;
+
+    if (order === "A-Z") {
+      sortedData = [...products].sort((a, b) => a.name.localeCompare(b.name));
+    } else if (order === "Z-A") {
+      sortedData = [...products].sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    setSortedProducts(sortedData); // Update sorted products
+  };
 
   const handleSubcategoryClick = (subcategoryId) => {
     router.push(`/category/${categoryId}/subcategory/${subcategoryId}`);
@@ -206,8 +219,24 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset }) => {
             type={"button"}
             className="w-full py-3 px-4 text-left border rounded-md bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:ring-2 focus:ring-primaryColor focus:outline-none"
           >
-            Sort By: A-Z
+            Sort By: {sortOrder}
           </ButtonPrimary>
+          <div className="absolute top-full left-0 w-full bg-white border rounded-md shadow-lg mt-2">
+            <ul className="flex flex-col">
+              <li
+                onClick={() => handleSortChange("A-Z")}
+                className="cursor-pointer px-4 py-2 hover:bg-gray-200"
+              >
+                A-Z
+              </li>
+              <li
+                onClick={() => handleSortChange("Z-A")}
+                className="cursor-pointer px-4 py-2 hover:bg-gray-200"
+              >
+                Z-A
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

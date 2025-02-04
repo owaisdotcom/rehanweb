@@ -88,7 +88,7 @@ const FeaturedProductsSlider = () => {
 
   return (
     <>
-      <h2 className="text-xl font-semibold mb-6">Featured Products</h2>
+     
       <Swiper
         slidesPerView={1}
         grabCursor={true}

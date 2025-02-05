@@ -24,7 +24,7 @@ const ThreeColumnContent = ({ products, handleCurrentProduct, categoryId, subcat
   if (!products || products.length === 0) return <p>No products available.</p>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 -mx-15px">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 -mx-15px mt-10">
       {products.map((product) => (
         <ProductCard
           key={product._id}

@@ -1,0 +1,38 @@
+.loader {
+    width: 255px;
+    height: 255px;
+    display: block;
+    margin: auto;
+    position: relative;
+    background: #FFF;
+    box-sizing: border-box;
+  }
+  .loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 15px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+   linear-gradient(#DDD 250px, transparent 0), /* Increased from 100px to 150px */
+   linear-gradient(#DDD 40px, transparent 0),  /* Increased from 16px to 20px */
+   linear-gradient(#DDD 100px, transparent 0);  /* Increased from 50px to 70px */
+    background-repeat: no-repeat;
+    background-size: 75px 250px, 100% 100px, 100% 16px, 100% 30px;
+    background-position: -185px 0, center 0, center 115px, center 142px;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
+  }
+  
+  @keyframes animloader {
+    to {
+      background-position: 185px 0, center 0, center 115px, center 142px;
+    }
+  }
+  .loader-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adds space between loaders */
+  }

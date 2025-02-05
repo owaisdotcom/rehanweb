@@ -77,6 +77,8 @@ import { useEffect, useState } from "react";
 import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 import ShopMain from "@/components/layout/main/ecommerce/ShopMain";
+import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
+import Loader from "@/components/Loader";
 
 const Subcategory = () => {
   const pathname = usePathname();
@@ -86,7 +88,7 @@ const Subcategory = () => {
   const pathSegments = pathname.split("/");
   const categoryId = pathSegments[2] ?? null;
   const subcategoryId = pathSegments[4] ?? null;
-
+console.log(categoryId)
   useEffect(() => {
     const fetchProducts = async () => {
       if (categoryId && subcategoryId) {
@@ -115,7 +117,7 @@ const Subcategory = () => {
     <PageWrapper>
       <main>
         <ThemeController />
-        {loading ? <p>Loading products...</p> : <ShopMain products={products} categoryId={categoryId} subcategoryId={subcategoryId} />}
+        {loading ?<div> <HeroPrimary path={"Shop page"} title={"Shop"} /><Loader/></div> : <ShopMain products={products} categoryId={categoryId} subcategoryId={subcategoryId} />}
       </main>
     </PageWrapper>
   );

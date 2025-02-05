@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import CourseCard from "./CourseCard";
 import CourseCardNew from "./CourseCardNew";
+import Loader from "@/components/Loader";
 
 const FilterCardsNew = ({id}) => {
   const [categories, setCategories] = useState([]);
@@ -25,7 +26,7 @@ const FilterCardsNew = ({id}) => {
   }, []);
 
   if (loading) {
-    return <p>Loading categories...</p>;
+    return <div><Loader/></div>;
   }
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import CourseCard from "./CourseCard";
+import Loader from "@/components/Loader";
 
 const FilterCards = () => {
   const [categories, setCategories] = useState([]);
@@ -23,7 +24,7 @@ const FilterCards = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading categories...</p>;
+    return <div><Loader/></div>;
   }
 
   return (

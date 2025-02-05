@@ -140,6 +140,7 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcat
   const [sortOrder, setSortOrder] = useState("A-Z");
   const pathname = usePathname();
   const router = useRouter();
+  console.log(categoryId)
 
   const pathSegments = pathname.split("/");
   const categoryIdFromURL = pathSegments[2] ?? null;
@@ -221,7 +222,7 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcat
           >
             Sort By: {sortOrder}
           </ButtonPrimary>
-          <div className="absolute top-full left-0 w-full bg-white border rounded-md shadow-lg mt-2">
+          <div className=" w-full bg-white border rounded-md shadow-lg mt-2">
             <ul className="flex flex-col">
               <li
                 onClick={() => handleSortChange("A-Z")}

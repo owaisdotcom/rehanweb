@@ -62,6 +62,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ProductCard from "../products/ProductCard";
 import { getFeaturedProducts } from "@/libs/apiService";
+import Loader from "@/components/Loader";
 
 const FeaturedProductsSlider = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -83,7 +84,7 @@ const FeaturedProductsSlider = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading featured products...</p>;
+  if (loading) return <div><Loader/></div>
   if (featuredProducts.length === 0) return <p>No featured products available.</p>;
 
   return (

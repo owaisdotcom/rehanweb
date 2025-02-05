@@ -30,6 +30,7 @@ import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import ShopPrimary from "@/components/sections/shop/ShopPrimary";
 
 const ShopMain = ({ products, categoryId, subcategoryId }) => {
+  console.log(categoryId)
   return (
     <>
       <HeroPrimary path={"Shop page"} title={"Shop"} />

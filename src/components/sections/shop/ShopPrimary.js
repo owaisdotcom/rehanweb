@@ -419,7 +419,7 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
   const totalProducts = sortedProducts?.length || 0; 
   const totalPages = Math.ceil(totalProducts / limit);
   const paginationItems = [...Array(totalPages)];
-
+console.log(categoryId)
   useEffect(() => {
     if (Array.isArray(sortedProducts) && sortedProducts.length > 0) {
       const productsToShow = sortedProducts.slice(skip, skip + limit);
@@ -456,7 +456,7 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
             color={color}
             size={size}
             handleReset={() => setReset(true)}
-            category={categoryId}
+            categoryId={categoryId}
             subcategory={subcategoryId}
             products={products} 
             setSortedProducts={setSortedProducts} 

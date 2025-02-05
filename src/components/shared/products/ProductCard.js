@@ -185,6 +185,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import  logo from "./../../../assets/images/logo/logo.png";
 
 const ProductCard = ({ product, categoryId, subcategoryId }) => {
   if (!product || !categoryId || !subcategoryId) {
@@ -195,7 +196,7 @@ const ProductCard = ({ product, categoryId, subcategoryId }) => {
     <div className="group">
       <div className="sm:px-15px mb-30px">
         <div className="p-15px bg-white shadow-lg dark:bg-darkdeep3 dark:shadow-md">
-          <div className="relative">
+          <div className="relative w-full overflow-hidden rounded block group">
             <Link
               href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}
               className="w-full overflow-hidden"
@@ -207,6 +208,16 @@ const ProductCard = ({ product, categoryId, subcategoryId }) => {
                 width={300}
                 height={300}
               />
+               {/* Overlapping Logo */}
+                          <div className="absolute top-2 left-2 p-1 rounded-full shadow-md">
+                            <Image
+                              src={logo}  // Replace with your logo path
+                              alt="Logo"
+                              width={40}
+                              height={40}
+                              className="object-contain"
+                            />
+                          </div>
             </Link>
           </div>
 
@@ -222,9 +233,9 @@ const ProductCard = ({ product, categoryId, subcategoryId }) => {
 
             <p className="text-gray-600">{product.description}</p>
 
-            <p className="text-sm text-gray-500 mt-2">Features: {product.features}</p>
+            
 
-            <p className="text-sm text-gray-500 mt-2">Stock: {product.stock}</p>
+      
           </div>
         </div>
       </div>

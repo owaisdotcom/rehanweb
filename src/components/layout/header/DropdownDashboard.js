@@ -75,14 +75,14 @@ const DropdownDashboard = () => {
     fetchCategories();
   }, []);
 
-  if (loading) return <Preloader />;
+  if (loading) return <div>loading....</div>;
   if (error) return <div>Error: {error}</div>;
 
   // Map categories to dropdown items
   const items = categories.map((category) => ({
     name: category.name, 
     status: null,
-    path: `/category/${category._id}/subcategory/${category.subcategories[0]?._id}`,
+    path: `/category/${category._id}`,
   }));
 
   return <DropdownPrimary items={items} />;

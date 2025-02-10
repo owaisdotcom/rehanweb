@@ -25,21 +25,22 @@ const NavbarTop = () => {
 
       {/* Search Bar */}
       <div className="col-span-6">
-        <form className="relative">
-          <div className="text-blackColor dark:text-blackColor-dark py-2 px-4 border border-borderColor dark:border-borderColor-dark rounded-full">
-            <input
-              type="text"
-              placeholder="Search Product"
-              className="w-full bg-transparent focus:outline-none placeholder:text-darkdeep4"
-            />
-          </div>
-          <button
-            type="submit"
-            className="absolute top-1/2 right-5 -translate-y-1/2 text-blackColor dark:text-blackColor-dark"
-          >
-            <i className="icofont-search-1"></i>
-          </button>
-        </form>
+      <form className="relative">
+  <div className="text-blackColor dark:text-blackColor-dark py-2 px-4 border border-yellow dark:border-borderColor-dark rounded-full transition-all duration-300 focus-within:border-yellow focus-within:bg-[#ffc235a3] dark:focus-within:bg-yellow-900">
+    <input
+      type="text"
+      placeholder="Search Product"
+      className="w-full bg-transparent focus:outline-none placeholder:text-darkdeep4"
+    />
+  </div>
+  <button
+    type="submit"
+    className="absolute top-1/2 right-5 -translate-y-1/2 text-blackColor dark:text-blackColor-dark transition-all duration-300 hover:text-yellow"
+  >
+    <i className="icofont-search-1"></i>
+  </button>
+</form>
+
       </div>
       
     </div>

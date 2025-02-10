@@ -29,11 +29,11 @@
 import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import ShopPrimary from "@/components/sections/shop/ShopPrimary";
 
-const ShopMain = ({ products, categoryId, subcategoryId }) => {
+const ShopMain = ({ products, categoryId, subcategoryId, title }) => {
   console.log(categoryId)
   return (
     <>
-      <HeroPrimary path={"Shop page"} title={"Shop"} />
+      <HeroPrimary path={title} title={title} />
       <ShopPrimary products={products} categoryId={categoryId} subcategoryId={subcategoryId} />
     </>
   );

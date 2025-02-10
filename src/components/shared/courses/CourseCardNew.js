@@ -19,12 +19,12 @@ console.log(course)
               width={300}
               height={300}
             />
-            <div className="absolute top-2 left-2 p-1 rounded-full shadow-md">
+            <div className="absolute top-2 right-2 p-1 rounded-full shadow-md">
                           <Image
                             src={logo}  // Replace with your logo path
                             alt="Logo"
-                            width={40}
-                            height={40}
+                            width={30}
+                            height={30}
                             className="object-contain"
                           />
                         </div>

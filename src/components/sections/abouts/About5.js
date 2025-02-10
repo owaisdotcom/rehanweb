@@ -15,12 +15,17 @@ const About5 = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-30px pb-30px">
           {/* about left */}
           <div data-aos="fade-up">
-            <h1 className=" font-bold text-2xl pb-3">Welcome to  <span className="text-secondaryColor font-bold text-2xl">M. Azam & Sons</span></h1> 
-            <HeadingPrimary>
-            Premium Leather Goods for Every Need – Your Trusted Safety Partner
-            </HeadingPrimary>
+          <h1 className="font-bold text-3xl pb-4">
+  Welcome to <span className="text-secondaryColor font-bold">MAS Leather Manufacturing </span>  
+  by M. Azam & Sons
+</h1>
+<HeadingPrimary>
+  Premium Leather Goods – Where Safety, Satisfaction, and Style Meet
+</HeadingPrimary>
+
+
             <p className="text-sm md:text-base leading-7 text-contentColor dark:text-contentColor-dark mb-6 pl-3 border-l-2 border-primaryColor">
-              M. Azam & Sons offers a wide range of high-quality leather products, specializing in gloves, jackets, wallets, keychains, and belts. We are committed to providing durable and stylish leather materials for everyday use.
+              M. Azam & Sons offers a wide range of high-quality leather products, specializing in gloves, jackets, wallets, keychains, and belts. We are your trusted partner in high-quality leather manufacturing, ensuring protection with elegance. We are committed to providing durable and stylish leather materials for everyday use.
             </p>
             <ul className="space-y-5">
               <li className="flex items-center group">

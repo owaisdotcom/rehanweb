@@ -26,8 +26,7 @@ const ContactFrom = () => {
     const newErrors = {};
     if (!formData.fullName) newErrors.fullName = "Full Name is required";
     if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.phoneNumber) newErrors.phoneNumber = "Phone Number is required";
-    if (!formData.country) newErrors.country = "Country is required";
+    
     if (!formData.message) newErrors.message = "Message is required";
     return newErrors;
   };
@@ -108,7 +107,7 @@ const ContactFrom = () => {
             />
             {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
 
-            <input
+            {/* <input
               name="phoneNumber"
               type="tel"
               placeholder="Phone Number *"
@@ -141,7 +140,7 @@ const ContactFrom = () => {
               value={formData.companyName}
               onChange={handleChange}
               className="border p-2 rounded w-full"
-            />
+            /> */}
           </div>
 
           <textarea

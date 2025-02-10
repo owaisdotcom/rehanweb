@@ -10,6 +10,7 @@ import "swiper/css/effect-cards";
 import "./globals.css";
 import FixedShadow from "@/components/shared/others/FixedShadow";
 import PreloaderPrimary from "@/components/shared/others/PreloaderPrimary";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
           <FixedShadow />
           <FixedShadow align={"right"} />
         </div>
+        <WhatsAppFloatingButton/>
       </body>
     </html>
   );

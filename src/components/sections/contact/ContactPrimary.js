@@ -4,7 +4,7 @@ const ContactPrimary = () => {
   return (
     <section>
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-30px pt-100px pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-30px pt-100px ">
           {/* mail */}
           <div className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px">
             <div>

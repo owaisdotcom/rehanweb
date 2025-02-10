@@ -132,7 +132,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
 import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
@@ -142,6 +142,8 @@ import ContactFrom from "@/components/sections/contact-form/ContactFrom";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
 
 const ProductDetailPage = () => {
+
+
   const { id, subcategoryId, productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -252,6 +254,26 @@ const ProductDetailPage = () => {
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === product.images.length - 1 ? 0 : prevIndex + 1));
   };
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0, isVisible: false });
+  const imageRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const img = imageRef.current;
+    if (!img) return;
+
+    const { left, top, width, height } = img.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+
+    const zoomX = (x / width) * 100;
+    const zoomY = (y / height) * 100;
+
+    setZoomPosition({ x, y, zoomX, zoomY, isVisible: true });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomPosition({ x: 0, y: 0, isVisible: false });
+  };
 
   if (loading) return <div> <HeroPrimary path={`Shop page > Product Page`} title={product?.name} />
 <Loader/></div>;
@@ -268,19 +290,39 @@ const ProductDetailPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md">
             {/* Image Carousel */}
             <div className="relative flex justify-center items-center">
-              <img
-                src={product.images?.[currentImageIndex]}
-                alt={product.name}
-                className="w-full md:w-4/5 h-auto rounded-lg"
-              />
-             
-            </div>
+      {/* Main Image */}
+      <div
+        className="relative w-full md:w-4/5 h-auto rounded-lg overflow-hidden"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <img
+          ref={imageRef}
+          src={product.images?.[currentImageIndex]}
+          alt={product.name}
+          className="w-full h-auto rounded-lg"
+        />
 
+        {/* Zoom Lens */}
+        {zoomPosition.isVisible && (
+          <div
+            className="absolute w-40 h-40 border-2 border-yellow-500 rounded-full overflow-hidden shadow-lg pointer-events-none"
+            style={{
+              left: zoomPosition.x - 64, // Center lens on cursor
+              top: zoomPosition.y - 64,
+              backgroundImage: `url(${product.images?.[currentImageIndex]})`,
+              backgroundSize: "350%", // Increase zoom level
+              backgroundPosition: `${zoomPosition.zoomX}% ${zoomPosition.zoomY}%`,
+            }}
+          />
+        )}
+      </div>
+    </div>
             {/* Product Details */}
             <div className="p-4 flex flex-col justify-start space-y-4">
-              <h1 className="text-3xl font-semibold text-gray-800">{product.name}</h1>
+              <h1 className="text-3xl font-semibold text-black">{product.name}</h1>
 
-              <p className="text-gray-600">{product.description}</p>
+              <p className="text-black text-xl">{product.description}</p>
 
               <p className="font-semibold text-gray-700">SKU: <span className="text-gray-500">{product.SKU}</span></p>
 

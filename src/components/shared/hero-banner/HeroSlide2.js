@@ -12,7 +12,7 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
     <div
       className={`hero ${
         idx === 0
-          ? "bg-[url('../assets/images/herobanner/hero1.webp')]"
+          ? "bg-[url('../assets/images/herobanner/hero1.webp')] "
           : idx === 1
           ? "bg-[url('../assets/images/herobanner/hero2.webp')]"
           : idx === 2
@@ -30,9 +30,9 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
           : idx === 8
           ? "bg-[url('../assets/images/herobanner/hero9.jpeg')]"
           : ""
-      } relative z-0 bg-cover bg-no-repeat`}
+      } relative z-0 bg-cover bg-no-repeat h-[465px] `}
     >
-      <div className="bg-black bg-opacity-70 overflow-hidden pt-50px pb-100px  md:pb-100px lg:pt-20px lg:pb-50px 2xl:pt-20 2xl:pb-100px">
+      <div className="bg-black bg-opacity-70 opacityClass overflow-hidden pt-50px pb-100px  md:pb-100px lg:pt-20px lg:pb-50px 2xl:pt-20 2xl:pb-100px">
         <div className="container 2xl:container-secondary-md relative overflow-hidden flex flex-col md:flex-row items-center">
           {/* Left Section: Title and Tag */}
           <div className="text-center md:text-left w-full md:w-1/2" data-aos="fade-up">
@@ -56,9 +56,9 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
               <Image
                 src={thumbsImage}
                 alt="Thumbs"
-                className="rounded-lg shadow-lg w-50  lg:w-75 h-auto object-cover"
-                width={800} // Specify dimensions for Image optimization
-                height={800}
+                className="rounded-lg shadow-lg w-50 m-auto  lg:w-75 h-auto object-cover"
+                width={500} // Specify dimensions for Image optimization
+                height={500}
               />
             ) : (
               <p className="text-whiteColor">No image available</p>

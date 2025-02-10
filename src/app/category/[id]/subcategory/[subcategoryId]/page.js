@@ -79,10 +79,12 @@ import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 import ShopMain from "@/components/layout/main/ecommerce/ShopMain";
 import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import Loader from "@/components/Loader";
+import PreloaderPrimary from "@/components/shared/others/PreloaderPrimary";
 
 const Subcategory = () => {
   const pathname = usePathname();
   const [products, setProducts] = useState([]);
+  const [subcategory, setSubcategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const pathSegments = pathname.split("/");
@@ -109,15 +111,37 @@ console.log(categoryId)
         }
       }
     };
+    const fetchSubcategory = async () => {
+      if (categoryId && subcategoryId) {
+        try {
+          const response = await fetch(
+            `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}`
+          );
+
+          if (!response.ok) throw new Error("Failed to fetch products");
+
+          const data = await response.json();
+          console.log(data)
+          setSubcategory(data || []);
+        } catch (error) {
+          console.error("Error fetching products:", error);
+          setSubcategory([]);
+        } finally {
+          setLoading(false);
+          console.log(subcategory)
+        }
+      }
+    };
 
     fetchProducts();
+    fetchSubcategory();
   }, [categoryId, subcategoryId]);
 
   return (
     <PageWrapper>
       <main>
         <ThemeController />
-        {loading ?<div> <HeroPrimary path={"Shop page"} title={"Shop"} /><Loader/></div> : <ShopMain products={products} categoryId={categoryId} subcategoryId={subcategoryId} />}
+        {loading ? <div><PreloaderPrimary/> </div>: <ShopMain title={subcategory?.name} products={products} categoryId={categoryId} subcategoryId={subcategoryId} />}
       </main>
     </PageWrapper>
   );

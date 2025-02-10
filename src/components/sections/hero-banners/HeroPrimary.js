@@ -5,10 +5,11 @@ import GlobImage from "@/components/shared/animaited-images/GlobImage";
 import BalbImage from "@/components/shared/animaited-images/BalbImage";
 import TriangleImage from "@/components/shared/animaited-images/TriangleImage";
 const HeroPrimary = ({ title, path }) => {
+  console.log(title)
   return (
     <section data-aos="fade-up">
       {/* banner section  */}
-      <div className="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-50px md:py-20 lg:py-100px 2xl:pb-150px 2xl:pt-40.5">
+      <div className="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-30px md:py-10 lg:py-80px 2xl:pb-100px 2xl:pt-35">
         {/* animated icons  */}
         <div>
           

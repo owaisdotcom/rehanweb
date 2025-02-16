@@ -7,7 +7,7 @@ export default function Navitem({ navItem, idx, children }) {
     <li key={idx} className={`nav-item group ${isRelative ? "relative" : ""}`}>
       <Link
   href={path}
-  className="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-5 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-white dark:text-whiteColor"
+  className="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-3 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-white dark:text-whiteColor"
 >
   {name} {dropdown && <i className="icofont-rounded-down"></i>}
 </Link>

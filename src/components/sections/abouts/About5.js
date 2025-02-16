@@ -17,7 +17,7 @@ const About5 = () => {
           <div data-aos="fade-up">
           <h1 className="font-bold text-3xl pb-4">
   Welcome to <span className="text-secondaryColor font-bold">MAS Leather Manufacturing </span>  
-  by M. Azam & Sons
+  by <i className="underline ">M. Azam & Sons</i> 
 </h1>
 <HeadingPrimary>
   Premium Leather Goods – Where Safety, Satisfaction, and Style Meet

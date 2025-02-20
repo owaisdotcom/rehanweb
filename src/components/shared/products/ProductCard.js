@@ -1,245 +1,147 @@
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// const ProductCard = ({ product, handleCurrentProduct }) => {
-//   return (
-//     <div className="group">
-//       <div className="sm:px-15px mb-30px">
-//         <div className="p-15px bg-white shadow-lg dark:bg-darkdeep3 dark:shadow-md">
-//           <div className="relative">
-//             <Link href={`/products/${product?.product?._id}`} className="w-full overflow-hidden">
-//               <Image
-//                 src={product?.product?.images?.[0] ?? "/default-product.jpg"}
-//                 alt={product?.product?.name || "Product Image"}
-//                 className="w-full transition-all duration-300 group-hover:scale-110"
-//                 width={300}
-//                 height={300}
-//               />
-//             </Link>
-//             <div className="absolute bottom-0 left-0 right-0 transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:bottom-5">
-//               <ul className="flex gap-[6px] justify-center items-center">
-//                 <li className="h-46px">
-//                   <Link  href={`/products/${product?.product?._id}`}>
-//                   <button
-//                     data-tip="Quick View"
-//                     className="tooltip modal-open"
-//                     onMouseEnter={() => handleCurrentProduct(product?.product?._id)}
-
-//                     >
-//                     <svg
-//                       className="ionicon w-18px h-18px py-14px px-4 box-content text-contentColor bg-whiteColor hover:bg-primaryColor hover:text-whiteColor dark:text-contentColor-dark dark:bg-whiteColor-dark dark:hover:bg-primaryColor dark:hover:text-whiteColor transition-all duration-300 rounded"
-//                       xmlns="http://www.w3.org/2000/svg"
-//                       viewBox="0 0 512 512"
-//                       >
-//                       <path
-//                         d="M255.66 112c-77.94 0-157.89 45.11-220.83 135.33a16 16 0 00-.27 17.77C82.92 340.8 161.8 400 255.66 400c92.84 0 173.34-59.38 221.79-135.25a16.14 16.14 0 000-17.47C428.89 172.28 347.8 112 255.66 112z"
-//                         fill="none"
-//                         stroke="currentColor"
-//                         strokeLinecap="round"
-//                         strokeLinejoin="round"
-//                         strokeWidth="32"
-//                         ></path>
-//                       <circle
-//                         cx="256"
-//                         cy="256"
-//                         r="80"
-//                         fill="none"
-//                         stroke="currentColor"
-//                         strokeMiterlimit="10"
-//                         strokeWidth="32"
-//                         ></circle>
-//                     </svg>
-//                   </button>
-//                         </Link>
-//                 </li>
-//               </ul>
-//             </div>
-//           </div>
-
-//           <div>
-//             <p className="text-sm text-gray-600 mt-2">
-//               {product?.subcategoryName || "N/A"}
-//             </p>
-//             <Link
-//               href={`/products/${product?.product?._id}`}
-//               className="text-xl font-semibold text-gray-800 hover:text-primary mt-2 block"
-//             >
-//               Article No: {product?.product?.SKU}
-//             </Link>
-
-
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductCard;
-
-
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// const ProductCard = ({ product }) => {
-//   return (
-//     <div className="group">
-//       <div className="sm:px-15px mb-30px">
-//         <div className="p-15px bg-white shadow-lg dark:bg-darkdeep3 dark:shadow-md">
-//           <div className="relative">
-//             <Link href={`/products/${product._id}`} className="w-full overflow-hidden">
-//               <Image
-//                 src={product.images?.[0] || "/default-product.jpg"}
-//                 alt={product.name}
-//                 className="w-full transition-all duration-300 group-hover:scale-110"
-//                 width={300}
-//                 height={300}
-//               />
-//             </Link>
-//           </div>
-
-//           <div>
-//             {/* Product Name */}
-//             <p className="text-sm text-gray-600 mt-2">{product.name || "Product Name"}</p>
-
-//             {/* SKU (Changed label from "Article No" to "SKU") */}
-//             <Link
-//               href={`/products/${product._id}`}
-//               className="text-xl font-semibold text-gray-800 hover:text-primary mt-2 block"
-//             >
-//               SKU: {product.SKU}
-//             </Link>
-
-//             {/* Product Description */}
-//             <p className="text-gray-600">{product.description}</p>
-
-//             {/* Features (Added this missing field) */}
-//             <p className="text-sm text-gray-500 mt-2">Features: {product.features}</p>
-
-//             {/* Stock Information */}
-//             <p className="text-sm text-gray-500 mt-2">Stock: {product.stock}</p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductCard;
-
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-
-// const ProductCard = ({ product, categoryId, subcategoryId }) => {
-//   return (
-//     <div className="group">
-//       <div className="sm:px-15px mb-30px">
-//         <div className="p-15px bg-white shadow-lg dark:bg-darkdeep3 dark:shadow-md">
-//           <div className="relative">
-//             <Link
-//               href={`/category/${categoryId}/subcategories/${subcategoryId}/products/${product._id}`}
-//               className="w-full overflow-hidden"
-//             >
-//               <Image
-//                 src={product.images?.[0] || "/default-product.jpg"}
-//                 alt={product.name}
-//                 className="w-full transition-all duration-300 group-hover:scale-110"
-//                 width={300}
-//                 height={300}
-//               />
-//             </Link>
-//           </div>
-
-//           <div>
-//             {/* Product Name */}
-//             <p className="text-sm text-gray-600 mt-2">{product.name || "Product Name"}</p>
-
-//             {/* SKU (Changed label from "Article No" to "SKU") */}
-//             <Link
-//               href={`/category/${categoryId}/subcategories/${subcategoryId}/products/${product._id}`}
-//               className="text-xl font-semibold text-gray-800 hover:text-primary mt-2 block"
-//             >
-//               SKU: {product.SKU}
-//             </Link>
-
-//             {/* Product Description */}
-//             <p className="text-gray-600">{product.description}</p>
-
-//             {/* Features (Added this missing field) */}
-//             <p className="text-sm text-gray-500 mt-2">Features: {product.features}</p>
-
-//             {/* Stock Information */}
-//             <p className="text-sm text-gray-500 mt-2">Stock: {product.stock}</p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductCard;
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import  logo from "./../../../assets/images/logo/logo.png";
+import logo from "./../../../assets/images/logo/logo.png";
+import { useState } from "react";
 
 const ProductCard = ({ product, categoryId, subcategoryId }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (!product || !categoryId || !subcategoryId) {
     return <p>Invalid product data</p>;
   }
 
   return (
-    <div className="group">
-      <div className="sm:px-15px mb-30px">
-        <div className="p-15px bg-white shadow-lg dark:bg-darkdeep3 dark:shadow-md">
-          <div className="relative w-full overflow-hidden rounded block group">
-            <Link
-              href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}
-              className="w-full overflow-hidden"
-            >
-              <Image
-                src={product.images?.[0] || "/default-product.jpg"}
-                alt={product.name}
-                className="w-full transition-all duration-300 group-hover:scale-110"
-                width={300}
-                height={300}
-              />
-               {/* Overlapping Logo */}
-                          <div className="absolute top-2 right-2 p-1 rounded-full shadow-md">
-                            <Image
-                              src={logo}  // Replace with your logo path
-                              alt="Logo"
-                              width={30}
-                              height={30}
-                              className="object-contain"
-                            />
-                          </div>
-            </Link>
-          </div>
+    <>
+      <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+  {/* Product Image */}
+  <div className="relative w-full">
+    <Link href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}>
+      <Image
+        src={product.images?.[0] || "/default-product.jpg"}
+        alt={product.name}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        width={300}
+        height={300}
+      />
+    </Link>
 
-          <div>
-            <p className="text-sm text-gray-600 mt-2">{product.name || "Product Name"}</p>
+    {/* Quick View Button */}
+    <button
+      onClick={() => setIsModalOpen(true)}
+      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow1 text-white px-4 py-2 text-sm font-medium rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+      Quick View
+    </button>
 
-            <Link
-              href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}
-              className="text-xl font-semibold text-gray-800 hover:text-primary mt-2 block"
-            >
-              SKU: {product.SKU}
-            </Link>
+    {/* Logo Overlay */}
+    <div className="absolute top-4 right-4 p-1 bg-white rounded-full shadow-md">
+      <Image
+        src={logo}
+        alt="Logo"
+        width={30}
+        height={30}
+        className="object-contain"
+      />
+    </div>
+  </div>
 
-            <p className="text-gray-600">{product.description}</p>
+  {/* Product Details */}
+  <div className="p-4 bg-white">
+    <h3 className="text-lg font-bold text-gray-800 truncate">{product.name || "Product Name"}</h3>
+    
+    <Link
+      href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}
+      className="text-sm text-gray-600 hover:text-yellow-500 transition-colors duration-300"
+    >
+      SKU: {product.SKU}
+    </Link>
 
-            
+    
 
-      
+   
+  </div>
+</div>
+
+
+      {isModalOpen && product && (
+  <div className="relative z-high" role="dialog" aria-modal="true">
+    {/* Background dimming with blur effect */}
+    <div className="z-high fixed inset-0 bg-black/50 backdrop-blur-md transition-opacity md:block" aria-hidden="true"></div>
+
+    <div className="fixed inset-0 z-high w-screen overflow-y-auto">
+      <div className="flex min-h-full items-center justify-center text-center px-4">
+        <div className="relative flex w-full max-w-4xl transform overflow-hidden rounded-lg bg-white shadow-2xl">
+          
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(false)}
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-500"
+          >
+            <span className="sr-only">Close</span>
+            <svg className="size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Modal Content */}
+          <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-6 p-6">
+            {/* Product Image */}
+            <img
+              src={product.images?.[0] || "https://via.placeholder.com/300"}
+              alt={product.name}
+              className="w-full rounded-lg object-cover bg-gray-100"
+            />
+
+            {/* Product Details */}
+            <div className="text-left mb-4 ms-0">
+            {product.isFeatured && (
+                <span className="mt-2 inline-block bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded">
+                  Featured Product
+                </span>
+              )}
+              <h2 className="text-2xl font-bold text-gray-900 mt-2">{product.name}</h2>
+
+              {/* SKU */}
+              <p className="mt-2 text-sm text-gray-500">SKU: <span className="font-medium">{product.SKU}</span></p>
+
+              
+
+              {/* Stock */}
+              <p className="mt-1 text-sm text-gray-500">Stock: <span className="font-medium">{product.stock}</span></p>
+
+              {/* Is Featured? */}
+              
+
+              {/* Description */}
+              <section className="mt-4">
+                <h3 className="text-lg font-semibold text-gray-900">Description</h3>
+                <p className="text-gray-700">{product.description}</p>
+              </section>
+
+              {/* Features */}
+              <section className="mt-4">
+                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <p className="text-gray-700">{product.features}</p>
+              </section>
+              <Link
+  href={`/category/${product.categoryId}/subcategory/${product.subcategoryId}/products/${product._id}`}
+  className="mt-4 inline-flex items-center justify-center rounded-lg bg-yellow1 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-yellow focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+>
+  View Product
+</Link>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+)}
+
+
+    </>
   );
 };
 

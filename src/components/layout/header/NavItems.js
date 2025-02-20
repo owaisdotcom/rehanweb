@@ -11,25 +11,26 @@ const NavItems = () => {
   const navItems = [
     {
       id: 1,
+      name: "Our Products",
+      path: "/categories",
+      dropdown: <DropdownDashboard />,
+      isRelative: true,
+    },
+    {
+      id: 2,
       name: "Home",
       path: "/",
       // dropdown: <DropdownDemoes />,
       isRelative: false,
     },
     {
-      id: 2,
+      id: 3,
       name: "About",
       path: "/about",
       // dropdown: <DropdownPages />,
       isRelative: false,
     },
-    {
-      id: 3,
-      name: "Our Products",
-      path: "/categories",
-      dropdown: <DropdownDashboard />,
-      isRelative: true,
-    },
+    
     {
       id: 4,
       name: "Contact Us",

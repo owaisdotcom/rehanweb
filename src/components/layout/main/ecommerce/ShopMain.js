@@ -28,6 +28,7 @@
 
 import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import ShopPrimary from "@/components/sections/shop/ShopPrimary";
+import FeaturedProductsSlider2 from "@/components/shared/featured-products/FeaturedProductsSlider2";
 
 const ShopMain = ({ products, categoryId, subcategoryId, title }) => {
   console.log(categoryId)
@@ -35,6 +36,7 @@ const ShopMain = ({ products, categoryId, subcategoryId, title }) => {
     <>
       <HeroPrimary path={title} title={title} />
       <ShopPrimary products={products} categoryId={categoryId} subcategoryId={subcategoryId} />
+      
     </>
   );
 };

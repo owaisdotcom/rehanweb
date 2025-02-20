@@ -7,7 +7,7 @@ import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import Overview from "@/components/sections/overviews/Overview";
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import Image from "next/image";
-import chooseImage from "./../../../assets/images/choose.png";
+import chooseImage from "./../../../assets/images/Choose.png";
 import craftImage from "./../../../assets/images/sewing-machine.png";
 import deliverImage from "./../../../assets/images/delivery.png";
 

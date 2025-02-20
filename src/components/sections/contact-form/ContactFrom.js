@@ -1,74 +1,69 @@
-'use client'
-import { useState } from "react";
-import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
+"use client"; 
+import { useState } from "react"; 
+import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary"; 
 
-const ContactFrom = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    country: "",
-    city: "",
-    companyName: "",
-    message: "",
+const ContactForm = () => {   
+  const [formData, setFormData] = useState({     
+    fullName: "",     
+    email: "",     
+    message: "",   
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");  
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+  const handleChange = (e) => {     
+    setFormData({ ...formData, [e.target.name]: e.target.value });     
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change   
   };
 
-  const validateFields = () => {
-    const newErrors = {};
-    if (!formData.fullName) newErrors.fullName = "Full Name is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    
-    if (!formData.message) newErrors.message = "Message is required";
-    return newErrors;
+  const validateFields = () => {     
+    const newErrors = {};     
+    if (!formData.fullName) newErrors.fullName = "Full Name is required";     
+    if (!formData.email) newErrors.email = "Email is required";     
+    if (!formData.message) newErrors.message = "Message is required";     
+    return newErrors;   
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validateFields();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
+  const handleSubmit = async (e) => {     
+    e.preventDefault();     
+    const validationErrors = validateFields();     
+    if (Object.keys(validationErrors).length > 0) {       
+      setErrors(validationErrors);       
+      return;     
     }
 
-    setLoading(true);
-    setResponseMessage("");
+    setLoading(true);     
+    setResponseMessage("");      
 
-    try {
-      const response = await fetch("https://mathsflix-backend.vercel.app/submit-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+    try {       
+      const response = await fetch("http://localhost:4000/submit-form", {         
+        method: "POST",         
+        headers: { "Content-Type": "application/json" },         
+        body: JSON.stringify(formData),       
       });
 
-      const result = await response.json();
-      if (response.ok) {
-        setResponseMessage("Your inquiry has been submitted successfully!");
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          country: "",
-          city: "",
-          company: "",
-          message: "",
-        });
-      } else {
-        setResponseMessage(result.message || "Submission failed. Please try again.");
-      }
-    } catch (error) {
-      setResponseMessage("An error occurred. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
+      const result = await response.json();       
+      if (response.ok) {         
+        setResponseMessage("Your inquiry has been submitted successfully!");         
+        setFormData({ fullName: "", email: "", message: "" });       
+      } else {         
+        setResponseMessage(result.message || "Submission failed. Please try again.");       
+      }     
+    } catch (error) {       
+      setResponseMessage("An error occurred. Please try again later.");     
+    } finally {       
+      setLoading(false);     
+    }   
+  };
+
+  const handleClickExampleInquiry = () => { 
+    setFormData({
+      fullName: "Ahmed Raza", 
+      email: "ahmed.raza@example.com", 
+      message: "I am interested in your premium leather gloves and jackets collection. Could you please provide details about the available sizes, colors, and pricing? Also, do you offer custom engraving or bulk discounts? Looking forward to your response.",
+    });
   };
 
   return (
@@ -106,41 +101,6 @@ const ContactFrom = () => {
               className="border p-2 rounded w-full"
             />
             {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
-
-            {/* <input
-              name="phoneNumber"
-              type="tel"
-              placeholder="Phone Number *"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              className="border p-2 rounded w-full"
-            />
-            {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
-
-            <input
-              name="country"
-              placeholder="Country *"
-              value={formData.country}
-              onChange={handleChange}
-              className="border p-2 rounded w-full"
-            />
-            {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
-
-            <input
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
-              className="border p-2 rounded w-full"
-            />
-
-            <input
-              name="companyName"
-              placeholder="Company Name (optional)"
-              value={formData.companyName}
-              onChange={handleChange}
-              className="border p-2 rounded w-full"
-            /> */}
           </div>
 
           <textarea
@@ -153,10 +113,19 @@ const ContactFrom = () => {
           ></textarea>
           {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
 
-          <div className="mt-4">
+          <div className="mt-4 flex gap-4">
             <ButtonPrimary type="submit" disabled={loading}>
               {loading ? "Submitting..." : "Submit"}
             </ButtonPrimary>
+
+            {/* Button to auto-fill form with example inquiry */}
+            <button
+              type="button"
+              onClick={handleClickExampleInquiry}
+              className="bg-yellow1 text-white px-3 py-1 rounded-lg hover:bg-yellow transition-all"
+            >
+              Example Inquiry
+            </button>
           </div>
         </form>
       </div>
@@ -164,4 +133,4 @@ const ContactFrom = () => {
   );
 };
 
-export default ContactFrom;
+export default ContactForm;

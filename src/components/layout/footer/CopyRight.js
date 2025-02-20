@@ -54,7 +54,7 @@ const CopyRight = () => {
             </p>
           </div>
 
-          <div className="lg:col-start-10 lg:col-span-3">
+          {/* <div className="lg:col-start-10 lg:col-span-3">
             <ul className="flex gap-3 lg:gap-2 2xl:gap-3 lg:justify-end">
               <li>
                 <a
@@ -97,7 +97,7 @@ const CopyRight = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       )}
     </div>

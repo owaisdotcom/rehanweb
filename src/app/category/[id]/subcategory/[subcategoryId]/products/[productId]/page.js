@@ -7,7 +7,7 @@
 // import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 
 // const ProductDetailPage = () => {
-//   const { id, subcategoryId, productId } = useParams(); 
+//   const { id, subcategoryId, productId } = useParams();
 //   const [product, setProduct] = useState(null);
 //   const [loading, setLoading] = useState(true);
 //   const [quantity, setQuantity] = useState(1);
@@ -19,7 +19,7 @@
 //     const fetchProduct = async () => {
 //       try {
 //         const response = await fetch(
-//           `https://mathsflix-backend.vercel.app/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
+//           `http://localhost:4000/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
 //         );
 
 //         if (!response.ok) throw new Error("Failed to fetch product");
@@ -63,7 +63,7 @@
 //             <div className="p-4">
 //               <h1 className="text-3xl font-bold">{product.name}</h1>
 //               <p className="text-gray-600">{product.description}</p>
-              
+
 //               <div className="flex items-center gap-3 mt-2">
 //                 <span className="text-lg text-gray-500 line-through">$67.00</span>
 //                 <span className="text-xl text-red-500 font-bold">$32.00</span>
@@ -140,12 +140,13 @@ import HeroPrimary from "@/components/sections/hero-banners/HeroPrimary";
 import Loader from "@/components/Loader";
 import ContactFrom from "@/components/sections/contact-form/ContactFrom";
 import ButtonPrimary from "@/components/shared/buttons/ButtonPrimary";
+import FeaturedProductsSlider2 from "@/components/shared/featured-products/FeaturedProductsSlider2";
+import HeadingPrimary from "@/components/shared/headings/HeadingPrimary";
 
 const ProductDetailPage = () => {
-
-
   const { id, subcategoryId, productId } = useParams();
   const [product, setProduct] = useState(null);
+  const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -160,7 +161,7 @@ const ProductDetailPage = () => {
   });
 
   const [errors, setErrors] = useState({});
- 
+
   const [responseMessage, setResponseMessage] = useState("");
 
   const handleChange = (e) => {
@@ -172,7 +173,8 @@ const ProductDetailPage = () => {
     const newErrors = {};
     if (!formData.fullName) newErrors.fullName = "Full Name is required";
     if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.phoneNumber) newErrors.phoneNumber = "Phone Number is required";
+    if (!formData.phoneNumber)
+      newErrors.phoneNumber = "Phone Number is required";
     if (!formData.country) newErrors.country = "Country is required";
     if (!formData.message) newErrors.message = "Message is required";
     return newErrors;
@@ -190,7 +192,7 @@ const ProductDetailPage = () => {
     setResponseMessage("");
 
     try {
-      const response = await fetch("https://mathsflix-backend.vercel.app/submit-form", {
+      const response = await fetch("http://localhost:4000/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -209,7 +211,9 @@ const ProductDetailPage = () => {
           message: "",
         });
       } else {
-        setResponseMessage(result.message || "Submission failed. Please try again.");
+        setResponseMessage(
+          result.message || "Submission failed. Please try again."
+        );
       }
     } catch (error) {
       setResponseMessage("An error occurred. Please try again later.");
@@ -228,7 +232,7 @@ const ProductDetailPage = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `https://mathsflix-backend.vercel.app/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
+          `http://localhost:4000/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch product");
@@ -245,16 +249,27 @@ const ProductDetailPage = () => {
     if (id && subcategoryId && productId) {
       fetchProduct();
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, subcategoryId, productId]);
 
   const handlePreviousImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? product.images.length - 1 : prevIndex - 1));
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === product.images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
+    );
   };
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0, isVisible: false });
+  const [zoomPosition, setZoomPosition] = useState({
+    x: 0,
+    y: 0,
+    isVisible: false,
+  });
+
   const imageRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -262,21 +277,27 @@ const ProductDetailPage = () => {
     if (!img) return;
 
     const { left, top, width, height } = img.getBoundingClientRect();
-    const x = e.clientX - left;
-    const y = e.clientY - top;
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
 
-    const zoomX = (x / width) * 100;
-    const zoomY = (y / height) * 100;
-
-    setZoomPosition({ x, y, zoomX, zoomY, isVisible: true });
+    setZoomPosition((prev) => {
+      if (prev.x === x && prev.y === y) return prev; // Prevent unnecessary re-renders
+      return { x, y, isVisible: true };
+    });
   };
 
   const handleMouseLeave = () => {
     setZoomPosition({ x: 0, y: 0, isVisible: false });
   };
 
-  if (loading) return <div> <HeroPrimary path={`Shop page > Product Page`} title={product?.name} />
-<Loader/></div>;
+  if (loading)
+    return (
+      <div>
+        {" "}
+        <HeroPrimary path={`Shop page > Product Page`} title={product?.name} />
+        <Loader />
+      </div>
+    );
   if (!product) return <p>Product not found</p>;
 
   return (
@@ -288,31 +309,32 @@ const ProductDetailPage = () => {
 
         <div className="container-fluid-2 shop py-100px">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md">
-            {/* Image Carousel */}
-            <div className="relative flex justify-center items-center">
-      {/* Main Image */}
+          <div className="relative w-auto border rounded-lg overflow-hidden">
+      {/* Image Wrapper */}
       <div
-        className="relative w-full md:w-4/5 h-auto rounded-lg overflow-hidden"
+        className="w-full h-full relative"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
+        {/* Original Image */}
         <img
           ref={imageRef}
-          src={product.images?.[currentImageIndex]}
+          src={product.images?.[0] || "https://via.placeholder.com/300"}
           alt={product.name}
-          className="w-full h-auto rounded-lg"
+          className="w-full h-full object-cover"
         />
 
-        {/* Zoom Lens */}
+        {/* Zoomed Image Overlay */}
         {zoomPosition.isVisible && (
           <div
-            className="absolute w-40 h-40 border-2 border-yellow-500 rounded-full overflow-hidden shadow-lg pointer-events-none"
+            className="absolute inset-0 w-full h-full"
             style={{
-              left: zoomPosition.x - 64, // Center lens on cursor
-              top: zoomPosition.y - 64,
-              backgroundImage: `url(${product.images?.[currentImageIndex]})`,
-              backgroundSize: "350%", // Increase zoom level
-              backgroundPosition: `${zoomPosition.zoomX}% ${zoomPosition.zoomY}%`,
+              backgroundImage: `url(${product.images?.[0]})`,
+              backgroundSize: "180%",
+              backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+              transform: "scale(1.1)", // Slight scale to make it feel more fluid
+              transition: "transform 0.1s ease-out",
+              willChange: "transform",
             }}
           />
         )}
@@ -320,130 +342,172 @@ const ProductDetailPage = () => {
     </div>
             {/* Product Details */}
             <div className="p-4 flex flex-col justify-start space-y-4">
-              <h1 className="text-3xl font-semibold text-black">{product.name}</h1>
+              <h1 className="text-3xl font-semibold text-black">
+                {product.name}
+              </h1>
 
               <p className="text-black text-xl">{product.description}</p>
 
-              <p className="font-semibold text-gray-700">SKU: <span className="text-gray-500">{product.SKU}</span></p>
+              <p className="font-semibold text-gray-700">
+                SKU: <span className="text-gray-500">{product.SKU}</span>
+              </p>
 
-              <p className="text-green-600 font-semibold">Stock: <span className="text-gray-500">{product.stock}</span></p>
+              <p className="text-green-600 font-semibold">
+                Stock: <span className="text-gray-500">{product.stock}</span>
+              </p>
 
-              <p className="text-sm text-gray-500">Features: {product.features}</p>
+              <p className="text-sm text-gray-500">
+                Features: {product.features}
+              </p>
 
               <div>
-              <button
-            onClick={handleInquiryClick}
-            className="bg-yellow1 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          >
-            Inquiry Product
-          </button>
+                <button
+                  onClick={handleInquiryClick}
+                  className="bg-yellow1 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                >
+                  Inquiry Product
+                </button>
               </div>
               {isDialogOpen && (
-       <div className="fixed inset-0 bg-[#0000006d] bg-opacity-50 flex justify-center items-center">
-       <div className="bg-white  rounded-lg shadow-lg w-full h-50  max-w-xl relative ">
-         <button
-           onClick={handleCloseDialog}
-           className="absolute top-1 right-2 text-gray-500 hover:text-black"
-         >
-           &#10005;
-         </button>
-         <section>
-      <div className=" ">
-        <form
-          className="p-5 rounded dark:border-transparent dark:shadow-container"
-          onSubmit={handleSubmit}
-        >
-          <h4 className="text-lg font-bold mb-1">Drop Your Inquiry</h4>
-          <p className="text-sm text-gray-500 mb-3">
-            Your email address will not be published. Required fields are marked *
-          </p>
+                <div className="fixed inset-0 bg-[#0000006d] bg-opacity-50 flex justify-center items-center">
+                  <div className="bg-white  rounded-lg shadow-lg w-full h-50  max-w-xl relative ">
+                    <button
+                      onClick={handleCloseDialog}
+                      className="absolute top-1 right-2 text-gray-500 hover:text-black"
+                    >
+                      &#10005;
+                    </button>
+                    <section>
+                      <div className=" ">
+                        <form
+                          className="p-5 rounded dark:border-transparent dark:shadow-container"
+                          onSubmit={handleSubmit}
+                        >
+                          <h4 className="text-lg font-bold mb-1">
+                            Drop Your Inquiry
+                          </h4>
+                          <p className="text-sm text-gray-500 mb-3">
+                            Your email address will not be published. Required
+                            fields are marked *
+                          </p>
 
-          {responseMessage && (
-            <div className="mb-2 text-green-600">{responseMessage}</div>
-          )}
+                          {responseMessage && (
+                            <div className="mb-2 text-green-600">
+                              {responseMessage}
+                            </div>
+                          )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <input
-              name="fullName"
-              placeholder="Full Name *"
-              value={formData.fullName}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
-            {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <input
+                              name="fullName"
+                              placeholder="Full Name *"
+                              value={formData.fullName}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
+                            {errors.fullName && (
+                              <span className="text-red-500 text-sm">
+                                {errors.fullName}
+                              </span>
+                            )}
 
-            <input
-              name="email"
-              type="email"
-              placeholder="Email Address *"
-              value={formData.email}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
-            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+                            <input
+                              name="email"
+                              type="email"
+                              placeholder="Email Address *"
+                              value={formData.email}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
+                            {errors.email && (
+                              <span className="text-red-500 text-sm">
+                                {errors.email}
+                              </span>
+                            )}
 
-            <input
-              name="phoneNumber"
-              type="tel"
-              placeholder="Phone Number *"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
-            {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
+                            <input
+                              name="phoneNumber"
+                              type="tel"
+                              placeholder="Phone Number *"
+                              value={formData.phoneNumber}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
+                            {errors.phoneNumber && (
+                              <span className="text-red-500 text-sm">
+                                {errors.phoneNumber}
+                              </span>
+                            )}
 
-            <input
-              name="country"
-              placeholder="Country *"
-              value={formData.country}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
-            {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
+                            <input
+                              name="country"
+                              placeholder="Country *"
+                              value={formData.country}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
+                            {errors.country && (
+                              <span className="text-red-500 text-sm">
+                                {errors.country}
+                              </span>
+                            )}
 
-            <input
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
+                            <input
+                              name="city"
+                              placeholder="City"
+                              value={formData.city}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
 
-            <input
-              name="companyName"
-              placeholder="Company Name (optional)"
-              value={formData.companyName}
-              onChange={handleChange}
-              className="border p-1 rounded w-full"
-            />
-          </div>
+                            <input
+                              name="companyName"
+                              placeholder="Company Name (optional)"
+                              value={formData.companyName}
+                              onChange={handleChange}
+                              className="border p-1 rounded w-full"
+                            />
+                          </div>
 
-          <textarea
-            name="message"
-            placeholder="Message *"
-            value={formData.message}
-            onChange={handleChange}
-            className="border p-1 rounded w-full mt-4"
-            rows="4"
-          ></textarea>
-          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+                          <textarea
+                            name="message"
+                            placeholder="Message *"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className="border p-1 rounded w-full mt-4"
+                            rows="4"
+                          ></textarea>
+                          {errors.message && (
+                            <span className="text-red-500 text-sm">
+                              {errors.message}
+                            </span>
+                          )}
 
-          <div className="mt-4">
-            <ButtonPrimary type="submit" disabled={loading}>
-              {loading ? "Submitting..." : "Submit"}
-            </ButtonPrimary>
-          </div>
-        </form>
-      </div>
-    </section>
-       </div>
-     </div>
-     
-      )}
+                          <div className="mt-4">
+                            <ButtonPrimary type="submit" disabled={loading}>
+                              {loading ? "Submitting..." : "Submit"}
+                            </ButtonPrimary>
+                          </div>
+                        </form>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </main>
+      <div className="container">
+        <HeadingPrimary>Related Products</HeadingPrimary>
+        <div className="mt-5">
+          <FeaturedProductsSlider2
+            id={id}
+            subcategoryId={subcategoryId}
+            productId={productId}
+          />
+        </div>
+      </div>
     </PageWrapper>
   );
 };

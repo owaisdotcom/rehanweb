@@ -144,7 +144,8 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcat
 
   const pathSegments = pathname.split("/");
   const categoryIdFromURL = pathSegments[2] ?? null;
-
+  const subcategoryIdFromURL = pathSegments[4] ?? null;
+  console.log(subcategoryIdFromURL)
   useEffect(() => {
     const fetchSubcategories = async () => {
       if (!categoryIdFromURL) return;
@@ -189,18 +190,20 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcat
     <div className="modal-container xl:col-start-1 xl:col-span-3 bg-white p-6 rounded-lg shadow-lg max-w-[300px] w-full">
       {subcategories.length > 0 && (
         <div className="mb-5" data-aos="fade-up">
-          <h4 className="text-lg font-semibold text-primaryColor mb-3">Subcategories</h4>
+          <h4 className="text-lg font-semibold text-yellow mb-3">Subcategories</h4>
           <ul className="text-gray-700">
-            {subcategories.map((subcategory) => (
-              <li
-                key={subcategory._id}
-                className="py-1 border-b last:border-none cursor-pointer hover:text-primaryColor"
-                onClick={() => handleSubcategoryClick(subcategory._id)}
-              >
-                {subcategory.name}
-              </li>
-            ))}
-          </ul>
+  {subcategories.map((subcategory) => (
+    <li
+      key={subcategory._id}
+      className={`py-1 border-b last:border-none cursor-pointer hover:text-primaryColor ${
+        subcategory._id === subcategoryIdFromURL ? " font-semibold text-yellow" : ""
+      }`}
+      onClick={() => handleSubcategoryClick(subcategory._id)}
+    >
+      {subcategory.name}
+    </li>
+  ))}
+</ul>
         </div>
       )}
 

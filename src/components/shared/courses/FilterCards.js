@@ -10,7 +10,7 @@ const FilterCards = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/products/categories");
+        const response = await fetch("https://mathsflix-backend.vercel.app/api/products/categories");
         const data = await response.json();
         setCategories(data);
         setLoading(false);

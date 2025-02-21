@@ -38,7 +38,7 @@ const ContactForm = () => {
     setResponseMessage("");      
 
     try {       
-      const response = await fetch("http://localhost:4000/submit-form", {         
+      const response = await fetch("https://mathsflix-backend.vercel.app/submit-form", {         
         method: "POST",         
         headers: { "Content-Type": "application/json" },         
         body: JSON.stringify(formData),       

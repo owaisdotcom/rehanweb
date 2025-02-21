@@ -41,8 +41,7 @@ const Home1 = () => {
       fetchProducts();
     }, []);
   
-    if (loading) return <div><Loader/></div>
-    if (featuredProducts.length === 0) return <p>No featured products available.</p>;
+   
   return (
     <>
       <Hero7 />

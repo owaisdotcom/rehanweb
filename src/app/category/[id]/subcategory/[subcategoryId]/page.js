@@ -22,7 +22,7 @@
 //       if (categoryId && subcategoryId) {
 //         try {
 //           const response = await fetch(
-//             `http://localhost:4000/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
+//             `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
 //           );
 //           if (!response.ok) throw new Error("Failed to fetch products");
 
@@ -40,7 +40,7 @@
 //       if (categoryId) {
 //         try {
 //           const response = await fetch(
-//             `http://localhost:4000/api/products/categories/${categoryId}`
+//             `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}`
 //           );
 //           if (!response.ok) throw new Error("Failed to fetch category");
 
@@ -96,7 +96,7 @@ console.log(categoryId)
       if (categoryId && subcategoryId) {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
+            `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
           );
 
           if (!response.ok) throw new Error("Failed to fetch products");
@@ -115,7 +115,7 @@ console.log(categoryId)
       if (categoryId && subcategoryId) {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/products/categories/${categoryId}/subcategories/${subcategoryId}`
+            `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}`
           );
 
           if (!response.ok) throw new Error("Failed to fetch products");

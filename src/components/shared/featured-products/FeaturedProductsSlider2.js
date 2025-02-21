@@ -72,7 +72,7 @@ const FeaturedProductsSlider2 = ({ id, subcategoryId , productId}) => {
       if (id && subcategoryId) {
         try {
           const response = await fetch(
-            `http://localhost:4000/api/products/categories/${id}/subcategories/${subcategoryId}/products`
+            `https://mathsflix-backend.vercel.app/api/products/categories/${id}/subcategories/${subcategoryId}/products`
           );
 
           if (!response.ok) throw new Error("Failed to fetch products");

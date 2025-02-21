@@ -19,7 +19,7 @@
 //     const fetchProduct = async () => {
 //       try {
 //         const response = await fetch(
-//           `http://localhost:4000/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
+//           `https://mathsflix-backend.vercel.app/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
 //         );
 
 //         if (!response.ok) throw new Error("Failed to fetch product");
@@ -192,7 +192,7 @@ const ProductDetailPage = () => {
     setResponseMessage("");
 
     try {
-      const response = await fetch("http://localhost:4000/submit-form", {
+      const response = await fetch("https://mathsflix-backend.vercel.app/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -232,7 +232,7 @@ const ProductDetailPage = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
+          `https://mathsflix-backend.vercel.app/api/products/categories/${id}/subcategories/${subcategoryId}/products/${productId}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch product");

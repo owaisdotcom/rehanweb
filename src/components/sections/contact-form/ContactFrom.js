@@ -10,7 +10,8 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
+  const [isExample, setIsExample] = useState(false); 
   const [responseMessage, setResponseMessage] = useState("");  
 
   const handleChange = (e) => {     
@@ -59,10 +60,19 @@ const ContactForm = () => {
   };
 
   const handleClickExampleInquiry = () => { 
+    setIsExample(true)
     setFormData({
       fullName: "Ahmed Raza", 
       email: "ahmed.raza@example.com", 
       message: "I am interested in your premium leather gloves and jackets collection. Could you please provide details about the available sizes, colors, and pricing? Also, do you offer custom engraving or bulk discounts? Looking forward to your response.",
+    });
+  };
+  const handleClearExampleInquiry = () => { 
+    setIsExample(false)
+    setFormData({
+      fullName: "", 
+      email: "", 
+      message: "",
     });
   };
 
@@ -121,10 +131,10 @@ const ContactForm = () => {
             {/* Button to auto-fill form with example inquiry */}
             <button
               type="button"
-              onClick={handleClickExampleInquiry}
+              onClick={isExample ? handleClearExampleInquiry : handleClickExampleInquiry}
               className="bg-yellow1 text-white px-3 py-1 rounded-lg hover:bg-yellow transition-all"
             >
-              Example Inquiry
+             {isExample ? "Clear Inquiry" : "Example Inquiry"} 
             </button>
           </div>
         </form>

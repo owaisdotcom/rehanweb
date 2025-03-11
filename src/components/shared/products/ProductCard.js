@@ -29,7 +29,7 @@ const ProductCard = ({ product, categoryId, subcategoryId }) => {
     {/* Quick View Button */}
     <button
       onClick={() => setIsModalOpen(true)}
-      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow1 text-white px-4 py-2 text-sm font-medium rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow1 hover:bg-yellow text-white px-4 py-2 text-sm font-medium rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
     >
       Quick View
     </button>

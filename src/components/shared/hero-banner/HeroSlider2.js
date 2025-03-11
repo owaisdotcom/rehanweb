@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Navigation, Thumbs, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlide2 from "./HeroSlide2";
@@ -20,6 +20,7 @@ import herobannerImage10 from "@/assets/images/herobanner/hero10.jpg";
 import Image from "next/image";
 const HeroSlider2 = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const sliderRef = useRef(null)
   const slides = [
     {
       title: (

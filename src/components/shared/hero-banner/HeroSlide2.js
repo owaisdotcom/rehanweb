@@ -42,7 +42,7 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
             </h1>
             <div>
               <a
-                href="#"
+                 href="categories"
                 className="text-whiteColor bg-primaryColor text-sm lg:text-md border border-primaryColor px-4 py-3 lg:px-10 lg:py-15px hover:text-primaryColor hover:bg-whiteColor rounded-full inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
               >
                 Explore More

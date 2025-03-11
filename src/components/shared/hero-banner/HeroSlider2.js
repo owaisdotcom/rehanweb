@@ -99,14 +99,21 @@ const HeroSlider2 = () => {
   const thumbsImages = [herobannerImage, herobannerImage2,herobannerImage4,herobannerImage5, herobannerImage10,herobannerImage6,herobannerImage7,herobannerImage8,herobannerImage9];
   return (
     <>
-      <Swiper
+        <Swiper
+        ref={sliderRef}
         navigation={true}
         grabCursor={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Navigation, Thumbs, Autoplay]}
         autoplay={{
-          delay: 5000, // Swipes every 5 seconds
-          disableOnInteraction: false, // Keep autoplay even after user interaction
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        speed={600} 
+        onSlideChange={(swiper) => {
+          if (swiper.isEnd) {
+           swiper.slideTo(0,100)
+          }
         }}
         className="ecommerce-slider2 w-full"
       >

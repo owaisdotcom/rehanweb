@@ -400,6 +400,8 @@ import TabContentWrapper from "@/components/shared/wrappers/TabContentWrapper";
 import ThreeColumnContent from "@/components/shared/ecommerce/ThreeColumnContent";
 import Pagination from "@/components/shared/others/Pagination";
 import ProductModal from "@/components/shared/products/ProductModal";
+import ListViewContent from "@/components/shared/products/ListViewContent";
+import { FiGrid, FiList } from "react-icons/fi";
 
 const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
   const [availability, setAvailability] = useState([]);
@@ -412,6 +414,7 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
   const [skip, setSkip] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentProducts, setCurrentProducts] = useState([]);
+  const [viewMode, setViewMode] = useState('grid');
   const [currentProduct, setCurrentProduct] = useState(null);
   const [sortedProducts, setSortedProducts] = useState(products); 
   const shopRef = useRef(null);
@@ -461,7 +464,7 @@ console.log(categoryId)
             products={products} 
             setSortedProducts={setSortedProducts} 
           />
-          <div className="modal-container xl:col-start-4 xl:col-span-9">
+          {/* <div className="modal-container xl:col-start-4 xl:col-span-9">
             <div>
               <TabContentWrapper isShow>
                 <ThreeColumnContent
@@ -482,7 +485,42 @@ console.log(categoryId)
               />
             )}
             <ProductModal product={currentProduct} />
-          </div>
+          </div> */}
+          <div className="modal-container xl:col-start-4 xl:col-span-9">
+          <div className="flex justify-end gap-4 mb-4">
+  <button
+    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center gap-2"
+    onClick={() => setViewMode("grid")}
+  >
+    <FiGrid className="w-5 h-5" /> Grid View
+  </button>
+  <button
+    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center gap-2"
+    onClick={() => setViewMode("list")}
+  >
+    <FiList className="w-5 h-5" /> List View
+  </button>
+</div>
+
+  <div>
+    <TabContentWrapper isShow>
+      {viewMode === "grid" ? (
+        <ThreeColumnContent
+          products={currentProducts}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+        />
+      ) : (
+        <ListViewContent
+          products={currentProducts}
+          categoryId={categoryId}
+          subcategoryId={subcategoryId}
+        />
+      )}
+    </TabContentWrapper>
+  </div>
+</div>
+
         </div>
       </div>
     </section>

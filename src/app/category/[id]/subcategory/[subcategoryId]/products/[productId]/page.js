@@ -363,137 +363,65 @@ const ProductDetailPage = () => {
               <div>
                 <button
                   onClick={handleInquiryClick}
-                  className="bg-yellow1 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                  className="bg-yellow1 text-white px-4 py-2 rounded-lg hover:bg-yellow"
                 >
                   Inquiry Product
                 </button>
               </div>
               {isDialogOpen && (
-                <div className="fixed inset-0 bg-[#0000006d] bg-opacity-50 flex justify-center items-center">
-                  <div className="bg-white  rounded-lg shadow-lg w-full h-50  max-w-xl relative ">
-                    <button
-                      onClick={handleCloseDialog}
-                      className="absolute top-1 right-2 text-gray-500 hover:text-black"
-                    >
-                      &#10005;
-                    </button>
-                    <section>
-                      <div className=" ">
-                        <form
-                          className="p-5 rounded dark:border-transparent dark:shadow-container"
-                          onSubmit={handleSubmit}
-                        >
-                          <h4 className="text-lg font-bold mb-1">
-                            Drop Your Inquiry
-                          </h4>
-                          <p className="text-sm text-gray-500 mb-3">
-                            Your email address will not be published. Required
-                            fields are marked *
-                          </p>
+  <div className="fixed inset-0 bg-[#0000006d] bg-opacity-50 flex justify-center items-center p-4">
+    <div className="relative w-full max-w-4xl bg-white border rounded-lg shadow-lg flex overflow-hidden">
+      {/* Left Section - Product Details */}
+      <div className="w-1/2 p-4 flex flex-col justify-center items-center text-center">
+  {/* Image Wrapper */}
+  <div className="relative w-full  overflow-hidden">
+    {/* Original Image */}
+    <img
+      src={product.images?.[0] || "https://via.placeholder.com/300"}
+      alt={product.name}
+      className="w-full h-full object-cover rounded"
+    />
+  </div>
+  {/* Product Information */}
+  <h1 className="text-2xl font-semibold mt-4">{product.name}</h1>
+  <p className="text-gray-600 text-sm">SKU: <span className="text-gray-500">{product.SKU}</span></p>
+</div>
 
-                          {responseMessage && (
-                            <div className="mb-2 text-green-600">
-                              {responseMessage}
-                            </div>
-                          )}
+      
+      {/* Right Section - Inquiry Form */}
+      <div className="w-1/2 p-4 flex flex-col justify-between border-l">
+        <button onClick={handleCloseDialog} className="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">&times;</button>
+        <h4 className="text-lg font-bold mb-2">Drop Your Inquiry</h4>
+        <p className="text-sm text-gray-500 mb-3">Your email address will not be published. Required fields are marked *</p>
+        {responseMessage && <div className="mb-2 text-green-600">{responseMessage}</div>}
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input name="fullName" placeholder="Full Name *" value={formData.fullName} onChange={handleChange} className="border p-2 rounded w-full" />
+          {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+          
+          <input name="email" type="email" placeholder="Email Address *" value={formData.email} onChange={handleChange} className="border p-2 rounded w-full" />
+          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+          
+          <input name="phoneNumber" type="tel" placeholder="Phone Number *" value={formData.phoneNumber} onChange={handleChange} className="border p-2 rounded w-full" />
+          {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
+          
+          <input name="country" placeholder="Country *" value={formData.country} onChange={handleChange} className="border p-2 rounded w-full" />
+          {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
+          
+          <input name="city" placeholder="City" value={formData.city} onChange={handleChange} className="border p-2 rounded w-full" />
+          <input name="companyName" placeholder="Company Name (optional)" value={formData.companyName} onChange={handleChange} className="border p-2 rounded w-full" />
+          
+          <textarea name="message" placeholder="Message *" value={formData.message} onChange={handleChange} className="border p-2 rounded w-full h-24"></textarea>
+          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+          
+          <button type="submit" className="bg-blue-600 text-white font-semibold px-4 py-2 rounded w-full hover:bg-blue-700 transition" disabled={loading}>
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+)}
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            <input
-                              name="fullName"
-                              placeholder="Full Name *"
-                              value={formData.fullName}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-                            {errors.fullName && (
-                              <span className="text-red-500 text-sm">
-                                {errors.fullName}
-                              </span>
-                            )}
-
-                            <input
-                              name="email"
-                              type="email"
-                              placeholder="Email Address *"
-                              value={formData.email}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-                            {errors.email && (
-                              <span className="text-red-500 text-sm">
-                                {errors.email}
-                              </span>
-                            )}
-
-                            <input
-                              name="phoneNumber"
-                              type="tel"
-                              placeholder="Phone Number *"
-                              value={formData.phoneNumber}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-                            {errors.phoneNumber && (
-                              <span className="text-red-500 text-sm">
-                                {errors.phoneNumber}
-                              </span>
-                            )}
-
-                            <input
-                              name="country"
-                              placeholder="Country *"
-                              value={formData.country}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-                            {errors.country && (
-                              <span className="text-red-500 text-sm">
-                                {errors.country}
-                              </span>
-                            )}
-
-                            <input
-                              name="city"
-                              placeholder="City"
-                              value={formData.city}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-
-                            <input
-                              name="companyName"
-                              placeholder="Company Name (optional)"
-                              value={formData.companyName}
-                              onChange={handleChange}
-                              className="border p-1 rounded w-full"
-                            />
-                          </div>
-
-                          <textarea
-                            name="message"
-                            placeholder="Message *"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="border p-1 rounded w-full mt-4"
-                            rows="4"
-                          ></textarea>
-                          {errors.message && (
-                            <span className="text-red-500 text-sm">
-                              {errors.message}
-                            </span>
-                          )}
-
-                          <div className="mt-4">
-                            <ButtonPrimary type="submit" disabled={loading}>
-                              {loading ? "Submitting..." : "Submit"}
-                            </ButtonPrimary>
-                          </div>
-                        </form>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

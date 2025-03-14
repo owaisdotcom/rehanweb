@@ -15,35 +15,40 @@ const About5 = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-30px pb-30px">
           {/* about left */}
           <div data-aos="fade-up">
-          <h1 className="font-bold text-3xl pb-4">
-  Welcome to <span className="text-secondaryColor font-bold">MAS Leather Manufacturing </span>  
-  by <i className="underline ">M. Azam & Sons</i> 
+          <h1 className="font-semibold  leading-3 tracking-wide text-4xl pb-4">
+  Welcome to Mas <br/> Leather Gloves
+
 </h1>
-<HeadingPrimary>
-  Premium Leather Goods – Where Safety, Satisfaction, and Style Meet
-</HeadingPrimary>
+<h1 className="font-semibold leading-3 tracking-tight text-[#EE9B33] text-4xl pb-4">
+  Premium Leather Craftsmanship 
+
+</h1>
+<h2 className="font-semibold text-2xl text-blue pb-4">
+  Safety, Style, Satisfaction
+
+</h2>
 
 
             <p className="text-sm md:text-base leading-7 text-contentColor dark:text-contentColor-dark mb-6 pl-3 border-l-2 border-primaryColor">
-              M. Azam & Sons offers a wide range of high-quality leather products, specializing in gloves, jackets, wallets, keychains, and belts. We are your trusted partner in high-quality leather manufacturing, ensuring protection with elegance. We are committed to providing durable and stylish leather materials for everyday use.
+              Expirience the finest quality leather products including <span className="text-[#EE9B33] ">gloves</span>, jackets, wallets and more. Designed for comfort, duaribiltiy and timeless style.
             </p>
-            <ul className="space-y-5">
+            <ul className="space-y-3">
               <li className="flex items-center group">
                 <i className="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                 <p className="text-sm md:text-base font-medium text-blackColor dark:text-blackColor-dark">
-                  Premium leather gloves for comfort and durability.
+                  High Quality leather gloves for Safety and Elegance.
                 </p>
               </li>
               <li className="flex items-center group">
                 <i className="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                 <p className="text-sm md:text-base font-medium text-blackColor dark:text-blackColor-dark">
-                  Stylish and functional leather jackets for all seasons.
+                  Premium leather jackets that define Luxury and Protection.
                 </p>
               </li>
               <li className="flex items-center group">
                 <i className="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                 <p className="text-sm md:text-base font-medium text-blackColor dark:text-blackColor-dark">
-                  High-quality wallets, keychains, and belts made from premium leather.
+                  Duarable wallets, keychains, and belts crafted with care.
                 </p>
               </li>
             </ul>
@@ -55,7 +60,7 @@ const About5 = () => {
       <Image
         src={storeImage} // Update image if needed
         alt="Leather Goods"
-        className=" w-48 lg:w-72"
+        className=" w-32 lg:w-52"
         placeholder="blur"
       />
     </div>

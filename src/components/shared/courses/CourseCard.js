@@ -9,18 +9,19 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
-      <div className="p-4 bg-white shadow-lg rounded-lg dark:bg-darkdeep3 dark:shadow-md">
+      <div className=" bg-white shadow-lg  dark:bg-darkdeep3 dark:shadow-md">
         {/* Card Image */}
         <div className="relative mb-4 w-full">
-          <Link href={`/category/${id}`} className="w-full overflow-hidden rounded block group">
-            <Image
-              src={image || "/default-category.jpg"}
-              alt={title}
-              priority={true}
-              className="w-full h-64 object-cover transition-all duration-300 group-hover:scale-110"
-              width={300}
-              height={300}
-            />
+          <Link href={`/category/${id}`} className="w-full overflow-hidden  block group">
+          <Image
+  src={image || "/default-category.jpg"}
+  alt={title}
+  priority={true}
+  className="w-full h-64 object-cover transition-transform duration-[2000ms] ease-in-out group-hover:scale-110"
+  width={200}
+  height={500}
+/>
+
             {/* Overlapping Logo */}
             <div className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-md">
               <Image
@@ -35,7 +36,7 @@ const CourseCard = ({ course }) => {
         </div>
 
         {/* Title */}
-        <h2 className="text-start text-xl font-semibold text-gray-800 dark:text-white">
+        <h2 className="text-start px-4 text-xl font-semibold text-gray-800 dark:text-white">
           {title}
         </h2>
 
@@ -43,7 +44,7 @@ const CourseCard = ({ course }) => {
         {/* View Products Button */}
         <Link
           href={`/category/${id}`}
-          className="mt-4 inline-flex items-center gap-1 text-yellow font-semibold text-sm hover:text-yellow1prod transition-all"
+          className="mt-4 p-4 inline-flex items-center gap-1 text-yellow font-semibold text-sm hover:text-yellow1prod transition-all"
         >
           View Products <span>&rarr;</span>
         </Link>

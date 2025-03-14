@@ -49,8 +49,8 @@ const Home1 = () => {
       <About5 />
       <CoursesFilter2 type="lg" />
       <div className="my-5 md:mb-10" data-aos="fade-up">
-            <div className="text-center">
-              <SectionName>Our Featured Products</SectionName>
+            <div className="text-left container my-5 ">
+              <h1 className="font-semibold text-4xl tracking-wide uppercase my-5">Featured <span className="text-[#EE9B33] ">Products</span></h1>
             </div>
 
             

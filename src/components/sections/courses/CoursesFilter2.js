@@ -15,17 +15,14 @@ const CoursesFilter2 = ({ type }) => {
         >
           {/* courses Heading */}
           <div className="mb-5 md:mb-10" data-aos="fade-up">
-            <div className="text-center">
-              <SectionName>Our Main Products</SectionName>
-            </div>
-
+            
             <HeadingPrimary text="center">
               Perfect For{" "}
-              <span className="relative after:w-full after:h-[7px] z-0 after:bg-[#EC9B31] after:absolute after:left-0 after:bottom-3 md:after:bottom-5 after:z-[-1]">
-                Your
-              </span>
-              <br />
-              Safety Needs
+              
+                Your 
+        
+            
+             <span className="text-[#EE9B33] "> Safety Needs</span> 
             </HeadingPrimary>
           </div>
 

@@ -30,9 +30,16 @@ const NavItems = () => {
       // dropdown: <DropdownPages />,
       isRelative: false,
     },
-    
     {
       id: 4,
+      name: "Custom",
+      path: "/custom",
+      // dropdown: <DropdownPages />,
+      isRelative: false,
+    },
+    
+    {
+      id: 5,
       name: "Contact Us",
       path: "/contact",
       // dropdown: <DropdownDashboard />,

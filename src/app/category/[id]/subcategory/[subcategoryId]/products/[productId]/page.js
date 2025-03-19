@@ -72,7 +72,7 @@
 
 //               <div className="mt-3">
 //                 <p className="text-green-600 font-semibold">Only {product.stock} items in stock!</p>
-//                 <p className="text-red-500 text-sm">Hurry up! Sale ends in:</p>
+//                 <p className="text-red-500 text-xs">Hurry up! Sale ends in:</p>
 //                 <div className="flex gap-1 mt-1">
 //                   <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded">97 Days</span>
 //                   <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded">02 Hrs</span>
@@ -395,25 +395,25 @@ const ProductDetailPage = () => {
         <p className="text-sm text-gray-500 mb-3">Your email address will not be published. Required fields are marked *</p>
         {responseMessage && <div className="mb-2 text-green-600">{responseMessage}</div>}
         <form onSubmit={handleSubmit} className="space-y-3">
-          <input name="fullName" placeholder="Full Name *" value={formData.fullName} onChange={handleChange} className="border p-2 rounded w-full" />
-          {errors.fullName && <span className="text-red-500 text-sm">{errors.fullName}</span>}
+          <input name="fullName" placeholder="Full Name *" value={formData.fullName} onChange={handleChange} className="border p-1 rounded w-full" />
+          {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
           
-          <input name="email" type="email" placeholder="Email Address *" value={formData.email} onChange={handleChange} className="border p-2 rounded w-full" />
-          {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+          <input name="email" type="email" placeholder="Email Address *" value={formData.email} onChange={handleChange} className="border p-1 rounded w-full" />
+          {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
           
-          <input name="phoneNumber" type="tel" placeholder="Phone Number *" value={formData.phoneNumber} onChange={handleChange} className="border p-2 rounded w-full" />
-          {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
+          <input name="phoneNumber" type="tel" placeholder="Phone Number *" value={formData.phoneNumber} onChange={handleChange} className="border p-1 rounded w-full" />
+          {errors.phoneNumber && <span className="text-red-500 text-xs">{errors.phoneNumber}</span>}
           
-          <input name="country" placeholder="Country *" value={formData.country} onChange={handleChange} className="border p-2 rounded w-full" />
-          {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
+          <input name="country" placeholder="Country *" value={formData.country} onChange={handleChange} className="border p-1 rounded w-full" />
+          {errors.country && <span className="text-red-500 text-xs">{errors.country}</span>}
           
-          <input name="city" placeholder="City" value={formData.city} onChange={handleChange} className="border p-2 rounded w-full" />
-          <input name="companyName" placeholder="Company Name (optional)" value={formData.companyName} onChange={handleChange} className="border p-2 rounded w-full" />
+          <input name="city" placeholder="City" value={formData.city} onChange={handleChange} className="border p-1 rounded w-full" />
+          <input name="companyName" placeholder="Company Name (optional)" value={formData.companyName} onChange={handleChange} className="border p-1 rounded w-full" />
           
-          <textarea name="message" placeholder="Message *" value={formData.message} onChange={handleChange} className="border p-2 rounded w-full h-24"></textarea>
-          {errors.message && <span className="text-red-500 text-sm">{errors.message}</span>}
+          <textarea name="message" placeholder="Message *" value={formData.message} onChange={handleChange} className="border p-1 rounded w-full h-20"></textarea>
+          {errors.message && <span className="text-red-500 text-xs">{errors.message}</span>}
           
-          <button type="submit" className="bg-blue-600 text-white font-semibold px-4 py-2 rounded w-full hover:bg-blue-700 transition" disabled={loading}>
+          <button type="submit" className="bg-yellow  text-white font-semibold px-4 py-2 rounded w-full hover:bg-yellow1 transition" disabled={loading}>
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>

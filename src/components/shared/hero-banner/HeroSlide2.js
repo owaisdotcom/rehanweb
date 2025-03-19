@@ -52,7 +52,7 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
 
           {/* Right Section: Thumbs Image */}
           <div className="w-full md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
-            {thumbsImage ? (
+            {/* {thumbsImage ? (
               <Image
                 src={thumbsImage}
                 alt="Thumbs"
@@ -62,7 +62,7 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
               />
             ) : (
               <p className="text-whiteColor">No image available</p>
-            )}
+            )} */}
           </div>
         </div>
       </div>

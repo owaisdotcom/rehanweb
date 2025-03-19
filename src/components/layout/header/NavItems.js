@@ -13,8 +13,8 @@ const NavItems = () => {
       id: 1,
       name: "Our Products",
       path: "/categories",
-      dropdown: <DropdownDashboard />,
-      isRelative: true,
+      dropdown: <DropdownPages />,
+      isRelative: false,
     },
     {
       id: 2,
@@ -30,32 +30,28 @@ const NavItems = () => {
       // dropdown: <DropdownPages />,
       isRelative: false,
     },
-    {
-      id: 4,
-      name: "Custom",
-      path: "/custom",
-      // dropdown: <DropdownPages />,
-      isRelative: false,
-    },
+    
     
     {
-      id: 5,
+      id: 4,
       name: "Contact Us",
       path: "/contact",
       // dropdown: <DropdownDashboard />,
       // isRelative: true,
     },
+    
    
   ];
   return (
     <div className="hidden lg:block lg:col-start-3 lg:col-span-7 ">
-      <ul className="nav-list flex justify-center ">
+      <ul className="nav-list flex justify-center items-center mt-2 -mb-1 ">
         {navItems.map((navItem, idx) => (
           <Navitem key={idx} idx={idx} navItem={{ ...navItem, idx: idx }}>
             <DropdownWrapper>{navItem.dropdown}</DropdownWrapper>
           </Navitem>
         ))}
       </ul>
+    
     </div>
   );
 };

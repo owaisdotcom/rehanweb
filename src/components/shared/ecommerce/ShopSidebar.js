@@ -54,7 +54,7 @@ const ShopSidebar = ({ handleFilters = () => {}, handleReset, categoryId, subcat
   };
 
   const handleSubcategoryClick = (subcategoryId) => {
-    router.push(`/category/${categoryId}/subcategory/${subcategoryId}`);
+    router.push(`/category/${categoryIdFromURL}/subcategory/${subcategoryId}`);
   };
 
   return (

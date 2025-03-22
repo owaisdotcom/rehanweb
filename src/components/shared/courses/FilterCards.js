@@ -2,6 +2,11 @@
 import { useState, useEffect } from "react";
 import CourseCard from "./CourseCard";
 import Loader from "@/components/Loader";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules"; // ✅ Import Autoplay module
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay"; // ✅ Ensure autoplay styles are loaded
 
 const FilterCards = () => {
   const [categories, setCategories] = useState([]);
@@ -13,9 +18,9 @@ const FilterCards = () => {
         const response = await fetch("https://mathsflix-backend.vercel.app/api/products/categories");
         const data = await response.json();
         setCategories(data);
-        setLoading(false);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -24,26 +29,44 @@ const FilterCards = () => {
   }, []);
 
   if (loading) {
-    return <div><Loader/></div>;
+    return <Loader />;
   }
 
   return (
     <div className="filter-contents flex flex-wrap sm:-mx-15px box-content mt-7 lg:mt-25px">
-      {categories?.length ? (
-        categories.map((category) => (
-          <CourseCard
-            key={category._id}
-            course={{
-              id: category._id,
-              title: category.name,
-              image: category.image,
-              desc: category.description
-            }}
-          />
-        ))
-      ) : (
-        <p>No categories available.</p>
-      )}
+      <Swiper
+        slidesPerView={3}
+        grabCursor={true}
+        navigation={true}
+        loop={true}
+        autoplay={{ delay: 2000, disableOnInteraction: false }} // ✅ Autoplay enabled
+        modules={[Navigation, Autoplay]} // ✅ Added Autoplay module
+        breakpoints={{
+          576: { slidesPerView: 1 },
+          992: { slidesPerView: 2 },
+          1500: { slidesPerView: 3 },
+        }}
+        className=""
+      >
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <SwiperSlide key={category._id}>
+              <CourseCard
+                course={{
+                  id: category._id,
+                  title: category.name,
+                  image: category.image,
+                  desc: category.description,
+                }}
+              />
+            </SwiperSlide>
+          ))
+        ) : (
+          <SwiperSlide>
+            <p className="text-center">No categories available.</p>
+          </SwiperSlide>
+        )}
+      </Swiper>
     </div>
   );
 };

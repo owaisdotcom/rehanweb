@@ -52,6 +52,14 @@ const About5 = () => {
                 </p>
               </li>
             </ul>
+            <div>
+              <a
+                 href="categories"
+                className="text-whiteColor bg-primaryColor text-md lg:text-md border border-primaryColor mt-5 px-4 py-3 lg:px-5 lg:py-12px  hover:text-primaryColor hover:bg-whiteColor rounded-full inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
+              >
+                Discover More
+              </a>
+            </div>
           </div>
           {/* about right */}
           <div className="overflow-visible" data-aos="fade-up">

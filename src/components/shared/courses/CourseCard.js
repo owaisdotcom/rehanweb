@@ -7,8 +7,8 @@ const CourseCard = ({ course }) => {
   const { id, title, image, desc } = course;
 
   return (
-    <div className="w-full sm:w-1/2 lg:w-1/3 p-4"> {/* Increased width */}
-      <div className="bg-white shadow-xl overflow-hidden dark:bg-darkdeep3 dark:shadow-md h-[600px] flex flex-col">  
+    <div className="w-full  p-4"> {/* Increased width */}
+      <div className="bg-white shadow-xl overflow-hidden dark:bg-darkdeep3 dark:shadow-md h-[500px] flex flex-col">  
         
         {/* Card Image - Takes more space */}
         <div className="relative w-full h-[75%] overflow-hidden">

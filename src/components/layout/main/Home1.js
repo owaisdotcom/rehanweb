@@ -1,79 +1,159 @@
 "use client";
+import { useState, useEffect } from "react";
 import Loader from "@/components/Loader";
-import About5 from "@/components/sections/abouts/About5";
-import Blogs from "@/components/sections/blogs/Blogs";
-import ContactFrom from "@/components/sections/contact-form/ContactFrom";
-import CoursesFilter2 from "@/components/sections/courses/CoursesFilter2";
-import FeaturedProducts from "@/components/sections/featured-products/FeaturedProducts";
-import Features2 from "@/components/sections/features/Features2";
-import Hero7 from "@/components/sections/hero-banners/Hero7";
-import Hero8 from "@/components/sections/hero-banners/Hero8";
-import BrandHero from "@/components/sections/sub-section/BrandHero";
-import Counter2 from "@/components/sections/sub-section/Counter2";
-import FeaturesMarque from "@/components/sections/sub-section/FeaturesMarque";
-import Testimonials2 from "@/components/sections/testimonials/Testimonials2";
-import HeadingPrimary from "@/components/shared/headings/HeadingPrimary";
 import ProductCard from "@/components/shared/products/ProductCard";
-import SectionName from "@/components/shared/section-names/SectionName";
 import { getFeaturedProducts } from "@/libs/apiService";
-import { useEffect, useState } from "react";
-import React from "react";
-import Swiper from "swiper";
-import { SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import Hero7 from "@/components/sections/hero-banners/Hero7";
+import About5 from "@/components/sections/abouts/About5";
+import CoursesFilter2 from "@/components/sections/courses/CoursesFilter2";
+import Link from "next/link";
 
 const Home1 = () => {
-   const [featuredProducts, setFeaturedProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-          const products = await getFeaturedProducts();
-          console.log("Featured Products API Response:", products);
-          setFeaturedProducts(products);
-        } catch (error) {
-          console.error("Failed to fetch featured products:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchProducts();
-    }, []);
-  
-   
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getFeaturedProducts();
+        setFeaturedProducts(products);
+      } catch (error) {
+        console.error("Failed to fetch featured products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
-      <Hero7 />
-      {/* <BrandHero /> */}
+    <Hero7 />
       <About5 />
       <CoursesFilter2 type="lg" />
-      <div className="my-5 md:mb-10" data-aos="fade-up">
-            <div className="text-left container my-5 ">
-              <h1 className="font-semibold text-4xl tracking-wide uppercase my-5">Featured <span className="text-[#EE9B33] ">Products</span></h1>
+      <div className="container my-5 md:mb-10" data-aos="fade-up">
+        <div className="text-left container my-5">
+          <h1 className="font-semibold text-4xl tracking-wide uppercase my-5">
+            Featured <span className="text-[#EE9B33]">Products</span>
+          </h1>
+        </div>
+
+        {loading ? (
+          <div className="flex justify-center">
+            <Loader />
+          </div>
+        ) : featuredProducts.length === 0 ? (
+          <p className="text-center">No featured products available.</p>
+        ) : (
+          <Swiper
+            slidesPerView={4}
+            grabCursor={true}
+            navigation={true}
+            loop={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            modules={[Navigation, Autoplay]}
+            breakpoints={{
+              576: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+            }}
+            className="px-4"
+          >
+            {featuredProducts.map((product) => (
+              <SwiperSlide key={product?._id}>
+                <ProductCard
+                  product={product}
+                  categoryId={product?.categoryId}
+                  subcategoryId={product?.subcategoryId}
+                  onQuickView={() => setSelectedProduct(product)} // Handle modal opening
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </div>
+
+      {/* Render Modal outside Swiper */}
+      {selectedProduct && (
+  <div className="relative z-high" role="dialog" aria-modal="true">
+    {/* Background dimming with blur effect */}
+    <div className="z-high fixed inset-0 bg-black/50 backdrop-blur-md transition-opacity md:block" aria-hidden="true"></div>
+
+    <div className="fixed inset-0 z-high w-screen overflow-y-auto">
+      <div className="flex min-h-full items-center justify-center text-center px-4">
+        <div className="relative flex w-full max-w-4xl transform overflow-hidden rounded-lg bg-white shadow-2xl">
+          
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setSelectedProduct(null)}
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-500"
+          >
+            <span className="sr-only">Close</span>
+            <svg className="size-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Modal Content */}
+          <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-6 p-6">
+            {/* Product Image */}
+            <img
+              src={selectedProduct.images?.[0] || "https://via.placeholder.com/300"}
+              alt={selectedProduct.name}
+              className="w-full  m-auto rounded-lg object-cover bg-gray-100"
+            />
+
+            {/* Product Details */}
+            <div className="text-left mb-4 ms-0">
+              {selectedProduct.isFeatured && (
+                <span className="mt-2 inline-block bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded">
+                  Featured Product
+                </span>
+              )}
+              <h2 className="text-2xl font-bold text-gray-900 mt-2">{selectedProduct.name}</h2>
+
+              {/* SKU */}
+              <p className="mt-2 text-sm text-gray-500">
+                SKU: <span className="font-medium">{selectedProduct.SKU}</span>
+              </p>
+
+              {/* Stock */}
+              <p className="mt-1 text-sm text-gray-500">
+                Stock: <span className="font-medium">{selectedProduct.stock}</span>
+              </p>
+
+              {/* Description */}
+              <section className="mt-4">
+                <h3 className="text-lg font-semibold text-gray-900">Description</h3>
+                <p className="text-gray-700">{selectedProduct.description}</p>
+              </section>
+
+              {/* Features */}
+              <section className="mt-4">
+                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <p className="text-gray-700">{selectedProduct.features}</p>
+              </section>
+
+              {/* View Product Link */}
+              <Link
+                href={`/category/${selectedProduct.categoryId}/subcategory/${selectedProduct.subcategoryId}/products/${selectedProduct._id}`}
+                className="mt-4 inline-flex items-center justify-center rounded-lg bg-yellow1 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-yellow focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                View Product
+              </Link>
             </div>
-
-            
-      <div className=" container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  {featuredProducts?.map((product) => (
-    <ProductCard
-    key={product._id} // Ensuring each item has a unique key
-    product={product}
-    categoryId={product.categoryId}
-    subcategoryId={product.subcategoryId}
-    />
-  ))}
-</div>
-
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+)}
 
-   
-      {/* <Features2 /> */}
-      {/* <Counter2 type="lg" /> */}
-      {/* <Testimonials2 /> */}
-      {/* <Blogs /> */}
-      {/* <FeaturesMarque /> */}
-      <ContactFrom/>
     </>
   );
 };

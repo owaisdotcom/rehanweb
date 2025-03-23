@@ -16,7 +16,7 @@ const CoursesFilter2 = ({ type }) => {
           {/* courses Heading */}
           <div className="mb-5 md:mb-10" data-aos="fade-up">
             
-            <HeadingPrimary text="center">
+            <HeadingPrimary text="text-left ">
               Perfect For{" "}
               
                 Your 
@@ -26,7 +26,7 @@ const CoursesFilter2 = ({ type }) => {
             </HeadingPrimary>
           </div>
 
-          {/* courses tabs */}
+          {/* courses tabs */}  
           {/* <FilterControllerWrapper>
             <FilterController2 />
           </FilterControllerWrapper> */}

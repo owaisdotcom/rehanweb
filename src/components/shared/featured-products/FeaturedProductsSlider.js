@@ -40,7 +40,7 @@ const FeaturedProductsSlider = () => {
         grabCursor={true}
         navigation={true}
         loop={true}
-        autoplay={{ delay: 2500, disableOnInteraction: false }} // ✅ Adjusted autoplay settings
+        autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }} // ✅ Adjusted autoplay settings
         modules={[Navigation, Autoplay]}
         breakpoints={{
           576: { slidesPerView: 2 },

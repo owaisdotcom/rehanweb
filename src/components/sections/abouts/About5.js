@@ -54,10 +54,10 @@ const About5 = () => {
             </ul>
             <div>
               <a
-                 href="categories"
+                 href="about"
                 className="text-whiteColor bg-primaryColor text-md lg:text-md border border-primaryColor mt-5 px-4 py-3 lg:px-5 lg:py-12px  hover:text-primaryColor hover:bg-whiteColor rounded-full inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
               >
-                Discover More
+                Read More
               </a>
             </div>
           </div>

@@ -39,7 +39,7 @@ const FilterCards = () => {
         grabCursor={true}
         navigation={true}
         loop={true}
-        autoplay={{ delay: 2000, disableOnInteraction: false }} // ✅ Autoplay enabled
+        autoplay={{ delay: 5000, disableOnInteraction: false , pauseOnMouseEnter: true}} // ✅ Autoplay enabled
         modules={[Navigation, Autoplay]} // ✅ Added Autoplay module
         breakpoints={{
           576: { slidesPerView: 1 },

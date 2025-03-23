@@ -3,21 +3,17 @@ const stickyHeader = () => {
   const stickyHeader = header?.querySelector(".sticky-header");
 
   if (stickyHeader) {
-    window.addEventListener("scroll", () => {
-      const stickyHeaderHeight = stickyHeader.offsetHeight;
-      const scrollCount = window.scrollY;
-
-      // if (scrollCount - headerHeight < 0 && scrollCount - headerHeight > -5) {
-
-      // }
-      if (scrollCount < 300) {
-        
-          stickyHeader.removeAttribute("style");
-          stickyHeader.classList.remove("active");
-      
-      }
-      
-    });
+    // Apply Tailwind utility classes to keep it always fixed at the top
+    stickyHeader.classList.add(
+      "fixed",
+      "top-0",
+      "left-0",
+      "w-full",
+      "z-50",
+      "shadow-md",
+      "bg-white"
+    );
   }
 };
+
 export default stickyHeader;

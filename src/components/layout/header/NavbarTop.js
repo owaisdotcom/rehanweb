@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiPhone, FiMapPin } from "react-icons/fi";
-import logo1 from "@/assets/images/logo/logowithtext.png";
+import { FiPhone, FiMapPin, FiMail } from "react-icons/fi";
+import logo1 from "@/assets/images/logo1.png";
+import { FaMailBulk } from "react-icons/fa";
 
 const NavbarTop = () => {
   return (
@@ -9,7 +10,7 @@ const NavbarTop = () => {
       {/* Logo Section */}
       <div className="col-span-3 flex items-center">
         <Link href="/" className="block">
-          <Image priority={false} src={logo1} alt="logo" className="w-14 sm:w-28" />
+          <Image priority={false} src={logo1} alt="logo" className="w-20 sm:w-36" />
         </Link>
       </div>
 
@@ -35,6 +36,10 @@ const NavbarTop = () => {
       {/* Contact & Location */}
       <div className="col-span-5 flex justify-end items-center gap-6">
         {/* Contact Info */}
+        <div className="flex items-center gap-2 text-sm text-blackColor dark:text-white">
+          <FiMail className="text-yellow text-2xl" />
+          <span>masleathergloves@gmail.com</span>
+        </div>
         <div className="flex items-center gap-2 text-sm text-blackColor dark:text-white">
           <FiPhone className="text-yellow text-2xl" />
           <span>+92 300 1234567</span>

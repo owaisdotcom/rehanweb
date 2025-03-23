@@ -43,8 +43,8 @@ const NavItems = () => {
    
   ];
   return (
-    <div className="hidden lg:block lg:col-start-3 lg:col-span-7 ">
-      <ul className="nav-list flex justify-center items-center mt-2 -mb-1 ">
+    <div className="hidden mb-[-1rem] lg:block lg:col-start-3 lg:col-span-7 ">
+      <ul className="nav-list flex justify-center items-center  ">
         {navItems.map((navItem, idx) => (
           <Navitem key={idx} idx={idx} navItem={{ ...navItem, idx: idx }}>
             <DropdownWrapper>{navItem.dropdown}</DropdownWrapper>

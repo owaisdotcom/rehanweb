@@ -12,7 +12,7 @@ const HeroSlide2 = ({ slide, idx, thumbsImages }) => {
     <div
       className={`hero ${
         idx === 0
-          ? "bg-[url('../assets/images/herobanner/hero1.webp')] "
+          ? "bg-[url('../assets/images/herobanner/hero1.png')] "
           : idx === 1
           ? "bg-[url('../assets/images/herobanner/hero2.webp')]"
           : idx === 2

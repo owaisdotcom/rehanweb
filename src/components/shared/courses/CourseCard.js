@@ -8,11 +8,11 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="w-full  p-4"> {/* Increased width */}
+          <Link href={`/category/${id}`} className="w-full h-full block group">
       <div className="bg-white shadow-xl overflow-hidden dark:bg-darkdeep3 dark:shadow-md h-[500px] flex flex-col">  
         
         {/* Card Image - Takes more space */}
         <div className="relative w-full h-[75%] overflow-hidden">
-          <Link href={`/category/${id}`} className="w-full h-full block group">
             <Image
               src={image || "/default-category.jpg"}
               alt={title}
@@ -32,7 +32,6 @@ const CourseCard = ({ course }) => {
                 className="object-contain"
               />
             </div>
-          </Link>
         </div>
 
         {/* Content Area - Smaller height */}
@@ -51,11 +50,12 @@ const CourseCard = ({ course }) => {
           <Link
             href={`/category/${id}`}
             className="mt-auto inline-flex items-center gap-1 text-yellow font-semibold text-sm hover:text-yellow1prod transition-all"
-          >
+            >
             View Products <span>&rarr;</span>
           </Link>
         </div>
       </div>
+            </Link>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import React from "react";
 
 const Hero7 = () => {
   return (
-    <section data-aos="fade-up" className="hero relative z-0 overflow-hidden">
+    <section data-aos="fade-up" className="hero relative sm:mt-[10rem] z-0 overflow-hidden">
       {/* banner section  */}
       <div>
         {/* animated icons  */}

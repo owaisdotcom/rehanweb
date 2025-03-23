@@ -35,7 +35,7 @@ const Navbar = () => {
           ) : (
             ""
           )}
-          <div className="grid grid-cols-2 lg:grid-cols-12 items-center gap-15px lg:bg-[#EC9931]">
+          <div className="grid grid-cols-2 lg:grid-cols-12  items-center gap-15px lg:bg-[#EC9931]">
             {/* navbar left */}
             <NavbarLogo />
             {/* Main menu */}

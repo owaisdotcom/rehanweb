@@ -49,51 +49,63 @@ export default function page() {
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 container py-10">
-            <div class="p-4 shadow-md rounded-lg">
-              <img
-                src="https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/N95263s2.jpg?im=Resize,width=750"
-                class="w-full h-64 object-cover rounded-md"
-                alt="Gloves"
-              />
-              <h3 class="text-xl mt-4 font-medium">Signature Gloves</h3>
-              <p class="text-gray-600 text-sm mt-2">
-                Crafted for comfort and durability.
-              </p>
-            </div>
-            <div class="p-4 shadow-md rounded-lg">
-              <img
-                src="https://i.redd.it/rz0lzegijk5c1.jpeg"
-                class="w-full h-64 object-cover rounded-md"
-                alt="Jacket"
-              />
-              <h3 class="text-xl mt-4 font-medium">Legacy Jackets</h3>
-              <p class="text-gray-600 text-sm mt-2">
-                Timeless style with premium leather.
-              </p>
-            </div>
-            <div class="p-4 shadow-md rounded-lg">
-              <img
-                src="https://harshaystore.pk/cdn/shop/products/1_1_900x.jpg?v=1673269490"
-                class="w-full h-64 object-cover rounded-md"
-                alt="Wallet"
-              />
-              <h3 class="text-xl mt-4 font-medium">Heirloom Wallets</h3>
-              <p class="text-gray-600 text-sm mt-2">
-                Handcrafted wallets built to last.
-              </p>
-            </div>
-            <div class="p-4 shadow-md rounded-lg">
-              <img
-                src="https://mender.pk/wp-content/uploads/2024/09/Camel-Brown-Plain-Leather-Belt-1.5-Inches-Wide.jpg"
-                class="w-full h-64 object-cover rounded-md"
-                alt="Belt"
-              />
-              <h3 class="text-xl mt-4 font-medium">Defining Belts</h3>
-              <p class="text-gray-600 text-sm mt-2">
-                Elegant belts for every occasion.
-              </p>
-            </div>
-          </div>
+  <div class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+    <img
+      src="https://cdn11.bigcommerce.com/s-6e1n67clqw/images/stencil/1200x1200/products/76626/329460/smakymfizpwjrjbjjtjb__45747.1738261049.jpg?c=1"
+      class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
+      alt="Gloves"
+    />
+    <h3 class="text-xl mt-4 font-medium transition-colors duration-300 hover:text-gray-700">
+      Signature Gloves
+    </h3>
+    <p class="text-gray-600 text-sm mt-2">
+      Crafted for comfort and durability.
+    </p>
+  </div>
+
+  <div class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+    <img
+      src="https://m.media-amazon.com/images/I/B1On3Y+j0-L._CLa%7C2140%2C2000%7C51Hyy3xf3eL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UY1000_.png"
+      class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
+      alt="Jacket"
+    />
+    <h3 class="text-xl mt-4 font-medium transition-colors duration-300 hover:text-gray-700">
+      Legacy Jackets
+    </h3>
+    <p class="text-gray-600 text-sm mt-2">
+      Timeless style with premium leather.
+    </p>
+  </div>
+
+  <div class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+    <img
+      src="https://corporate.theelegance.pk/wp-content/uploads/2022/06/Promotional-Men-Wallet-Corporate-Gifts-in-Bulk.jpg"
+      class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
+      alt="Wallet"
+    />
+    <h3 class="text-xl mt-4 font-medium transition-colors duration-300 hover:text-gray-700">
+      Heirloom Wallets
+    </h3>
+    <p class="text-gray-600 text-sm mt-2">
+      Handcrafted wallets built to last.
+    </p>
+  </div>
+
+  <div class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
+    <img
+      src="https://cdn11.bigcommerce.com/s-5jktp/images/stencil/608x608/products/694/2138/Web_Belt__86721.1716655548.JPG?c=2"
+      class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
+      alt="Belt"
+    />
+    <h3 class="text-xl mt-4 font-medium transition-colors duration-300 hover:text-gray-700">
+      Defining Belts
+    </h3>
+    <p class="text-gray-600 text-sm mt-2">
+      Elegant belts for every occasion.
+    </p>
+  </div>
+</div>
+
           <section>
             <div className="container mt-20">
               {/* about section */}
@@ -209,9 +221,11 @@ export default function page() {
               your vision to life.
             </p>
             <div class="mt-6 space-x-4">
+              <Link href={"/category/67804b883c8cc403e459c4b5"}>
               <button class="bg-yellow text-white px-6 py-3 rounded-lg hover:bg-yellow1">
                 INITIATE YOUR MASTERPIECE
               </button>
+              </Link>
               <Link href={"/contact"}>
                 <button class="border border-orange-600 text-orange-600 px-6 py-3 rounded-lg hover:bg-orange hover:text-white">
                   SPEAK WITH A CRAFTSMAN

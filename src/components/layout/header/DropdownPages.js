@@ -31,7 +31,7 @@ const DropdownPages = () => {
 
   return (
     <DropdownContainer>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 ">
         {lists?.map((list, idx) => (
           <DropdownItems key={idx} list={list} />
         ))}

@@ -25,7 +25,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Discover the Finest <span className="text-secondaryColor">Assembly Gloves</span>
+          Discover the Finest <span className="text-secondaryColor leading-1.5 ">Assembly Gloves</span>
         </>
       ),
       tag: "Engineered for Safety, Designed for Comfort",
@@ -33,7 +33,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Premium Collection of <span className="text-secondaryColor">Canadian Gloves</span>
+          Premium Collection of <span className="text-secondaryColor leading-1.5 ">Canadian Gloves</span>
         </>
       ),
       tag: "Cold Weather Protection, Without Compromise",
@@ -41,7 +41,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Durable & Stylish <span className="text-secondaryColor">Welding Gloves</span>
+          Durable & Stylish <span className="text-secondaryColor leading-1.5 ">Welding Gloves</span>
         </>
       ),
       tag: "Designed for the Toughest Jobs",
@@ -49,7 +49,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Heavy-Duty <span className="text-secondaryColor">Mechanical Gloves</span>
+          Heavy-Duty <span className="text-secondaryColor leading-1.5 ">Mechanical Gloves</span>
         </>
       ),
       tag: "Crafted for Strength and Precision",
@@ -57,7 +57,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Premium Quality <span className="text-secondaryColor">Split Leather Gloves</span>
+          Premium Quality <span className="text-secondaryColor leading-1.5 ">Split Leather Gloves</span>
         </>
       ),
       tag: "Tough and Reliable Protection",
@@ -65,7 +65,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Warm & Cozy <span className="text-secondaryColor">Winter Gloves</span>
+          Warm & Cozy <span className="text-secondaryColor leading-1.5 ">Winter Gloves</span>
         </>
       ),
       tag: "Stay Warm, Stay Comfortable",
@@ -73,7 +73,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Premium Collection of <span className="text-secondaryColor">Leather Jackets</span>
+          Premium Collection of <span className="text-secondaryColor leading-1.5 ">Leather Jackets</span>
         </>
       ),
       tag: "Elevate Your Style with Timeless Elegance",
@@ -81,7 +81,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Durable & Stylish <span className="text-secondaryColor">Leather Wallets</span>
+          Durable & Stylish <span className="text-secondaryColor ">Leather Wallets</span>
         </>
       ),
       tag: "Where Function Meets Luxury",
@@ -89,7 +89,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          Unveil Classic <span className="text-secondaryColor">Leather Belts</span>
+          Unveil Classic <span className="text-secondaryColor leading-1.5 ">Leather Belts</span>
         </>
       ),
       tag: "The Perfect Finish for Every Outfit",

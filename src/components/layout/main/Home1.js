@@ -35,8 +35,8 @@ const Home1 = () => {
     <Hero7 />
       <About5 />
       <CoursesFilter2 type="lg" />
-      <div className="container my-5 md:mb-10" data-aos="fade-up">
-        <div className="text-left container my-5">
+      <div className=" my-5 filter-container container-fluid-2 md:mb-10" data-aos="fade-up">
+        <div className="text-left  my-5">
           <h1 className="font-semibold text-4xl tracking-wide uppercase my-5">
             Featured <span className="text-[#EE9B33]">Products</span>
           </h1>

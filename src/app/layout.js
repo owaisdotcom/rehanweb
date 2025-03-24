@@ -26,7 +26,7 @@ export const hind = Hind({
 });
 
 export const metadata = {
-  title: "Home | M. Azam & Sons - Education LMS Template",
+  title: "Home | M. Azam & Sons",
   description: "Home description",
 };
 

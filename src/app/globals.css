@@ -11153,7 +11153,10 @@ video {
   background-image: url(/_next/static/media/university_3.2d702c18.jpg);
 }
 /* globals.css or your styles file */
-
+.bgopacity{
+  background-color: rgba(0, 0, 0, 0.747);
+  
+}
 /* Background images for hero slides */
 .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero1\.webp\'\)\] {
   background-image: url(/_next/static/media/hero1.3fc0f61c.webp);

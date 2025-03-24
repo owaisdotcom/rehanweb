@@ -7,15 +7,23 @@ import { Navigation, Autoplay } from "swiper/modules"; // ✅ Import Autoplay mo
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay"; // ✅ Ensure autoplay styles are loaded
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FilterCards = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    AOS.init({ duration: 1000, once: false }); // ✅ Initialize AOS
+  }, []);
+
+  useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("https://mathsflix-backend.vercel.app/api/products/categories");
+        const response = await fetch(
+          "https://mathsflix-backend.vercel.app/api/products/categories"
+        );
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -33,13 +41,16 @@ const FilterCards = () => {
   }
 
   return (
-    <div className="filter-contents flex flex-wrap sm:-mx-15px box-content mt-7 lg:mt-25px">
+    <div
+      className="filter-contents flex flex-wrap sm:-mx-15px box-content mt-7 lg:mt-25px"
+      data-aos="fade-up" // ✅ AOS animation
+    >
       <Swiper
         slidesPerView={3}
         grabCursor={true}
         navigation={true}
         loop={true}
-        autoplay={{ delay: 5000, disableOnInteraction: false , pauseOnMouseEnter: true}} // ✅ Autoplay enabled
+        autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }} // ✅ Autoplay enabled
         modules={[Navigation, Autoplay]} // ✅ Added Autoplay module
         breakpoints={{
           576: { slidesPerView: 1 },
@@ -50,7 +61,7 @@ const FilterCards = () => {
       >
         {categories.length > 0 ? (
           categories.map((category) => (
-            <SwiperSlide key={category._id}>
+            <SwiperSlide key={category._id} data-aos="zoom-in"> {/* ✅ AOS Animation */}
               <CourseCard
                 course={{
                   id: category._id,

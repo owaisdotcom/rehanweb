@@ -2,12 +2,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "./../../../assets/images/logo/logo.png";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const CourseCard = ({ course }) => {
   const { id, title, image, desc } = course;
+    useEffect(() => {
+      AOS.init({ duration: 1000, once: false }); // ✅ Initialize AOS
+    }, []);
 
   return (
-    <div className="w-full  p-4"> {/* Increased width */}
+    <div data-aos="zoom-in"  className="w-full  p-4"> {/* Increased width */}
           <Link href={`/category/${id}`} className="w-full h-full block group">
       <div className="bg-white shadow-xl overflow-hidden dark:bg-darkdeep3 dark:shadow-md h-[500px] flex flex-col">  
         

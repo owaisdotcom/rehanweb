@@ -14,7 +14,7 @@ const CoursesFilter2 = ({ type }) => {
           }`}
         >
           {/* courses Heading */}
-          <div className="mb-5 md:mb-10" data-aos="fade-up">
+          <div className="" data-aos="fade-up">
             
             <HeadingPrimary text="text-left ">
               Perfect For{" "}

@@ -7,16 +7,13 @@ import { Navigation, Autoplay } from "swiper/modules"; // ✅ Import Autoplay mo
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay"; // ✅ Ensure autoplay styles are loaded
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 const FilterCards = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: false }); // ✅ Initialize AOS
-  }, []);
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -42,8 +39,8 @@ const FilterCards = () => {
 
   return (
     <div
-      className="filter-contents flex flex-wrap sm:-mx-15px box-content mt-7 lg:mt-25px"
-      data-aos="fade-up" // ✅ AOS animation
+      className="filter-contents flex flex-wrap sm:-mx-15px box-content "
+      // ✅ AOS animation
     >
       <Swiper
         slidesPerView={3}
@@ -61,7 +58,7 @@ const FilterCards = () => {
       >
         {categories.length > 0 ? (
           categories.map((category) => (
-            <SwiperSlide key={category._id} data-aos="zoom-in"> {/* ✅ AOS Animation */}
+            <SwiperSlide key={category._id} > {/* ✅ AOS Animation */}
               <CourseCard
                 course={{
                   id: category._id,

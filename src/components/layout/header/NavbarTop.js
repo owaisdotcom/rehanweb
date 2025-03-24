@@ -6,11 +6,11 @@ import { FaMailBulk } from "react-icons/fa";
 
 const NavbarTop = () => {
   return (
-    <div className="hidden lg:grid grid-cols-12 items-center gap-6 border-b border-borderColor dark:border-borderColor-dark px-4 py-3">
+    <div className="hidden lg:grid grid-cols-12 items-center gap-6 border-b border-borderColor dark:border-borderColor-dark px-4">
       {/* Logo Section */}
       <div className="col-span-3 flex items-center">
         <Link href="/" className="block">
-          <Image priority={false} src={logo1} alt="logo" className="w-20 sm:w-36" />
+          <Image priority={false} src={logo1} alt="logo" className="w-20 sm:w-[250px]" />
         </Link>
       </div>
 

@@ -43,7 +43,9 @@ const NavItems = () => {
    
   ];
   return (
-    <div className="hidden mb-[-1rem] lg:block lg:col-start-3 lg:col-span-7 ">
+    <div style={{
+      paddingBottom: "0px",
+    }} className="hidden pt-1  lg:block lg:col-start-3 lg:col-span-7 ">
       <ul className="nav-list flex justify-center items-center  ">
         {navItems.map((navItem, idx) => (
           <Navitem key={idx} idx={idx} navItem={{ ...navItem, idx: idx }}>

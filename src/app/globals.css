@@ -11157,6 +11157,10 @@ video {
   background-color: rgba(0, 0, 0, 0.747);
   
 }
+.paddingclass{
+  padding-bottom: 0px !important;
+}
+
 /* Background images for hero slides */
 .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero1\.webp\'\)\] {
   background-image: url(/_next/static/media/hero1.3fc0f61c.webp);

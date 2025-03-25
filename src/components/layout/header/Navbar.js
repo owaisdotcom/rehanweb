@@ -20,7 +20,7 @@ const Navbar = () => {
       const scrollY = window.scrollY;
       console.log("ScrollY:", scrollY);
 
-      if (scrollY > lastScrollY.current && scrollY > 100) {
+      if (scrollY > lastScrollY.current && scrollY > 115) {
         setIsSticky(true);
       } else if (scrollY < lastScrollY.current && scrollY < 130) {
         setIsSticky(false);

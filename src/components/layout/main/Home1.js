@@ -61,7 +61,7 @@ const Home1 = () => {
               768: { slidesPerView: 3 },
               1024: { slidesPerView: 4 },
             }}
-            className="px-4"
+            className=""
           >
             {featuredProducts.map((product) => (
               <SwiperSlide key={product?._id}>

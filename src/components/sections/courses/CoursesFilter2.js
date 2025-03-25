@@ -7,7 +7,7 @@ import FilterControllerWrapper from "@/components/shared/wrappers/FilterControll
 const CoursesFilter2 = ({ type }) => {
   return (
     <section>
-      <div className="pt-50px pb-10 md:pt-70px md:pb-50px lg:pt-20 2xl:pt-100px 2xl:pb-70px bg-lightGrey7 dark:bg-lightGrey7-dark">
+      <div className="pt-20px pb-10 md:pt-30px md:pb-50px lg:pt-10 2xl:pt-50px 2xl:pb-70px bg-lightGrey7 dark:bg-lightGrey7-dark">
         <div
           className={`filter-container ${
             type ? "container-fluid-2" : " container"

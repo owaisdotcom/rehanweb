@@ -28,7 +28,7 @@ const HeroSlide2 = ({ slide, idx }) => {
           "bg-[url('../assets/images/herobanner/hero8.jpeg')]",
           "bg-[url('../assets/images/herobanner/hero9.jpeg')]",
         ][idx] || ""
-      } relative bg-cover bg-center bg-no-repeat h-[520px] flex items-center`}
+      } relative bg-cover bg-center bg-no-repeat h-[480px] flex items-center`}
     >
       {/* Dark Overlay */}
       <div

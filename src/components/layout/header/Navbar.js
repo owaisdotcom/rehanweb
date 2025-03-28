@@ -75,7 +75,10 @@ const Navbar = () => {
           </div>
 
           {/* Navbar Right */}
+          <div className="block sm:hidden">
+
           <MobileMenuOpen />
+          </div>
         </div>
       </div>
     </div>

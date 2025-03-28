@@ -70,18 +70,26 @@ const FilterCards = () => {
       // ✅ AOS animation
     >
       <Swiper
-        slidesPerView={3}
+        // slidesPerView={1}
         grabCursor={true}
         navigation={true}
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }} // ✅ Autoplay enabled
         modules={[Navigation, Autoplay]} // ✅ Added Autoplay module
         breakpoints={{
-          576: { slidesPerView: 1 },
-          992: { slidesPerView: 2 },
-          1500: { slidesPerView: 3 },
+          640: {
+            slidesPerView: 2,
+          
+          },
+          768: {
+            slidesPerView: 3,
+          
+          },
+          1024: {
+            slidesPerView: 4,
+           
+          },
         }}
-        className=""
       >
         {categories.length > 0 ? (
           categories.map((category) => (

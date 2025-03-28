@@ -9,6 +9,7 @@ import Hero7 from "@/components/sections/hero-banners/Hero7";
 import About5 from "@/components/sections/abouts/About5";
 import CoursesFilter2 from "@/components/sections/courses/CoursesFilter2";
 import Link from "next/link";
+import HeadingPrimary from "@/components/shared/headings/HeadingPrimary";
 
 const Home1 = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -37,9 +38,13 @@ const Home1 = () => {
       <CoursesFilter2 type="lg" />
       <div className=" my-5 filter-container container-fluid-2 md:mb-10" data-aos="fade-up">
         <div className="text-left  my-5">
-          <h1 className="font-semibold text-4xl tracking-wide uppercase my-5">
-            Featured <span className="text-[#EE9B33]">Products</span>
-          </h1>
+        <div className="" data-aos="fade-up">
+            
+            <HeadingPrimary text="text-left ">
+              Featured
+             <span className="text-[#EE9B33] "> Products</span> 
+            </HeadingPrimary>
+          </div>
         </div>
 
         {loading ? (
@@ -50,16 +55,25 @@ const Home1 = () => {
           <p className="text-center">No featured products available.</p>
         ) : (
           <Swiper
-            slidesPerView={4}
+            slidesPerView={1}
             grabCursor={true}
             navigation={true}
             loop={true}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             modules={[Navigation, Autoplay]}
             breakpoints={{
-              576: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 },
+              640: {
+                slidesPerView: 2,
+              
+              },
+              768: {
+                slidesPerView: 3,
+              
+              },
+              1024: {
+                slidesPerView: 4,
+               
+              },
             }}
             className=""
           >

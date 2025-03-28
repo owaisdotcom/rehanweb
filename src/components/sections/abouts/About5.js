@@ -68,7 +68,7 @@ const About5 = () => {
             </div>
           </div>
           {/* About right */}
-          <div className="overflow-visible flex justify-center items-center" data-aos="fade-left">
+          <div className="overflow-visible flex justify-center items-center" >
             <TiltWrapper>
               <div className="tilt pt-10 lg:pt-0 ">
                 <Image

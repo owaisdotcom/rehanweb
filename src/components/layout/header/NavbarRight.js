@@ -13,7 +13,7 @@ const NavbarRight = () => {
   const isHome2Dark = useIsTrue("/home-2-dark");
 
   return (
-    <div className="lg:col-start-10 lg:col-span-3">
+    <div className="">
       <ul className="relative nav-list flex justify-end items-center">
        
         <li className="block lg:hidden">

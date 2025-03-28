@@ -70,6 +70,7 @@ const MobileMenuItems = () => {
       children: <DropdownDashboard />, 
     },
     { id: 4, name: "Contact", path: "/contact", accordion: false },
+    { id: 4, name: "Custom", path: "/custom", accordion: false },
   ];
 
   return (

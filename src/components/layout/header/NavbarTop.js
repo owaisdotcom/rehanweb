@@ -10,7 +10,7 @@ const NavbarTop = () => {
       {/* Logo Section */}
       <div className="col-span-3 flex items-center">
         <Link href="/" className="block">
-          <Image priority={false} src={logo1} alt="logo" className="w-20 sm:w-[250px]" />
+          <Image priority={false} src={logo1} alt="logo" className="w-10 sm:w-[250px]" />
         </Link>
       </div>
 

@@ -8,6 +8,7 @@ import NavbarRight from "./NavbarRight";
 import NavItems2 from "./NavItems2";
 import useIsTrue from "@/hooks/useIsTrue";
 import NavbarTop from "./NavbarTop";
+import MobileMenuOpen from "@/components/shared/buttons/MobileMenuOpen";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -17,22 +18,24 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (window.innerWidth < 768) return; // Disable sticky navbar on mobile screens
+  
       const scrollY = window.scrollY;
       console.log("ScrollY:", scrollY);
-
+  
       if (scrollY > lastScrollY.current && scrollY > 130) {
         setIsSticky(true);
       } else if (scrollY < lastScrollY.current && scrollY < 130) {
         setIsSticky(false);
       }
-
+  
       lastScrollY.current = scrollY; // Update the ref without re-rendering
     };
-
+  
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  
   return (
     <div>
       {/* Header (Non-Sticky) */}
@@ -50,7 +53,7 @@ const Navbar = () => {
             : "relative z-medium transform translate-y-0"
         }`}
       >
-        <div className="grid grid-cols-2 lg:grid-cols-12 h-[53px] gap-15px transition-all duration-500 ease-in-out">
+        <div className="lg:grid flex justify-around lg:grid-cols-12 h-[60px] sm:h-[53px] lg:gap-15px transition-all duration-500 ease-in-out">
           {/* Navbar Left */}
           <NavbarLogo />
 
@@ -60,16 +63,19 @@ const Navbar = () => {
           {/* Custom Button */}
           <Link href="/custom">
             <button
-              className="flex items-center py-2 mt-[3.5px] px-4 gap-2 text-black bg-white border rounded-lg hover:bg-gray-900 hover:text-white transition-all duration-300"
+              className="hidden sm:flex items-center py-2 mt-[3.5px] px-4 gap-2 text-black bg-white border rounded-lg hover:bg-gray-900 hover:text-white transition-all duration-300"
               style={{ borderColor: "#FFD700" }}
             >
               <FaHammer />
               Custom
             </button>
           </Link>
+          <div>
+
+          </div>
 
           {/* Navbar Right */}
-          <NavbarRight isHome2Dark={isHome2Dark} />
+          <MobileMenuOpen />
         </div>
       </div>
     </div>

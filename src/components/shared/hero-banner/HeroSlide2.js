@@ -42,7 +42,7 @@ const HeroSlide2 = ({ slide, idx }) => {
       <div
         key={animationKey} // Force re-render on idx change
         data-aos="fade-down"
-        className="relative z-10 w-96 md:w-[500px] ml-8 md:ml-40 text-left text-white p-4 md:p-6 bgopacity shadow-xl rounded-xl"
+        className="relative z-10 w-96 md:w-[500px] ml-8 md:ml-40 text-center sm:text-left text-white p-4 md:p-6 bgopacity shadow-xl rounded-xl"
       >
         <h1 className="text-2xl md:text-5xl font-bold leading-[1.2] tracking-wide mb-4">
           {title}

@@ -31,11 +31,11 @@ const FooterNavList = () => {
     {
       heading: "Categories",
       items: [
-        { name: "Gloves", path: "#" },
-        { name: "Jackets", path: "#" },
-        { name: "Wallets", path: "#" },
-        { name: "Belts", path: "#" },
-        { name: "Keychains", path: "#" },
+        { name: "Gloves", path: "/category/67804b883c8cc403e459c4b5" },
+        { name: "Jackets", path: "/category/67ddb28778a1e750021a4d95" },
+        { name: "Wallets", path: "/category/67ddb2e378a1e750021a4d9f" },
+        { name: "Belts", path: "/category/67ddbd2d9e389f15830b035a" },
+        // { name: "Keychains", path: "#" },
       ],
     },
   ];
@@ -44,7 +44,7 @@ const FooterNavList = () => {
 
   return (
     <section>
-      <div className="grid grid-cols-1 sm:grid-cols-12 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-y-5 lg:gap-y-0 pt-2 pb-2 md:pt-8 md:pb-8 lg:pt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-12 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-y-5 lg:gap-y-0 pt-2 pb-2 md:pt-8 lg:pt-12">
         {/* Left Section */}
         <FooterAbout />
 

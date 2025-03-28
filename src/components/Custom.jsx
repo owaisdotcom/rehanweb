@@ -17,7 +17,7 @@ export default function Custom() {
   }, []);
   return (
     <>
-      <PageWrapper>
+      
         <main>
           <div  data-aos="fade-up" class="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden">
             <div class="absolute inset-0">
@@ -222,7 +222,7 @@ export default function Custom() {
             </div>
           </section>
         </main>
-      </PageWrapper>
+     
     </>
   );
 }

@@ -10,7 +10,10 @@ export default function page() {
   return (
     <>
       <PageWrapper>
+        <main>
+
         <Custom/>
+        </main>
       </PageWrapper>
     </>
   );

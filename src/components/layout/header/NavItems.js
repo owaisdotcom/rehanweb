@@ -12,7 +12,7 @@ const NavItems = () => {
     {
       id: 1,
       name: "Our Products",
-      path: "/categories",
+      path: "#",
       dropdown: <DropdownPages />,
       isRelative: false,
     },

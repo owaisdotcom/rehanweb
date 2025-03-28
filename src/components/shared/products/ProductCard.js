@@ -21,29 +21,35 @@ const ProductCard = ({ product, categoryId, subcategoryId, onQuickView }) => {
   return (
     <div className="group relative overflow-hidden border-2 border-white hover:border-yellow transition-shadow duration-300 bg-white">
       {/* Product Image */}
-      <div className="relative w-full h-64">
-        <Link href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}>
-          <Image
-            src={product.images?.[0] || "/default-product.jpg"}
-            alt={product.name}
-            className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-            layout="fill"
-          />
-        </Link>
+      <div className="relative w-full h-64 group">
+  {/* Featured Banner in a Cross */}
+  <div className="absolute top-7 left-0 bg-red-500 text-white text-xs font-bold px-3 py-1 transform -rotate-45 shadow-lg">
+    FEATURED
+  </div>
 
-        {/* Quick View Button */}
-        <button
-          onClick={isHome ? onQuickView : handleQuickView}
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow hover:bg-yellow1 text-white px-5 py-2 text-sm font-semibold rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300"
-        >
-          Quick View
-        </button>
+  <Link href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}>
+    <Image
+      src={product.images?.[0] || "/default-product.jpg"}
+      alt={product.name}
+      className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+      layout="fill"
+    />
+  </Link>
 
-        {/* Logo Overlay */}
-        <div className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-lg">
-          <Image src={logo} alt="Logo" width={32} height={32} className="object-contain" />
-        </div>
-      </div>
+  {/* Quick View Button */}
+  <button
+    onClick={isHome ? onQuickView : handleQuickView}
+    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-yellow hover:bg-yellow1 text-white px-5 py-2 text-sm font-semibold rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+  >
+    Quick View
+  </button>
+
+  {/* Logo Overlay */}
+  <div className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-lg">
+    <Image src={logo} alt="Logo" width={32} height={32} className="object-contain" />
+  </div>
+</div>
+
 
       {/* Product Details */}
       <div className="p-4">

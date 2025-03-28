@@ -7,7 +7,7 @@ const DropdownItems = ({ list }) => {
   return (
     <div>
      <Link href={path}>
-     <h3 className="text-lg text-blackColor font-semibold border-b border-borderColor dark:text-blackColor-dark p-10px mb-10px">
+     <h3 className="text-lg text-blackColor hover:text-yellow hover:bg-slate-50 font-semibold border-b border-borderColor dark:text-blackColor-dark p-10px mb-10px">
         {title}
       </h3>
      </Link>

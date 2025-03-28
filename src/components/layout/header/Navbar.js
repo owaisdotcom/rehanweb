@@ -47,7 +47,7 @@ const Navbar = () => {
         className={`transition-all duration-500 ease-in-out bg-[#EC9931] ${
           isSticky
             ? "fixed top-0 left-0 w-full z-50 shadow-md transform translate-y-0"
-            : "relative transform translate-y-0"
+            : "relative z-medium transform translate-y-0"
         }`}
       >
         <div className="grid grid-cols-2 lg:grid-cols-12 h-[53px] gap-15px transition-all duration-500 ease-in-out">

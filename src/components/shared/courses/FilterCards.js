@@ -22,16 +22,43 @@ const FilterCards = () => {
           "https://mathsflix-backend.vercel.app/api/products/categories"
         );
         const data = await response.json();
-        setCategories(data);
+  
+        if (data.length > 0) {
+          // Extract the first category (Gloves) and its subcategories
+          const firstCategory = data[0];
+          const subcategories = firstCategory?.subcategories || [];
+  
+          // Extract remaining categories (excluding the first one)
+          const remainingCategories = data.slice(1);
+  
+          // Combine structured data
+          const formattedCategories = [
+            firstCategory, // Main category (Gloves)
+            ...subcategories.map((sub) => ({
+              _id: sub._id,
+              name: sub.name,
+              description: sub.description,
+              image: sub.image,
+              isSubcategory: true, // Flag for UI differentiation
+            })),
+            ...remainingCategories,
+          ];
+  
+          setCategories(formattedCategories);
+        } else {
+          setCategories([]);
+        }
       } catch (error) {
         console.error("Failed to fetch categories:", error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchCategories();
   }, []);
+  
+  
 
   if (loading) {
     return <Loader />;

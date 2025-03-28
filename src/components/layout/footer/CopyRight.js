@@ -7,7 +7,7 @@ const CopyRight = () => {
   return (
     <div>
       {isSecondary ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-10 lg:mt-4 items-center border-t border-darkcolor">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5  items-center border-t border-darkcolor">
           <div>
             <p className="text-base text-center sm:text-start text-darkgray">
               © 2024 Powered by{" "}
@@ -40,7 +40,7 @@ const CopyRight = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-30px pt-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-30px items-center">
           <div className="lg:col-start-1 lg:col-span-3">
             <a href="index.html">
               <Image className="w-20" src={logoImage} alt="" placeholder="blur" />

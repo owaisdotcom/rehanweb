@@ -24,26 +24,25 @@ const FilterCards = () => {
         const data = await response.json();
   
         if (data.length > 0) {
-          // Extract the first category (Gloves) and its subcategories
-          const firstCategory = data[0];
+          const firstCategory = data[0]; // Assume first category is Gloves
           const subcategories = firstCategory?.subcategories || [];
   
-          // Extract remaining categories (excluding the first one)
           const remainingCategories = data.slice(1);
   
-          // Combine structured data
+          // Format categories
           const formattedCategories = [
             firstCategory, // Main category (Gloves)
             ...subcategories.map((sub) => ({
-              _id: sub._id,
+              _id: `${firstCategory._id}/subcategory/${sub._id}`, // Format ID
               name: sub.name,
               description: sub.description,
               image: sub.image,
-              isSubcategory: true, // Flag for UI differentiation
+              isSubcategory: true, // UI flag
             })),
             ...remainingCategories,
           ];
   
+          console.log(formattedCategories);
           setCategories(formattedCategories);
         } else {
           setCategories([]);

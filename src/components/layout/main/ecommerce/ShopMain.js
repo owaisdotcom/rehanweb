@@ -31,7 +31,7 @@ import ShopPrimary from "@/components/sections/shop/ShopPrimary";
 import FeaturedProductsSlider2 from "@/components/shared/featured-products/FeaturedProductsSlider2";
 
 const ShopMain = ({ products, categoryId, subcategoryId, title }) => {
-  console.log(categoryId)
+  console.log(products)
   return (
     <>
       <HeroPrimary path={title} title={title} />

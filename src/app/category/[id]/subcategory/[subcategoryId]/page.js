@@ -91,51 +91,52 @@ const Subcategory = () => {
   const categoryId = pathSegments[2] ?? null;
   const subcategoryId = pathSegments[4] ?? null;
 console.log(categoryId)
+console.log(subcategoryId)
   useEffect(() => {
-    const fetchProducts = async () => {
-      if (categoryId && subcategoryId) {
-        try {
-          const response = await fetch(
-            `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
-          );
-
-          if (!response.ok) throw new Error("Failed to fetch products");
-
-          const data = await response.json();
-          setProducts(data.products || []);
-        } catch (error) {
-          console.error("Error fetching products:", error);
-          setProducts([]);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-    const fetchSubcategory = async () => {
-      if (categoryId && subcategoryId) {
-        try {
-          const response = await fetch(
-            `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}`
-          );
-
-          if (!response.ok) throw new Error("Failed to fetch products");
-
-          const data = await response.json();
-          console.log(data)
-          setSubcategory(data || []);
-        } catch (error) {
-          console.error("Error fetching products:", error);
-          setSubcategory([]);
-        } finally {
-          setLoading(false);
-          console.log(subcategory)
-        }
-      }
-    };
 
     fetchProducts();
     fetchSubcategory();
   }, [categoryId, subcategoryId]);
+  const fetchProducts = async () => {
+    if (categoryId && subcategoryId) {
+      try {
+        const response = await fetch(
+          `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}/products`
+        );
+
+        if (!response.ok) throw new Error("Failed to fetch products");
+
+        const data = await response.json();
+        setProducts(data.products || []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+  const fetchSubcategory = async () => {
+    if (categoryId && subcategoryId) {
+      try {
+        const response = await fetch(
+          `https://mathsflix-backend.vercel.app/api/products/categories/${categoryId}/subcategories/${subcategoryId}`
+        );
+
+        if (!response.ok) throw new Error("Failed to fetch products");
+
+        const data = await response.json();
+        console.log(data)
+        setSubcategory(data || []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setSubcategory([]);
+      } finally {
+        setLoading(false);
+        console.log(subcategory)
+      }
+    }
+  };
 
   return (
     <PageWrapper>

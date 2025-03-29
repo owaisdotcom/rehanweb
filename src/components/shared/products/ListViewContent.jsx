@@ -2,11 +2,11 @@ import React from "react";
 import ProductCard from "../products/ProductCard";
 
 const ListViewContent = ({ products, categoryId, subcategoryId }) => {
-  if (!products || products.length === 0) return <p>No products available.</p>;
+
 
   return (
     <div className="space-y-4 mt-10">
-      {products.map((product) => (
+      {products?.map((product) => (
         <div
           key={product._id}
           className="flex items-center gap-4 p-4 border rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow"

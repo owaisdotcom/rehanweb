@@ -21,7 +21,7 @@ const Navbar = () => {
       if (window.innerWidth < 768) return; // Disable sticky navbar on mobile screens
   
       const scrollY = window.scrollY;
-      console.log("ScrollY:", scrollY);
+      // console.log("ScrollY:", scrollY);
   
       if (scrollY > lastScrollY.current && scrollY > 130) {
         setIsSticky(true);

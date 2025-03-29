@@ -8,10 +8,12 @@ import Pagination from "@/components/shared/others/Pagination";
 import ProductModal from "@/components/shared/products/ProductModal";
 import ListViewContent from "@/components/shared/products/ListViewContent";
 
-const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
+const ShopPrimary = ({ products, categoryId, subcategoryId }) => {
   const [viewMode, setViewMode] = useState("grid");
   const [currentProduct, setCurrentProduct] = useState(null);
   const [sortedProducts, setSortedProducts] = useState(products);
+  console.log(products)
+  console.log("sorted", sortedProducts)
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentProducts, setCurrentProducts] = useState([]);
@@ -22,16 +24,21 @@ const ShopPrimary = ({ products = [], categoryId, subcategoryId }) => {
   const paginationItems = [...Array(totalPages)];
 
   useEffect(() => {
-    if (Array.isArray(sortedProducts) && sortedProducts.length > 0) {
-      const start = currentPage * productsPerPage;
-      const end = start + productsPerPage;
-      setCurrentProducts(sortedProducts.slice(start, end));
-      setCurrentProduct(sortedProducts[0] || null);
-    } else {
-      setCurrentProducts([]);
-      setCurrentProduct(null);
-    }
+    const timeout = setTimeout(() => {
+      if (Array.isArray(sortedProducts) && sortedProducts.length > 0) {
+        const start = currentPage * productsPerPage;
+        const end = start + productsPerPage;
+        setCurrentProducts(sortedProducts.slice(start, end));
+        setCurrentProduct(sortedProducts[0] || null);
+      } else {
+        setCurrentProducts([]);
+        setCurrentProduct(null);
+      }
+    }, 1000); // Adjust time in milliseconds (e.g., 500ms delay)
+  
+    return () => clearTimeout(timeout); // Cleanup timeout to prevent memory leaks
   }, [currentPage, productsPerPage, sortedProducts]);
+  
 
   const handlePagination = (id) => {
     shopRef.current.scrollIntoView({ behavior: "smooth" });

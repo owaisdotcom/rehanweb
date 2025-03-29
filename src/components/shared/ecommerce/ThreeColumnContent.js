@@ -21,7 +21,8 @@ import React from "react";
 import ProductCard from "../products/ProductCard";
 
 const ThreeColumnContent = ({ products, handleCurrentProduct, categoryId, subcategoryId }) => {
-  if (!products || products.length === 0) return <p>No products available.</p>;
+  console.log(products)
+  if (!products || products.length === 0) return <p>No products found. Refresh to fetch the products</p>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 -mx-15px mt-10">

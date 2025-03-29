@@ -6,6 +6,7 @@ import logo from "./../../../assets/images/logo/logo.png";
 import { useState } from "react";
 
 const ProductCard = ({ product, categoryId, subcategoryId, onQuickView }) => {
+  
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,9 +24,9 @@ const ProductCard = ({ product, categoryId, subcategoryId, onQuickView }) => {
       {/* Product Image */}
       <div className="relative w-full h-64 group">
   {/* Featured Banner in a Cross */}
-  <div className="absolute top-7 left-0 bg-red-500 text-white text-xs font-bold px-3 py-1 transform -rotate-45 shadow-lg">
+  {product?.isFeatured && <div className="absolute top-7 left-0 bg-red-500 text-white text-xs font-bold px-3 py-1 transform -rotate-45 shadow-lg">
     FEATURED
-  </div>
+  </div>}
 
   <Link href={`/category/${categoryId}/subcategory/${subcategoryId}/products/${product._id}`}>
     <Image

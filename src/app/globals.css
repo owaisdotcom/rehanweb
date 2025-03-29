@@ -11162,27 +11162,30 @@ video {
 }
 
 /* Background images for hero slides */
-.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero1\.webp\'\)\] {
+/* .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero1\.webp\'\)\] {
   background-image: url(/_next/static/media/hero1.3fc0f61c.webp);
+} */
+.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/assembly\.jpg\'\)\] {
+  background-image: url(/_next/static/media/assembly.82d9d724.jpg);
 }
 
-.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero2\.webp\'\)\] {
-  background-image: url(/_next/static/media/hero2.15bdfefd.webp);
+.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/canadian\.jpg\'\)\] {
+  background-image: url(/_next/static/media/canadian.5127e8f8.png);
 }
 
 .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero4\.jpeg\'\)\] {
   background-image: url(/_next/static/media/hero4.3eea29e4.jpeg);
 }
-.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero10\.jpg\'\)\] {
-  background-image: url(/_next/static/media/hero10.8ae75601.jpg);
+.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/mechanicglove\.jpeg\'\)\] {
+  background-image: url(/_next/static/media/mechanicglove.496ee606.jpeg);
 }
 
 .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero5\.webp\'\)\] {
   background-image: url(/_next/static/media/hero5.327e6b4f.webp);
 }
 
-.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero6\.jpeg\'\)\] {
-  background-image: url(/_next/static/media/hero6.c84a6ea4.jpeg);
+.bg-\[url\(\'\.\.\/assets\/images\/herobanner\/winterglove\.jpg\'\)\] {
+  background-image: url(/_next/static/media/winterglove.b6a7a623.jpg);
 }
 
 .bg-\[url\(\'\.\.\/assets\/images\/herobanner\/hero7\.jpeg\'\)\] {

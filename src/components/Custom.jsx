@@ -10,6 +10,9 @@ import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 import TiltWrapper from "@/components/shared/wrappers/TiltWrapper";
 import Image from "next/image";
 import storeImage from "@/assets/images/logo/logo.png";
+import jacket from "@/assets/images/jacket1.jpg";
+import belt from "@/assets/images/custombelt.jpg";
+import wallet from "@/assets/images/wallet.jpg";
 import Link from "next/link";
 export default function Custom() {
   useEffect(() => {
@@ -73,8 +76,8 @@ export default function Custom() {
   </div>
 
   <div  data-aos="fade-up" class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
-    <img
-      src="https://m.media-amazon.com/images/I/B1On3Y+j0-L._CLa%7C2140%2C2000%7C51Hyy3xf3eL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UY1000_.png"
+    <Image
+      src={jacket}
       class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
       alt="Jacket"
     />
@@ -87,8 +90,8 @@ export default function Custom() {
   </div>
 
   <div  data-aos="fade-up" class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
-    <img
-      src="https://corporate.theelegance.pk/wp-content/uploads/2022/06/Promotional-Men-Wallet-Corporate-Gifts-in-Bulk.jpg"
+    <Image
+      src={wallet}
       class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
       alt="Wallet"
     />
@@ -101,8 +104,8 @@ export default function Custom() {
   </div>
 
   <div  data-aos="fade-up" class="p-4 shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300">
-    <img
-      src="https://cdn11.bigcommerce.com/s-5jktp/images/stencil/608x608/products/694/2138/Web_Belt__86721.1716655548.JPG?c=2"
+    <Image
+      src={belt}
       class="w-full h-64 object-cover rounded-md transform transition-transform duration-300 hover:scale-105"
       alt="Belt"
     />

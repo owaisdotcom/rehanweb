@@ -18,12 +18,12 @@ const HeroSlide2 = ({ slide, idx }) => {
     <div
       className={`hero ${
         [
-          "bg-[url('../assets/images/herobanner/hero1.webp')]",
-          "bg-[url('../assets/images/herobanner/hero2.webp')]",
+          "bg-[url('../assets/images/herobanner/assembly.jpg')]",
+          "bg-[url('../assets/images/herobanner/canadian.png')]",
           "bg-[url('../assets/images/herobanner/hero4.jpeg')]",
-          "bg-[url('../assets/images/herobanner/hero5.webp')]",
+          "bg-[url('../assets/images/herobanner/mechanicglove.jpeg')]",
           "bg-[url('../assets/images/herobanner/hero10.jpg')]",
-          "bg-[url('../assets/images/herobanner/hero6.jpeg')]",
+          "bg-[url('../assets/images/herobanner/winterglove.jpg')]",
           "bg-[url('../assets/images/herobanner/hero7.jpeg')]",
           "bg-[url('../assets/images/herobanner/hero8.jpeg')]",
           "bg-[url('../assets/images/herobanner/hero9.jpeg')]",

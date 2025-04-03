@@ -341,24 +341,39 @@ const ProductDetailPage = () => {
       </div>
     </div>
             {/* Product Details */}
-            <div className="p-4 flex flex-col justify-start space-y-4">
-              <h1 className="text-3xl font-semibold text-black">
-                {product.name}
-              </h1>
+            <div className="p-4 flex flex-col justify-start space-y-2">
+            <h1 className="text-3xl font-semibold text-black">
+  {product.name}
+</h1>
 
-              <p className="text-black text-xl">{product.description}</p>
+<p className="text-black text-xl">{product.description}</p>
 
-              <p className="font-semibold text-gray-700">
-                SKU: <span className="text-gray-500">{product.SKU}</span>
-              </p>
+<p className="font-semibold text-gray-700">
+  SKU: <span className="text-gray-500">{product.SKU}</span>
+</p>
+<p className="text-sm text-gray-500">
+  Material: <span className="text-gray-700">{product.material}</span>
+</p>
+<p className="text-sm text-gray-500">
+  Uses: <span className="text-gray-700">{product.uses}</span>
+</p>
+<p className="text-sm text-gray-500">
+  Size: <span className="text-gray-700">{product.size}</span>
+</p>
+<p className="text-sm text-gray-500">
+  Stock: <span className="text-gray-500">{product.stock}</span>
+</p>
 
-              <p className="text-green-600 font-semibold">
-                Stock: <span className="text-gray-500">{product.stock}</span>
-              </p>
+<p className="text-sm text-gray-500">
+  Features: {product.features}
+</p>
 
-              <p className="text-sm text-gray-500">
-                Features: {product.features}
-              </p>
+{/* New fields */}
+
+
+
+
+
 
               <div>
                 <button

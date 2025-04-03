@@ -348,25 +348,48 @@ const ProductDetailPage = () => {
 
 <p className="text-black text-xl">{product.description}</p>
 
-<p className="font-semibold text-gray-700">
-  SKU: <span className="text-gray-500">{product.SKU}</span>
-</p>
-<p className="text-sm text-gray-500">
-  Material: <span className="text-gray-700">{product.material}</span>
-</p>
-<p className="text-sm text-gray-500">
-  Uses: <span className="text-gray-700">{product.uses}</span>
-</p>
-<p className="text-sm text-gray-500">
-  Size: <span className="text-gray-700">{product.size}</span>
-</p>
-<p className="text-sm text-gray-500">
-  Stock: <span className="text-gray-500">{product.stock}</span>
-</p>
+{/* SKU */}
+{product.SKU && (
+  <p className="font-semibold text-gray-700">
+    SKU: <span className="text-gray-500">{product.SKU}</span>
+  </p>
+)}
 
-<p className="text-sm text-gray-500">
-  Features: {product.features}
-</p>
+{/* Material */}
+{product.material && (
+  <p className="text-sm text-gray-500">
+    Material: <span className="text-gray-700">{product.material}</span>
+  </p>
+)}
+
+{/* Uses */}
+{product.uses && (
+  <p className="text-sm text-gray-500">
+    Uses: <span className="text-gray-700">{product.uses}</span>
+  </p>
+)}
+
+{/* Size */}
+{product.size && (
+  <p className="text-sm text-gray-500">
+    Size: <span className="text-gray-700">{product.size}</span>
+  </p>
+)}
+
+{/* Stock */}
+{product.stock && (
+  <p className="text-green-600 font-semibold">
+    Stock: <span className="text-gray-500">{product.stock}</span>
+  </p>
+)}
+
+{/* Features */}
+{product.features && (
+  <p className="text-sm text-gray-500">
+    Features: {product.features}
+  </p>
+)}
+
 
 {/* New fields */}
 

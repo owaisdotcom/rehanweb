@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const HeroSlide2 = ({ slide, idx }) => {
-  const { title } = slide;
+  const { title, path } = slide;
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const HeroSlide2 = ({ slide, idx }) => {
           {title}
         </h1>
         <a
-          href="categories"
+          href={path}
           data-aos="fade-down"
           data-aos-delay="200"
           className="inline-block text-white bg-primaryColor px-4 py-2 rounded-full text-lg font-semibold transition duration-300 hover:bg-white hover:text-primaryColor border border-primaryColor"

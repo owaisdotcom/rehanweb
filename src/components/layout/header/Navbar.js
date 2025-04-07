@@ -53,7 +53,7 @@ const Navbar = () => {
             : "relative z-medium transform translate-y-0"
         }`}
       >
-        <div className="lg:grid flex justify-around lg:grid-cols-12 h-[60px] sm:h-[53px] lg:gap-15px transition-all duration-500 ease-in-out">
+        <div className="lg:grid flex justify-around lg:grid-cols-12 h-[60px] mb-1 sm:h-[53px] lg:gap-15px transition-all duration-500 ease-in-out">
           {/* Navbar Left */}
           <NavbarLogo />
 

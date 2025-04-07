@@ -165,9 +165,25 @@ const ProductDetailPage = () => {
   const [responseMessage, setResponseMessage] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+    const { name, value } = e.target;
+    const staticPrefix = `I want to inquire about ${product?.title} (SKU: ${product?.sku}). `;
+  
+    // Strip static prefix if present
+    const userInput = value.startsWith(staticPrefix)
+      ? value.slice(staticPrefix.length)
+      : value;
+  
+    setFormData((prev) => ({
+      ...prev,
+      [name]: userInput,
+    }));
+  
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
+  
 
   const validateFields = () => {
     const newErrors = {};
@@ -307,38 +323,43 @@ const ProductDetailPage = () => {
 
         <HeroPrimary path={`Shop page > Product Page`} title={product?.name} />
 
-        <div className="container-fluid-2 shop py-100px">
+        <div className="container-fluid-2 shop py-50px">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md">
           <div className="relative w-auto border rounded-lg overflow-hidden">
       {/* Image Wrapper */}
-      <div
-        className="w-full h-full relative"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Original Image */}
-        <img
-          ref={imageRef}
-          src={product.images?.[0] || "https://via.placeholder.com/300"}
-          alt={product.name}
-          className="w-full h-full object-cover"
-        />
+      <div 
+  className="w-full h-full relative overflow-hidden"
+  onMouseMove={handleMouseMove}
+  onMouseLeave={handleMouseLeave}
+>
+  {/* Original Image */}
+  <img
+    ref={imageRef}
+    src={product.images?.[0] ?? "https://via.placeholder.com/300"}
+    alt={product.name}
+    className={`w-full h-full object-cover transition-opacity duration-100 ${
+      zoomPosition.isVisible ? "opacity-0" : "opacity-100"
+    }`}
+  />
 
-        {/* Zoomed Image Overlay */}
-        {zoomPosition.isVisible && (
-          <div
-            className="absolute inset-0 w-full h-full"
-            style={{
-              backgroundImage: `url(${product.images?.[0]})`,
-              backgroundSize: "180%",
-              backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
-              transform: "scale(1.1)", // Slight scale to make it feel more fluid
-              transition: "transform 0.1s ease-out",
-              willChange: "transform",
-            }}
-          />
-        )}
-      </div>
+  {/* Zoomed Image Overlay */}
+  {zoomPosition.isVisible && (
+    <div
+      className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-100"
+      style={{
+        backgroundImage: `url(${product.images?.[0]})`,
+        backgroundSize: "180%",
+        backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+        transform: "scale(1.1)",
+        willChange: "transform",
+        backgroundRepeat: "no-repeat",
+        backgroundPositionX: `${zoomPosition.x}%`,
+        backgroundPositionY: `${zoomPosition.y}%`,
+      }}
+    />
+  )}
+</div>
+
     </div>
             {/* Product Details */}
             <div className="p-4 flex flex-col justify-start space-y-2">
@@ -347,48 +368,42 @@ const ProductDetailPage = () => {
 </h1>
 
 <p className="text-black text-xl">{product.description}</p>
-
-{/* SKU */}
-{product.SKU && (
-  <p className="font-semibold text-gray-700">
-    SKU: <span className="text-gray-500">{product.SKU}</span>
+{product?.SKU && (
+  <p className="text-sm text-black leading-7">
+    <span className="font-semibold">SKU:</span> <span>{product?.SKU}</span>
   </p>
 )}
 
-{/* Material */}
-{product.material && (
-  <p className="text-sm text-gray-500">
-    Material: <span className="text-gray-700">{product.material}</span>
+{product?.material && (
+  <p className="text-sm text-black leading-7">
+    <span className="font-semibold">Material:</span> <span>{product?.material}</span>
   </p>
 )}
 
-{/* Uses */}
-{product.uses && (
-  <p className="text-sm text-gray-500">
-    Uses: <span className="text-gray-700">{product.uses}</span>
+{product?.uses && (
+  <p className="text-sm text-black leading-7">
+    <span className="font-semibold">Uses:</span> <span>{product?.uses}</span>
   </p>
 )}
 
-{/* Size */}
-{product.size && (
-  <p className="text-sm text-gray-500">
-    Size: <span className="text-gray-700">{product.size}</span>
+{product?.size && (
+  <p className="text-sm text-black leading-7">
+    <span className="font-semibold">Size:</span> <span>{product?.size}</span>
   </p>
 )}
 
-{/* Stock */}
-{product.stock && (
-  <p className="text-green-600 font-semibold">
-    Stock: <span className="text-gray-500">{product.stock}</span>
+{product?.stock && (
+  <p className="text-sm text-black leading-7">
+    <span className="font-semibold">Stock:</span> <span>{product?.stock}</span>
   </p>
 )}
 
-{/* Features */}
-{product.features && (
-  <p className="text-sm text-gray-500">
-    Features: {product.features}
+{product?.features && (
+  <p className="text-sm text-black">
+    <span className="font-semibold">Features:</span> <span>{product?.features}</span>
   </p>
 )}
+
 
 
 {/* New fields */}
@@ -448,7 +463,14 @@ const ProductDetailPage = () => {
           <input name="city" placeholder="City" value={formData.city} onChange={handleChange} className="border p-1 rounded w-full" />
           <input name="companyName" placeholder="Company Name (optional)" value={formData.companyName} onChange={handleChange} className="border p-1 rounded w-full" />
           
-          <textarea name="message" placeholder="Message *" value={formData.message} onChange={handleChange} className="border p-1 rounded w-full h-20"></textarea>
+          <textarea
+  name="message"
+  placeholder="Message *"
+  value={`I want to inquire about ${product?.name} (SKU: ${product?.SKU}). ${formData.message?.replace(/^.*?\)\.\s*/, '')}`}
+  onChange={handleChange}
+  className="border p-1 rounded w-full h-20 resize-none"
+/>
+
           {errors.message && <span className="text-red-500 text-xs">{errors.message}</span>}
           
           <button type="submit" className="bg-yellow  text-white font-semibold px-4 py-2 rounded w-full hover:bg-yellow1 transition" disabled={loading}>

@@ -9,14 +9,19 @@ import ProductModal from "@/components/shared/products/ProductModal";
 import ListViewContent from "@/components/shared/products/ListViewContent";
 
 const ShopPrimary = ({ products, categoryId, subcategoryId }) => {
+  const fetchedProducts = products ?? [];
+
+  console.log(fetchedProducts)
   const [viewMode, setViewMode] = useState("grid");
   const [currentProduct, setCurrentProduct] = useState(null);
-  const [sortedProducts, setSortedProducts] = useState(products);
-  console.log(products)
-  console.log("sorted", sortedProducts)
+  
+  const [sortedProducts, setSortedProducts] = useState([]);
+const [currentProducts, setCurrentProducts] = useState([]);
+
+ 
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentProducts, setCurrentProducts] = useState([]);
+ 
   const shopRef = useRef(null);
 
   const totalProducts = sortedProducts?.length || 0;
@@ -24,19 +29,21 @@ const ShopPrimary = ({ products, categoryId, subcategoryId }) => {
   const paginationItems = [...Array(totalPages)];
 
   useEffect(() => {
+    if (Array.isArray(products)) {
+      setSortedProducts(products);
+      setCurrentProducts(products.slice(0, productsPerPage));
+      setCurrentProduct(products?.[0] ?? null);
+    }
+  }, [products, productsPerPage]);
+  useEffect(() => {
     const timeout = setTimeout(() => {
-      if (Array.isArray(sortedProducts) && sortedProducts.length > 0) {
-        const start = currentPage * productsPerPage;
-        const end = start + productsPerPage;
-        setCurrentProducts(sortedProducts.slice(start, end));
-        setCurrentProduct(sortedProducts[0] || null);
-      } else {
-        setCurrentProducts([]);
-        setCurrentProduct(null);
-      }
-    }, 1000); // Adjust time in milliseconds (e.g., 500ms delay)
+      const start = currentPage * productsPerPage;
+      const end = start + productsPerPage;
+      setCurrentProducts(sortedProducts?.slice(start, end) ?? []);
+      setCurrentProduct(sortedProducts?.[start] ?? null);
+    }, 500);
   
-    return () => clearTimeout(timeout); // Cleanup timeout to prevent memory leaks
+    return () => clearTimeout(timeout);
   }, [currentPage, productsPerPage, sortedProducts]);
   
 
@@ -53,7 +60,7 @@ const ShopPrimary = ({ products, categoryId, subcategoryId }) => {
 
   return (
     <section>
-      <div className="container-fluid-2 shop py-100px" ref={shopRef}>
+      <div className="container-fluid-2 shop py-50px" ref={shopRef}>
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-x-30px">
           <ShopSidebar products={products} setSortedProducts={setSortedProducts} />
           <div className="modal-container xl:col-start-4 xl:col-span-9">

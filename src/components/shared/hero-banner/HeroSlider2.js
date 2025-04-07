@@ -29,6 +29,7 @@ const HeroSlider2 = () => {
         </>
       ),
       tag: "Engineered for Safety, Designed for Comfort",
+      path: "category/67804b883c8cc403e459c4b5/subcategory/67804b883c8cc403e459c4b6"
     },
     {
       title: (
@@ -37,6 +38,7 @@ const HeroSlider2 = () => {
         </>
       ),
       tag: "Cold Weather Protection, Without Compromise",
+      path: "category/67804b883c8cc403e459c4b5/subcategory/67a394359e1d2931834d90b5"
     },
     {
       title: (
@@ -45,14 +47,16 @@ const HeroSlider2 = () => {
         </>
       ),
       tag: "Designed for the Toughest Jobs",
+      path: "category/67804b883c8cc403e459c4b5/subcategory/67a394ab9e1d2931834d90df"
     },
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 ">Heavy-Duty </span>Mechanical Gloves
+         <span className="text-secondaryColor leading-1.5 ">Heavy-Duty </span>Mechanic Gloves
         </>
       ),
       tag: "Crafted for Strength and Precision",
+      path: "category/67804b883c8cc403e459c4b5/subcategory/67a3945a9e1d2931834d90c1"
     },
     {
       title: (
@@ -69,6 +73,7 @@ const HeroSlider2 = () => {
         </>
       ),
       tag: "Stay Warm, Stay Comfortable",
+      path: "category/67804b883c8cc403e459c4b5/subcategory/67a394c99e1d2931834d90f1"
     },
     {
       title: (

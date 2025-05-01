@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Admin Dashboard | M. Azam & Sons",
-  description: "Admin Dashboard | M. Azam & Sons",
+  title: "Admin Dashboard | MAS Leather Gloves",
+  description: "Admin Dashboard | MAS Leather Gloves",
 };
 const Admin_Dashboard = () => {
   return (
@@ -16,7 +16,7 @@ const Admin_Dashboard = () => {
             <AdminDashboardMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

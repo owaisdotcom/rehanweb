@@ -18,7 +18,7 @@ const Course_Details = async ({ params }) => {
     <PageWrapper>
       <main>
         <CourseDetailsMain id={id} />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

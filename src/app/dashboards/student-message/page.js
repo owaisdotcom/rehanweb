@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Student Message | M. Azam & Sons",
-  description: "Student Message | M. Azam & Sons",
+  title: "Student Message | MAS Leather Gloves",
+  description: "Student Message | MAS Leather Gloves",
 };
 const Student_Message = () => {
   return (
@@ -16,7 +16,7 @@ const Student_Message = () => {
             <StudentMessageMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

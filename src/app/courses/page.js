@@ -13,7 +13,7 @@ const Courses = async () => {
     <PageWrapper>
       <main>
         <CoursesMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

@@ -44,7 +44,7 @@
 //   return (
 //     <PageWrapper>
 //       <main>
-//         <ThemeController />
+//         
 
 //         <HeroPrimary path={`Shop page > Product Page`} title={product.name} />
 
@@ -319,115 +319,127 @@ const ProductDetailPage = () => {
   return (
     <PageWrapper>
       <main>
-        <ThemeController />
+        
 
         <HeroPrimary path={`Shop page > Product Page`} title={product?.name} />
 
-        <div className="container-fluid-2 shop py-50px">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-md">
-          <div className="relative w-auto border rounded-lg overflow-hidden">
-      {/* Image Wrapper */}
+        <div className="container mx-auto px-4 sm:px-6 py-8 md:py-12">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white p-4 sm:p-8 rounded-lg shadow-md">
+    {/* Product Image with Zoom */}
+    <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] border rounded-lg overflow-hidden group">
       <div 
-  className="w-full h-full relative overflow-hidden"
-  onMouseMove={handleMouseMove}
-  onMouseLeave={handleMouseLeave}
->
-  {/* Original Image */}
-  <img
-    ref={imageRef}
-    src={product.images?.[0] ?? "https://via.placeholder.com/300"}
-    alt={product.name}
-    className={`w-full h-full object-cover transition-opacity duration-100 ${
-      zoomPosition.isVisible ? "opacity-0" : "opacity-100"
-    }`}
-  />
+        className="w-full h-full relative overflow-hidden"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Original Image */}
+        <img
+          ref={imageRef}
+          src={product.images?.[0] ?? "https://via.placeholder.com/800"}
+          alt={product.name}
+          className={`w-full h-full object-contain transition-opacity duration-300 ${
+            zoomPosition.isVisible ? "opacity-0" : "opacity-100"
+          }`}
+        />
 
-  {/* Zoomed Image Overlay */}
-  {zoomPosition.isVisible && (
-    <div
-      className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-100"
-      style={{
-        backgroundImage: `url(${product.images?.[0]})`,
-        backgroundSize: "180%",
-        backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
-        transform: "scale(1.1)",
-        willChange: "transform",
-        backgroundRepeat: "no-repeat",
-        backgroundPositionX: `${zoomPosition.x}%`,
-        backgroundPositionY: `${zoomPosition.y}%`,
-      }}
-    />
-  )}
-</div>
-
+        {/* Zoomed Image Overlay */}
+        {zoomPosition.isVisible && (
+          <div
+            className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-300"
+            style={{
+              backgroundImage: `url(${product.images?.[0]})`,
+              backgroundSize: "200%",
+              backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+              transform: "scale(1.2)",
+              willChange: "transform",
+              backgroundRepeat: "no-repeat"
+            }}
+          />
+        )}
+      </div>
+      {/* Zoom Indicator (only shows on hover) */}
+      <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+        Hover to zoom
+      </div>
     </div>
-            {/* Product Details */}
-            <div className="p-4 flex flex-col justify-start space-y-2">
-            <h1 className="text-3xl font-semibold text-black">
-  {product.name}
-</h1>
 
-<p className="text-black text-xl">{product.description}</p>
-{product?.SKU && (
-  <p className="text-sm text-black leading-7">
-    <span className="font-semibold">SKU:</span> <span>{product?.SKU}</span>
-  </p>
-)}
+    {/* Product Details */}
+    <div className="p-4 flex flex-col justify-start space-y-4">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+        {product.name}
+      </h1>
 
-{product?.material && (
-  <p className="text-sm text-black leading-7">
-    <span className="font-semibold">Material:</span> <span>{product?.material}</span>
-  </p>
-)}
+      <p className="text-gray-700 text-lg sm:text-xl">{product.description}</p>
+      
+      <div className="space-y-3">
+        {product?.SKU && (
+          <p className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">SKU:</span> {product.SKU}
+          </p>
+        )}
 
-{product?.uses && (
-  <p className="text-sm text-black leading-7">
-    <span className="font-semibold">Uses:</span> <span>{product?.uses}</span>
-  </p>
-)}
+        {product?.material && (
+          <p className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">Material:</span> {product.material}
+          </p>
+        )}
 
-{product?.size && (
-  <p className="text-sm text-black leading-7">
-    <span className="font-semibold">Size:</span> <span>{product?.size}</span>
-  </p>
-)}
+        {product?.uses && (
+          <p className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">Uses:</span> {product.uses}
+          </p>
+        )}
 
-{product?.stock && (
-  <p className="text-sm text-black leading-7">
-    <span className="font-semibold">Stock:</span> <span>{product?.stock}</span>
-  </p>
-)}
+        {product?.size && (
+          <p className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">Size:</span> {product.size}
+          </p>
+        )}
 
-{product?.features && (
-  <p className="text-sm text-black">
-    <span className="font-semibold">Features:</span> <span>{product?.features}</span>
-  </p>
-)}
+        {product?.stock && (
+          <p className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">Stock:</span> {product.stock}
+          </p>
+        )}
 
+        {product?.features && (
+          <div className="text-sm sm:text-base text-gray-600">
+            <span className="font-semibold">Features:</span> 
+            <ul className="list-disc pl-5 mt-1">
+              {product.features.split(',').map((feature, index) => (
+                <li key={index}>{feature.trim()}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
 
+      <div className="mt-6">
+        <button
+          onClick={handleInquiryClick}
+          className="bg-yellow hover:bg-yellow1 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+        >
+          Inquiry Product
+        </button>
+      </div>
+    </div>
+  </div>
 
-{/* New fields */}
+  {/* Inquiry Dialog */}
+  {isDialogOpen && (
+    <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex justify-center items-center p-4 z-50">
+      <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-xl flex flex-col md:flex-row overflow-hidden max-h-[90vh] overflow-y-auto">
+        {/* Close Button */}
+        <button 
+          onClick={handleCloseDialog} 
+          className="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl z-10"
+        >
+          &times;
+        </button>
 
-
-
-
-
-
-              <div>
-                <button
-                  onClick={handleInquiryClick}
-                  className="bg-yellow1 text-white px-4 py-2 rounded-lg hover:bg-yellow"
-                >
-                  Inquiry Product
-                </button>
-              </div>
-              {isDialogOpen && (
-  <div className="fixed inset-0 bg-[#0000006d] bg-opacity-50 flex justify-center items-center p-4">
-    <div className="relative w-full max-w-4xl bg-white border rounded-lg shadow-lg flex overflow-hidden">
-      {/* Left Section - Product Details */}
-      <div className="w-1/2 p-4 flex flex-col justify-center items-center text-center">
-  {/* Image Wrapper */}
-  <div className="relative w-full  overflow-hidden">
+        {/* Left Section - Product Details */}
+        <div className="w-1/2 p-4 flex flex-col justify-center items-center text-center">
+        <div className="relative w-full  overflow-hidden">
     {/* Original Image */}
     <img
       src={product.images?.[0] || "https://via.placeholder.com/300"}
@@ -435,56 +447,131 @@ const ProductDetailPage = () => {
       className="w-full h-full object-cover rounded"
     />
   </div>
-  {/* Product Information */}
-  <h1 className="text-2xl font-semibold mt-4">{product.name}</h1>
-  <p className="text-gray-600 text-sm">SKU: <span className="text-gray-500">{product.SKU}</span></p>
-</div>
-
-      
-      {/* Right Section - Inquiry Form */}
-      <div className="w-1/2 p-4 flex flex-col justify-between border-l">
-        <button onClick={handleCloseDialog} className="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">&times;</button>
-        <h4 className="text-lg font-bold mb-2">Drop Your Inquiry</h4>
-        <p className="text-sm text-gray-500 mb-3">Your email address will not be published. Required fields are marked *</p>
-        {responseMessage && <div className="mb-2 text-green-600">{responseMessage}</div>}
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <input name="fullName" placeholder="Full Name *" value={formData.fullName} onChange={handleChange} className="border p-1 rounded w-full" />
-          {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
+          <h1 className="text-xl font-bold text-center">{product.name}</h1>
+          <p className="text-gray-600 text-sm mt-1">SKU: {product.SKU}</p>
+        </div>
+        
+        {/* Right Section - Inquiry Form */}
+        <div className="w-full md:w-1/2 p-6">
+          <h4 className="text-xl font-bold mb-1">Drop Your Inquiry</h4>
+          <p className="text-sm text-gray-500 mb-2">
+            Your email address will not be published. Required fields are marked *
+          </p>
           
-          <input name="email" type="email" placeholder="Email Address *" value={formData.email} onChange={handleChange} className="border p-1 rounded w-full" />
-          {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
+          {responseMessage && (
+            <div className={`mb-4 p-3 rounded ${responseMessage.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {responseMessage}
+            </div>
+          )}
           
-          <input name="phoneNumber" type="tel" placeholder="Phone Number *" value={formData.phoneNumber} onChange={handleChange} className="border p-1 rounded w-full" />
-          {errors.phoneNumber && <span className="text-red-500 text-xs">{errors.phoneNumber}</span>}
-          
-          <input name="country" placeholder="Country *" value={formData.country} onChange={handleChange} className="border p-1 rounded w-full" />
-          {errors.country && <span className="text-red-500 text-xs">{errors.country}</span>}
-          
-          <input name="city" placeholder="City" value={formData.city} onChange={handleChange} className="border p-1 rounded w-full" />
-          <input name="companyName" placeholder="Company Name (optional)" value={formData.companyName} onChange={handleChange} className="border p-1 rounded w-full" />
-          
-          <textarea
+          <form onSubmit={handleSubmit} className="space-y-1">
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Full Name *</label>
+              <input 
+                name="fullName" 
+                placeholder="John Doe" 
+                value={formData.fullName} 
+                onChange={handleChange} 
+                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
+            </div>
+            
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Email Address *</label>
+              <input 
+                name="email" 
+                type="email" 
+                placeholder="your@email.com" 
+                value={formData.email} 
+                onChange={handleChange} 
+                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
+            </div>
+            
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number *</label>
+              <input 
+                name="phoneNumber" 
+                type="tel" 
+                placeholder="+1234567890" 
+                value={formData.phoneNumber} 
+                onChange={handleChange} 
+                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              {errors.phoneNumber && <span className="text-red-500 text-xs">{errors.phoneNumber}</span>}
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">Country *</label>
+                <input 
+                  name="country" 
+                  placeholder="Country" 
+                  value={formData.country} 
+                  onChange={handleChange} 
+                  className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                />
+                {errors.country && <span className="text-red-500 text-xs">{errors.country}</span>}
+              </div>
+              
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">City</label>
+                <input 
+                  name="city" 
+                  placeholder="City" 
+                  value={formData.city} 
+                  onChange={handleChange} 
+                  className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Company Name (optional)</label>
+              <input 
+                name="companyName" 
+                placeholder="Your Company" 
+                value={formData.companyName} 
+                onChange={handleChange} 
+                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Message *</label>
+              <textarea
   name="message"
   placeholder="Message *"
   value={`I want to inquire about ${product?.name} (SKU: ${product?.SKU}). ${formData.message?.replace(/^.*?\)\.\s*/, '')}`}
   onChange={handleChange}
   className="border p-1 rounded w-full h-20 resize-none"
 />
-
-          {errors.message && <span className="text-red-500 text-xs">{errors.message}</span>}
-          
-          <button type="submit" className="bg-yellow  text-white font-semibold px-4 py-2 rounded w-full hover:bg-yellow1 transition" disabled={loading}>
-            {loading ? "Submitting..." : "Submit"}
-          </button>
-        </form>
+              {errors.message && <span className="text-red-500 text-xs">{errors.message}</span>}
+            </div>
+            
+            <button 
+              type="submit" 
+              className="w-full bg-yellow hover:bg-yellow1 text-white font-semibold px-4 py-3 rounded-md transition-colors duration-300"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Processing...
+                </span>
+              ) : "Submit Inquiry"}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-)}
-
-            </div>
-          </div>
-        </div>
+  )}
+</div>
       </main>
       <div className="container">
         <HeadingPrimary>Related Products</HeadingPrimary>

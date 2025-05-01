@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Student Wishlist | M. Azam & Sons",
-  description: "Student Wishlist | M. Azam & Sons",
+  title: "Student Wishlist | MAS Leather Gloves",
+  description: "Student Wishlist | MAS Leather Gloves",
 };
 const Student_Wishlist = () => {
   return (
@@ -16,7 +16,7 @@ const Student_Wishlist = () => {
             <StudentWishlistMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

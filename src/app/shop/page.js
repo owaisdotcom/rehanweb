@@ -12,7 +12,7 @@ const Shop = async () => {
     <PageWrapper>
       <main>
         <ShopMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

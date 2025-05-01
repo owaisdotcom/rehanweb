@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Instructor Setting | M. Azam & Sons",
-  description: "Instructor Setting | M. Azam & Sons",
+  title: "Instructor Setting | MAS Leather Gloves",
+  description: "Instructor Setting | MAS Leather Gloves",
 };
 const Instructor_Setting = () => {
   return (
@@ -16,7 +16,7 @@ const Instructor_Setting = () => {
             <InstructorSettingsMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

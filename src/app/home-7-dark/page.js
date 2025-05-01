@@ -3,15 +3,15 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Home-7 University - Dark | M. Azam & Sons",
-  description: "Home-7 University - Dark | M. Azam & Sons",
+  title: "Home-7 University - Dark | MAS Leather Gloves",
+  description: "Home-7 University - Dark | MAS Leather Gloves",
 };
 const Home_7_Dark = () => {
   return (
     <PageWrapper>
       <main className="is-dark">
         <Home7 />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

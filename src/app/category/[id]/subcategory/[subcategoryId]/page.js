@@ -61,7 +61,7 @@
 //   return (
 //     <PageWrapper>
 //       <main>
-//         <ThemeController />
+//         
 //         <ShopMain products={products} categoryData={categoryData} />
 //       </main>
 //     </PageWrapper>
@@ -141,7 +141,7 @@ console.log(subcategoryId)
   return (
     <PageWrapper>
       <main>
-        <ThemeController />
+        
         {loading ? <div><PreloaderPrimary/> </div>: <ShopMain title={subcategory?.name} products={products} categoryId={categoryId} subcategoryId={subcategoryId} />}
       </main>
     </PageWrapper>

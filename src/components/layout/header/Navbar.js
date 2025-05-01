@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* Navbar Section */}
       <div
         id="navbar"
-        className={`transition-all duration-500 ease-in-out bg-[#EC9931] ${
+        className={`transition-all duration-500 ease-in-out  sm:bg-[#EC9931] ${
           isSticky
             ? "fixed top-0 left-0 w-full z-50 shadow-md transform translate-y-0"
             : "relative z-medium transform translate-y-0"
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
 
           {/* Navbar Right */}
-          <div className="block sm:hidden">
+          <div className="block sm:hidden mt-3">
 
           <MobileMenuOpen />
           </div>

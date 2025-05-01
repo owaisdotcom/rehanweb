@@ -4,8 +4,8 @@ import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 import courses from "@/../public/fakedata/courses.json";
 import { notFound } from "next/navigation";
 export const metadata = {
-  title: "Courses Details - Dark | M. Azam & Sons",
-  description: "Courses Details - Dark | M. Azam & Sons",
+  title: "Courses Details - Dark | MAS Leather Gloves",
+  description: "Courses Details - Dark | MAS Leather Gloves",
 };
 const Course_Details_Dark = ({ params }) => {
   const { id } = params;
@@ -17,7 +17,7 @@ const Course_Details_Dark = ({ params }) => {
     <PageWrapper>
       <main className="is-dark">
         <CourseDetailsMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

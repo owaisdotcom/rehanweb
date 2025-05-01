@@ -5,8 +5,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Admin Quiz Attempts | M. Azam & Sons",
-  description: "Admin Quiz Attempts | M. Azam & Sons",
+  title: "Admin Quiz Attempts | MAS Leather Gloves",
+  description: "Admin Quiz Attempts | MAS Leather Gloves",
 };
 const Admin_Quiz_Attempts = () => {
   return (
@@ -17,7 +17,7 @@ const Admin_Quiz_Attempts = () => {
             <AdminQuizAttemptsMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

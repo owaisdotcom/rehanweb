@@ -20,7 +20,7 @@ const Courses =  () => {
     <PageWrapper>
       <main>
         <CoursesFilter2New id={id} />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

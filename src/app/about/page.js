@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "About | M. Azam & Sons",
-  description: "About | M. Azam & Sons",
+  title: "About | MAS Leather Gloves",
+  description: "About | MAS Leather Gloves",
 };
 
 const About = async () => {
@@ -13,7 +13,7 @@ const About = async () => {
     <PageWrapper>
       <main>
         <AboutMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

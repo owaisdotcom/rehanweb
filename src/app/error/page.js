@@ -4,8 +4,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Error | M. Azam & Sons",
-  description: "Error | M. Azam & Sons",
+  title: "Error | MAS Leather Gloves",
+  description: "Error | MAS Leather Gloves",
 };
 
 const Error = async () => {
@@ -13,7 +13,7 @@ const Error = async () => {
     <PageWrapper>
       <main>
         <ErrorMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

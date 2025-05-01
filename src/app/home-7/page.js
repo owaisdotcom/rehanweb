@@ -4,15 +4,15 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Home-7 University | M. Azam & Sons",
-  description: "Home-7 University | M. Azam & Sons",
+  title: "Home-7 University | MAS Leather Gloves",
+  description: "Home-7 University | MAS Leather Gloves",
 };
 const Home_7 = () => {
   return (
     <PageWrapper>
       <main>
         <Home7 />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

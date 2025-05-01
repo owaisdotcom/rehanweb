@@ -12,7 +12,7 @@ const CopyRight = () => {
             <p className="text-base text-center sm:text-start text-darkgray">
               © 2024 Powered by{" "}
               <a href="#" className="hover:text-primaryColor">
-                M. Azam & Sons
+                MAS Leather Gloves
               </a>{" "}
               . All Rights Reserved.
             </p>
@@ -50,7 +50,7 @@ const CopyRight = () => {
           <div className="lg:col-start-4 lg:col-span-6">
             <p className="text-whiteColor">
               Copyright © <span className="text-primaryColor">2024 </span> by
-              M Azam & Sons All Rights Reserved.
+              MAS Leather Gloves All Rights Reserved.
             </p>
           </div>
 

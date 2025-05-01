@@ -5,8 +5,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Student Settings | M. Azam & Sons",
-  description: "Student Settings | M. Azam & Sons",
+  title: "Student Settings | MAS Leather Gloves",
+  description: "Student Settings | MAS Leather Gloves",
 };
 const Student_Settings = () => {
   return (
@@ -17,7 +17,7 @@ const Student_Settings = () => {
             <StudentSettingsMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

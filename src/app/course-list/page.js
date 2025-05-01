@@ -3,8 +3,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Course List | M. Azam & Sons",
-  description: "Course List | M. Azam & Sons",
+  title: "Course List | MAS Leather Gloves",
+  description: "Course List | MAS Leather Gloves",
 };
 
 const Course_List = async () => {
@@ -12,7 +12,7 @@ const Course_List = async () => {
     <PageWrapper>
       <main>
         <CourseListMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

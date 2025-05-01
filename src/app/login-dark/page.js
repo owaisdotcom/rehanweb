@@ -3,15 +3,15 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Login/Register - Dark | M. Azam & Sons",
-  description: "Login/Register - Dark | M. Azam & Sons",
+  title: "Login/Register - Dark | MAS Leather Gloves",
+  description: "Login/Register - Dark | MAS Leather Gloves",
 };
 const Login_Dark = () => {
   return (
     <PageWrapper>
       <main className="is-dark">
         <LoginMain />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

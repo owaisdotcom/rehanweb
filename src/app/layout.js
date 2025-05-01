@@ -26,7 +26,7 @@ export const hind = Hind({
 });
 
 export const metadata = {
-  title: "Home | M. Azam & Sons",
+  title: "Home | MAS Leather Gloves",
   description: "Home description",
 };
 

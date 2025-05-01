@@ -5,8 +5,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Admin Profile | M. Azam & Sons",
-  description: "Admin Profile | M. Azam & Sons",
+  title: "Admin Profile | MAS Leather Gloves",
+  description: "Admin Profile | MAS Leather Gloves",
 };
 const Admin_Profile = () => {
   return (
@@ -17,7 +17,7 @@ const Admin_Profile = () => {
             <AdminProfileMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

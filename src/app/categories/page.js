@@ -7,8 +7,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
 export const metadata = {
-  title: "Courses | M. Azam & Sons",
-  description: "Courses | M. Azam & Sons",
+  title: "Courses | MAS Leather Gloves",
+  description: "Courses | MAS Leather Gloves",
 };
 
 const Courses = async () => {
@@ -16,7 +16,7 @@ const Courses = async () => {
     <PageWrapper>
       <main>
         <CoursesFilter2 />
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

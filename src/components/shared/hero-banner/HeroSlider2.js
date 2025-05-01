@@ -3,29 +3,24 @@ import React, { useRef, useState } from "react";
 import { Navigation, Thumbs, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeroSlide2 from "./HeroSlide2";
-import universityImage1 from "@/assets/images/herobanner/university_1.jpg";
-import universityImage2 from "@/assets/images/herobanner/university_2.jpg";
-import universityImage3 from "@/assets/images/herobanner/university_3.jpg";
 import herobannerImage from "@/assets/images/herobanner/hero1.webp";
 import herobannerImage2 from "@/assets/images/herobanner/hero2.webp";
-// import herobannerImage3 from "@/assets/images/herobanner/hero3.jpeg";
 import herobannerImage4 from "@/assets/images/herobanner/hero4.jpeg";
-
 import herobannerImage5 from "@/assets/images/herobanner/hero5.webp";
 import herobannerImage6 from "@/assets/images/herobanner/hero6.jpeg";
 import herobannerImage7 from "@/assets/images/herobanner/hero7.jpeg";
 import herobannerImage8 from "@/assets/images/herobanner/hero8.jpeg";
 import herobannerImage9 from "@/assets/images/herobanner/hero9.jpeg";
 import herobannerImage10 from "@/assets/images/herobanner/hero10.jpg";
-import Image from "next/image";
+
 const HeroSlider2 = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const sliderRef = useRef(null)
+  const sliderRef = useRef(null);
   const slides = [
     {
       title: (
         <>
-          <span className="text-secondaryColor leading-1.5 ">Discover the Finest</span> Assembly Gloves
+          <span className="text-secondaryColor leading-1.5">Discover the Finest</span> Assembly Gloves
         </>
       ),
       tag: "Engineered for Safety, Designed for Comfort",
@@ -34,7 +29,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          <span className="text-secondaryColor leading-1.5 ">Premium Collection of </span>Canadian Gloves
+          <span className="text-secondaryColor leading-1.5">Premium Collection of </span>Canadian Gloves
         </>
       ),
       tag: "Cold Weather Protection, Without Compromise",
@@ -43,7 +38,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 ">Durable & Stylish</span> Welding Gloves
+          <span className="text-secondaryColor leading-1.5">Durable & Stylish</span> Welding Gloves
         </>
       ),
       tag: "Designed for the Toughest Jobs",
@@ -52,7 +47,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 ">Heavy-Duty </span>Mechanic Gloves
+          <span className="text-secondaryColor leading-1.5">Heavy-Duty </span>Mechanic Gloves
         </>
       ),
       tag: "Crafted for Strength and Precision",
@@ -61,7 +56,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 "> Premium Quality</span> Split Leather Gloves
+          <span className="text-secondaryColor leading-1.5"> Premium Quality</span> Split Leather Gloves
         </>
       ),
       tag: "Tough and Reliable Protection",
@@ -69,7 +64,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 ">Warm & Cozy </span> Winter Gloves
+          <span className="text-secondaryColor leading-1.5">Warm & Cozy </span> Winter Gloves
         </>
       ),
       tag: "Stay Warm, Stay Comfortable",
@@ -78,7 +73,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor leading-1.5 ">Premium Collection of</span>  Leather Jackets
+          <span className="text-secondaryColor leading-1.5">Premium Collection of</span>  Leather Jackets
         </>
       ),
       tag: "Elevate Your Style with Timeless Elegance",
@@ -86,7 +81,7 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-         <span className="text-secondaryColor "> Durable & Stylish</span> Leather Wallets
+          <span className="text-secondaryColor"> Durable & Stylish</span> Leather Wallets
         </>
       ),
       tag: "Where Function Meets Luxury",
@@ -94,20 +89,23 @@ const HeroSlider2 = () => {
     {
       title: (
         <>
-          <span className="text-secondaryColor leading-1.5 ">Unveil Classic</span> Leather Belts
+          <span className="text-secondaryColor leading-1.5">Unveil Classic</span> Leather Belts
         </>
       ),
       tag: "The Perfect Finish for Every Outfit",
     },
   ];
-  
 
-  const thumbsImages = [herobannerImage, herobannerImage2,herobannerImage4,herobannerImage5, herobannerImage10,herobannerImage6,herobannerImage7,herobannerImage8,herobannerImage9];
+  const thumbsImages = [herobannerImage, herobannerImage2, herobannerImage4, herobannerImage5, herobannerImage10, herobannerImage6, herobannerImage7, herobannerImage8, herobannerImage9];
+  
   return (
-    <>
-        <Swiper
+    <div className="relative">
+      <Swiper
         ref={sliderRef}
-        navigation={true}
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
         grabCursor={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Navigation, Thumbs, Autoplay]}
@@ -115,10 +113,10 @@ const HeroSlider2 = () => {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        speed={600} 
+        speed={600}
         onSlideChange={(swiper) => {
           if (swiper.isEnd) {
-           swiper.slideTo(0,100)
+            swiper.slideTo(0, 100)
           }
         }}
         className="ecommerce-slider2 w-full"
@@ -129,8 +127,9 @@ const HeroSlider2 = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    
-    </>
+      <div className="swiper-button-prev !text-white !left-4 md:!left-8"></div>
+      <div className="swiper-button-next !text-white !right-4 md:!right-8"></div>
+    </div>
   );
 };
 

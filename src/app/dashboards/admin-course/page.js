@@ -5,8 +5,8 @@ import ThemeController from "@/components/shared/others/ThemeController";
 import DsahboardWrapper from "@/components/shared/wrappers/DsahboardWrapper";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 export const metadata = {
-  title: "Admin Course | M. Azam & Sons",
-  description: "Admin Course | M. Azam & Sons",
+  title: "Admin Course | MAS Leather Gloves",
+  description: "Admin Course | MAS Leather Gloves",
 };
 const Admin_Course = () => {
   return (
@@ -17,7 +17,7 @@ const Admin_Course = () => {
             <AdminCourseMain />
           </DashboardContainer>
         </DsahboardWrapper>
-        <ThemeController />
+        
       </main>
     </PageWrapper>
   );

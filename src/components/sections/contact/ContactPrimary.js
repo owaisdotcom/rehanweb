@@ -46,11 +46,12 @@ const ContactPrimary = () => {
                 Mail address
               </h3>
               <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                techbootmail@gmail.com
+                info@masleathergloves.com
               </p>
-              <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                998757478492
+              <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
+                sales@masleathergloves.com
               </p>
+              
             </div>
           </div>
           {/* office */}
@@ -82,11 +83,9 @@ const ContactPrimary = () => {
                 Office address
               </h3>
               <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                Digital Agency Network 2024
+              Karachi, Pakistan
               </p>
-              <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                Eastbourne Terrace
-              </p>
+              
             </div>
           </div>
           {/* phone */}
@@ -118,11 +117,9 @@ const ContactPrimary = () => {
                 Phone Number
               </h3>
               <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                +880 123 456 789 , 99874
+              +92 314 1112900
               </p>
-              <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                +880 123 456 789
-              </p>
+             
             </div>
           </div>
         </div>

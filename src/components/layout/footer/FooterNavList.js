@@ -13,10 +13,10 @@ import FooterHeading from "@/components/shared/headings/FooterHeading";
 
 const FooterNavList = () => {
   const socialLinks = [
-    { href: "https://www.facebook.com", icon: FacebookIcon.src, alt: "Facebook" },
-    { href: "https://www.instagram.com", icon: InstagramIcon.src, alt: "Instagram" },
-    { href: "https://www.linkedin.com", icon: LinkedInIcon.src, alt: "LinkedIn" },
-    { href: "https://www.whatsapp.com", icon: WhatsAppIcon.src, alt: "WhatsApp" },
+    { href: "https://www.facebook.com/profile.php?id=61574964188987", icon: FacebookIcon.src, alt: "Facebook" },
+    { href: "https://www.instagram.com/masleathergloves/", icon: InstagramIcon.src, alt: "Instagram" },
+    { href: "https://www.linkedin.com/company/mas-leather-gloves", icon: LinkedInIcon.src, alt: "LinkedIn" },
+    { href: "https://wa.me/923141112900", icon: WhatsAppIcon.src, alt: "WhatsApp" },
   ];
   const lists = [
     {
@@ -24,8 +24,8 @@ const FooterNavList = () => {
       items: [
         { name: "About Us", path: "/about" },
         { name: "Our Products", path: "/instructors" },
-        { name: "Contact Us", path: "#" },
-        { name: "Inquiry", path: "#" },
+        { name: "Contact Us", path: "/contact" },
+        { name: "Inquiry", path: "" },
       ],
     },
     {

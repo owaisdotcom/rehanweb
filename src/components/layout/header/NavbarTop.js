@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiPhone, FiMapPin, FiMail } from "react-icons/fi";
-import logo1 from "@/assets/images/logo1.png";
+import logo1 from "@/assets/images/f2.png";
 import { FaMailBulk } from "react-icons/fa";
 
 const NavbarTop = () => {
   return (
-    <div className="hidden lg:grid grid-cols-12 items-center gap-6 border-b border-borderColor dark:border-borderColor-dark px-4">
+    <div className="hidden bg-white lg:grid grid-cols-12 items-center gap-6 border-b border-borderColor dark:border-borderColor-dark px-4">
       {/* Logo Section */}
       <div className="col-span-3 flex items-center">
         <Link href="/" className="block">
@@ -38,17 +38,17 @@ const NavbarTop = () => {
         {/* Contact Info */}
         <div className="flex items-center gap-2 text-sm text-blackColor dark:text-white">
           <FiMail className="text-yellow text-2xl" />
-          <span>masleathergloves@gmail.com</span>
+          <span>info@masleathergloves.com</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-blackColor dark:text-white">
           <FiPhone className="text-yellow text-2xl" />
-          <span>+92 300 1234567</span>
+          <a href="https://wa.me/923141112900" target="_blank">+92 314 1112900</a>
         </div>
 
         {/* Location Info */}
         <div className="flex items-center gap-2 text-sm text-blackColor dark:text-white">
           <FiMapPin className="text-yellow text-2xl" />
-          <span>Lahore, Pakistan</span>
+          <span>Karachi, Pakistan</span>
         </div>
       </div>
     </div>

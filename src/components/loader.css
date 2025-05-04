@@ -1,38 +1,86 @@
 .loader {
-    width: 255px;
-    height: 255px;
-    display: block;
-    margin: auto;
-    position: relative;
-    background: #FFF;
-    box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: auto;
+  position: relative;
+  background: #FFF;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .loader {
+      width: 180px;
+      height: 180px;
   }
-  .loader::after {
-    content: '';
-    width: calc(100% - 30px);
-    height: calc(100% - 15px);
-    top: 15px;
-    left: 15px;
-    position: absolute;
-    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
-   linear-gradient(#DDD 250px, transparent 0), /* Increased from 100px to 150px */
-   linear-gradient(#DDD 40px, transparent 0),  /* Increased from 16px to 20px */
-   linear-gradient(#DDD 100px, transparent 0);  /* Increased from 50px to 70px */
-    background-repeat: no-repeat;
-    background-size: 75px 250px, 100% 100px, 100% 16px, 100% 30px;
-    background-position: -185px 0, center 0, center 115px, center 142px;
-    box-sizing: border-box;
-    animation: animloader 1s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .loader {
+      width: 200px;
+      height: 200px;
   }
-  
-  @keyframes animloader {
-    to {
-      background-position: 185px 0, center 0, center 115px, center 142px;
-    }
+}
+
+@media (min-width: 1024px) {
+  .loader {
+      width: 255px;
+      height: 255px;
   }
+}
+
+.loader::after {
+  content: '';
+  width: calc(100% - 30px);
+  height: calc(100% - 15px);
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  background-image: 
+      linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+      linear-gradient(#DDD 100%, transparent 0),
+      linear-gradient(#DDD 100%, transparent 0),
+      linear-gradient(#DDD 100%, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 
+      75px 100%,
+      100% 40%,
+      100% 13%,
+      100% 12%;
+  background-position: 
+      -185px 0, 
+      center 0, 
+      center 60%, 
+      center 75%;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite;
+}
+
+@keyframes animloader {
+  to {
+      background-position: 
+          185px 0, 
+          center 0, 
+          center 60%, 
+          center 75%;
+  }
+}
+
+.loader-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
   .loader-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Adds space between loaders */
+      gap: 1.25rem;
   }
+}
+
+@media (min-width: 768px) {
+  .loader-main {
+      gap: 1.5rem;
+  }
+}

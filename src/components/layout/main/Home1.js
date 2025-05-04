@@ -33,6 +33,7 @@ const Home1 = () => {
 
   return (
     <>
+    
     <Hero7 />
       <About5 />
       <CoursesFilter2 type="lg" />

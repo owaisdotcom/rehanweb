@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       <body
         className={`relative leading-[1.8] bg-bodyBg dark:bg-bodyBg-dark z-0  ${inter.className}`}
       >
-        <PreloaderPrimary />
+        {/* <PreloaderPrimary /> */}
         {children}
 
         {/* theme fixed shadow */}

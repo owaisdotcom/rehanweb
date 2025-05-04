@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* Navbar Section */}
       <div
         id="navbar"
-        className={`transition-all duration-500 ease-in-out  sm:bg-[#EC9931] ${
+        className={`transition-all duration-500 ease-in-out bg-white  sm:bg-[#EC9931] ${
           isSticky
             ? "fixed top-0 left-0 w-full z-50 shadow-md transform translate-y-0"
             : "relative z-medium transform translate-y-0"

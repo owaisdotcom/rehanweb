@@ -10,7 +10,7 @@ const OurMissionContent = () => {
           Our Mission
         </h1>
         <p className="text-black dark:text-contentColor-dark leading-relaxed">
-          At <strong>MAS Safety Leather</strong>, we’re here for your{" "}
+          At <strong>MAS Leather Gloves</strong>, we’re here for your{" "}
           <strong>safety and peace of mind</strong>.  
           With over <strong>25 years of expertise</strong>, we craft{" "}
           <strong>premium leather safety gloves</strong> that offer{" "}

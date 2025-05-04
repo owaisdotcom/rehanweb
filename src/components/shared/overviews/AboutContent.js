@@ -10,7 +10,7 @@ const AboutContent = () => {
   const isAboutDark = useIsTrue("/about-dark");
   return (
     <div>
-   <p className="text-black dark:text-contentColor-dark mb-10px">
+   <p className="text-sm leading-3 sm:text-base text-black dark:text-contentColor-dark mb-10">
   At <strong>MAS Leather Gloves</strong>, we pride ourselves on over <strong>25 years of dedication</strong> to crafting premium leather safety products that prioritize <strong>protection, comfort, and style</strong>.  
   Our journey began with a commitment to <strong>quality and innovation</strong>, transforming us from a local operation into a <strong>globally recognized brand</strong>.  
 

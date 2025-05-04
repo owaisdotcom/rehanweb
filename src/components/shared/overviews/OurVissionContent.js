@@ -19,7 +19,7 @@ const OurVisionContent = () => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-yellow">
           Our Vision
         </h1>
-        <p className="text-black dark:text-contentColor-dark leading-relaxed text-sm sm:text-base">
+        <p className="text-sm sm:text-base text-black dark:text-contentColor-dark leading-relaxed">
           Our vision is to <strong>lead the global market</strong> in protective leather gear,  
           always prioritizing your <strong>safety and performance</strong>.  
           We are committed to delivering <strong>innovative, high-quality, and durable products</strong>  

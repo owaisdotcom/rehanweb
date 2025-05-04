@@ -9,7 +9,7 @@ const OurMissionContent = () => {
         <h1 className="sm:text-4xl text-2xl font-semibold mb-4 text-yellow">
           Our Mission
         </h1>
-        <p className="text-black dark:text-contentColor-dark leading-relaxed">
+        <p className="text-sm  sm:text-base text-black dark:text-contentColor-dark leading-relaxed">
           At <strong>MAS Leather Gloves</strong>, we’re here for your{" "}
           <strong>safety and peace of mind</strong>.  
           With over <strong>25 years of expertise</strong>, we craft{" "}
